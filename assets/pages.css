@@ -132,7 +132,8 @@
 /* ---------- Material / service "key facts" panel ---------- */
 .facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin:0; padding:0}
 .facts .fact{background:linear-gradient(160deg,#fff,#F8FAFC); border:1px solid var(--line); border-radius:var(--radius-s);
-  padding:16px 18px; box-shadow:var(--shadow-1)}
+  padding:18px 20px; box-shadow:var(--shadow-1); transition:border-color .2s var(--ease), box-shadow .2s var(--ease)}
+.facts .fact:hover{border-color:var(--line-blue); box-shadow:var(--shadow-card)}
 .facts dt,.facts .k{font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-text); font-weight:700; margin:0}
 .facts dd,.facts .v{margin:6px 0 0; color:var(--ink); font-weight:600; font-size:.98rem; line-height:1.4}
 
@@ -145,18 +146,18 @@ table.cmp thead th{background:linear-gradient(180deg,#fff,#F1F5F9); color:var(--
 table.cmp tbody th{color:var(--ink); font-weight:700; background:#F8FAFC}
 table.cmp tr:last-child td,table.cmp tr:last-child th{border-bottom:0}
 table.cmp .yes{color:#1f7a3d; font-weight:700}
-table.cmp .no{color:#9A3412; font-weight:700}
+table.cmp .no{color:#C0392B; font-weight:700}
 
 /* ---------- Pros / cons ---------- */
 .proscons{display:grid; grid-template-columns:1fr 1fr; gap:20px}
 .proscons .pc{border-radius:var(--radius); padding:22px 24px; border:1px solid var(--line); box-shadow:var(--shadow-card)}
 .proscons .pros{background:linear-gradient(160deg,#F4FBF6,#fff); border-color:#CDEAD7}
-.proscons .cons{background:linear-gradient(160deg,#FCF5F1,#fff); border-color:#F0D7C9}
+.proscons .cons{background:linear-gradient(160deg,#FBF3F2,#fff); border-color:#EAD4D0}
 .proscons h3{font-size:1.1rem; color:var(--ink); margin-bottom:12px; display:flex; align-items:center; gap:9px}
 .proscons ul{display:grid; gap:10px; margin:0; padding:0; list-style:none}
 .proscons li{display:flex; gap:10px; align-items:flex-start; font-size:.94rem; color:var(--ink-soft); line-height:1.45}
 .proscons svg{width:19px;height:19px;flex:none;margin-top:1px}
-.proscons .pros svg{color:#1f7a3d} .proscons .cons svg{color:#9A3412}
+.proscons .pros svg{color:#1f7a3d} .proscons .cons svg{color:#C0392B}
 @media (max-width:680px){.proscons{grid-template-columns:1fr}}
 
 /* ---------- Local facts (city pages) ---------- */
@@ -170,10 +171,10 @@ table.cmp .no{color:#9A3412; font-weight:700}
 
 /* ---------- Related / interlink cards ---------- */
 .related{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px}
-.related a.rcard{display:flex; flex-direction:column; gap:6px; padding:20px 22px; border-radius:var(--radius);
+.related a.rcard{display:flex; flex-direction:column; gap:7px; padding:22px 24px; border-radius:var(--radius);
   background:linear-gradient(180deg,#fff,#F8FAFC); border:1px solid var(--line); box-shadow:var(--shadow-card);
-  color:var(--ink); transition:transform .2s var(--ease), box-shadow .2s var(--ease)}
-.related a.rcard:hover{transform:translateY(-4px); box-shadow:var(--shadow-2)}
+  color:var(--ink); transition:transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease)}
+.related a.rcard:hover{transform:translateY(-4px); box-shadow:var(--shadow-2); border-color:var(--line-blue)}
 .related a.rcard .k{font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-text); font-weight:700}
 .related a.rcard strong{font-size:1.06rem; color:var(--ink); font-weight:700}
 .related a.rcard span{font-size:.9rem; color:var(--ink-mute); line-height:1.45}
@@ -197,21 +198,23 @@ table.cmp .no{color:#9A3412; font-weight:700}
 
 /* contact / showroom info grid */
 .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.info-grid .info{background:linear-gradient(160deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-card)}
+.info-grid .info{background:linear-gradient(160deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow-card);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.info-grid .info:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-blue)}
 .info-grid .info .ico{display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:rgba(0,116,212,.10);color:var(--blue);margin-bottom:12px}
 .info-grid .info .ico svg{width:23px;height:23px}
 .info-grid .info h3{font-size:1.05rem;color:var(--ink);margin-bottom:6px}
 .info-grid .info p{font-size:.95rem;color:var(--ink-soft);line-height:1.55}
-.info-grid .info a{color:var(--accent-text);font-weight:700}
+.info-grid .info a{color:var(--blue-ink);font-weight:700}
 
 /* embedded map frame */
-.mapframe{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);background:#eef}
+.mapframe{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);background:#EEF2F7}
 .mapframe iframe{display:block;width:100%;height:340px;border:0}
 
 /* simple step list reused on service/estimate pages (light bg variant of .steps) */
 .lsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:ls}
-.lstep{position:relative;background:linear-gradient(170deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px 22px;box-shadow:var(--shadow-card)}
-.lstep .num{display:grid;place-items:center;width:48px;height:48px;border-radius:13px;margin-bottom:14px;background:var(--accent-fill);color:#fff;font-weight:800;font-size:1.3rem;box-shadow:var(--shadow-1)}
+.lstep{position:relative;background:linear-gradient(170deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px 24px;box-shadow:var(--shadow-card);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
+.lstep:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:var(--line-blue)}
+.lstep .num{display:grid;place-items:center;width:48px;height:48px;border-radius:13px;margin-bottom:14px;background:linear-gradient(135deg,#0A78D6,#005CA8);color:#fff;font-weight:800;font-size:1.3rem;box-shadow:0 6px 16px rgba(0,116,212,.32)}
 .lstep h3{font-size:1.12rem;color:var(--ink);margin-bottom:7px}
 .lstep p{font-size:.93rem;color:var(--ink-soft);line-height:1.5}
 
@@ -225,6 +228,14 @@ table.cmp .no{color:#9A3412; font-weight:700}
 .lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
 .lead-form textarea{min-height:120px;resize:vertical}
 .lead-form .form-note{font-size:.82rem;color:var(--ink-mute)}
+
+/* faint blueprint grid on cream sub-page heroes */
+.subhero:not(.subhero--photo){
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(71,85,105,.04) 39px 40px),
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(71,85,105,.04) 39px 40px);
+  border-bottom:1px solid var(--line);
+}
 
 /* footer: expanded silo columns wrap nicely */
 .site-footer .foot-col a.sub{padding-left:0}

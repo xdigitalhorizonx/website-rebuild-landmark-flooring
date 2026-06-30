@@ -178,20 +178,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .band-pale{background:linear-gradient(180deg,var(--pale),#F2F9FF)}
 .band-cream2, .band-pale{border-block:1px solid var(--line)}
 .band-pale{border-color:var(--line-blue)}
+.band-pale::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.6;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(0,116,212,.05) 39px 40px),
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(0,116,212,.05) 39px 40px);
+}
 /* hairline contour texture on warm bands */
 .band-cream2::before, .band-cream::after{
-  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5;
-  background-image:repeating-linear-gradient(90deg,transparent 0 38px,rgba(71,85,105,.025) 38px 39px);
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.7;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(71,85,105,.045) 39px 40px),
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(71,85,105,.045) 39px 40px);
 }
 .band-blue{
   background:radial-gradient(120% 140% at 80% 0%,#1E86E6 0%,#0074D4 45%,#005CA8 100%);
   color:#fff;
 }
 .band-blue::before{
-  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.35;
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5;
   background-image:
-    repeating-linear-gradient(90deg,transparent 0 60px,rgba(255,255,255,.06) 60px 61px),
-    repeating-linear-gradient(0deg,transparent 0 60px,rgba(255,255,255,.05) 60px 61px);
+    repeating-linear-gradient(90deg,transparent 0 47px,rgba(255,255,255,.08) 47px 48px),
+    repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.07) 47px 48px);
 }
 .band-blue .eyebrow{color:#fff} .band-blue .eyebrow::before{background:var(--accent-on-dark)}
 .band-blue h2, .band-blue h3, .band-blue p, .band-blue li{color:#fff}
@@ -293,9 +301,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   box-shadow:var(--shadow-card); overflow:hidden; transition:transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .stat::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px;
-  background:linear-gradient(180deg,var(--accent-fill),#94A3B8); transform:scaleY(.0); transform-origin:top;
+  background:linear-gradient(180deg,#0074D4,#7CC0FF); transform:scaleY(.0); transform-origin:top;
   transition:transform .3s var(--ease)}
-.stat:hover{transform:translateY(-4px); box-shadow:var(--shadow-2)}
+.stat:hover{transform:translateY(-4px); box-shadow:var(--shadow-2); border-color:var(--line-blue)}
 .stat:hover::before{transform:scaleY(1)}
 .stat .ico{display:grid; place-items:center; width:46px; height:46px; border-radius:12px;
   background:rgba(0,116,212,.10); color:var(--blue); margin-bottom:12px}
@@ -314,24 +322,24 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   position:relative; display:flex; flex-direction:column; overflow:hidden;
   background:linear-gradient(180deg,#fff,#F8FAFC); border:1px solid var(--line);
   border-radius:var(--radius); box-shadow:var(--shadow-card);
-  transition:transform .22s var(--ease), box-shadow .22s var(--ease);
+  transition:transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
 }
-.offer:hover{transform:translateY(-6px); box-shadow:var(--shadow-2)}
+.offer:hover{transform:translateY(-6px); box-shadow:var(--shadow-2); border-color:var(--line-blue)}
 .offer-media{position:relative; aspect-ratio:16/11; overflow:hidden}
 .offer-media img{width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease)}
 .offer:hover .offer-media img{transform:scale(1.06)}
 /* animated accent edge on hover */
 .offer::after{content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
-  background:linear-gradient(90deg,var(--accent-fill),#94A3B8,var(--blue));
+  background:linear-gradient(90deg,#0074D4,#7CC0FF);
   transform:scaleX(0); transform-origin:left; transition:transform .35s var(--ease); z-index:3}
 .offer:hover::after{transform:scaleX(1)}
-.offer-body{padding:20px 22px 22px; display:flex; flex-direction:column; flex:1}
+.offer-body{padding:22px 24px 24px; display:flex; flex-direction:column; flex:1}
 .offer-body h3{font-size:var(--f-h3); color:var(--ink)}
 .offer-body p{margin-top:8px; color:var(--ink-soft); font-size:.94rem; line-height:1.5; flex:1}
-.more{display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-weight:700; color:var(--accent-text); font-size:.92rem}
+.more{display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-weight:700; color:var(--blue-ink); font-size:.92rem}
 .more svg{width:17px;height:17px; transition:transform .2s var(--ease)}
 .offer:hover .more svg, .more:hover svg{transform:translateX(4px)}
-.more:hover{color:var(--accent-fill)}
+.more:hover{color:var(--blue)}
 /* desktop: 5-up balanced — promote the 1st two rows. With 6 cols & span-2 = 3 per row → 3+2 orphan.
    Force a clean layout: at >=1080 use 5 equal columns. */
 @media (min-width:1080px){
@@ -415,8 +423,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .step:hover{transform:translateY(-4px); background:rgba(255,255,255,.13)}
 .step .num{
   display:grid; place-items:center; width:54px; height:54px; border-radius:14px; margin-bottom:18px;
-  background:var(--accent-fill); color:#fff; font-weight:800; font-size:1.5rem;
-  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  background:#fff; color:var(--blue-ink); font-weight:800; font-size:1.5rem;
+  box-shadow:0 8px 18px rgba(4,18,40,.28);
 }
 .step h3{font-size:1.22rem; color:#fff; margin-bottom:8px}
 .step p{color:#fff; font-size:.94rem; line-height:1.5}
@@ -449,7 +457,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   border-radius:var(--radius); padding:28px 26px 24px; box-shadow:var(--shadow-card);
   transition:transform .2s var(--ease), box-shadow .2s var(--ease);
 }
-.quote:hover{transform:translateY(-4px); box-shadow:var(--shadow-2)}
+.quote:hover{transform:translateY(-4px); box-shadow:var(--shadow-2); border-color:var(--line-blue)}
 .quote .qmark{font-size:3.4rem; line-height:.6; color:var(--accent-text); opacity:.32; font-weight:800; font-family:Georgia,serif}
 .stars{color:#E8A03C; letter-spacing:2px; font-size:1.05rem; margin:6px 0 12px}
 .quote p{color:var(--ink-soft); font-size:.97rem; line-height:1.55}
