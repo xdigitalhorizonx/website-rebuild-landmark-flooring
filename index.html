@@ -32,6 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/pages.css" />
 
   <!-- JS-off-safe reveal guard -->
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -114,12 +115,13 @@
       <a class="brand" href="#top" aria-label="Landmark Flooring home">
         <span class="mark" id="logoMark">LF</span><span>Landmark&nbsp;Flooring</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#flooring">Flooring</a>
-        <a href="#why">Why Landmark</a>
-        <a href="#how">How It Works</a>
-        <a href="#area">Service Area</a>
-        <a href="#faq">FAQ</a>
+      <nav class="nav-links" id="primary-nav" aria-label="Primary">
+        <a href="/flooring/">Flooring</a>
+        <a href="/installation/">Installation</a>
+        <a href="/service-area/">Service Area</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
       <div class="nav-cta">
         <a class="phone" href="tel:+17752973236" aria-label="Call Landmark Flooring at (775) 297-3236">
@@ -127,6 +129,10 @@
           (775)&nbsp;297-3236
         </a>
         <a class="btn btn-primary" href="/free-estimate/">Free Estimate</a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <svg class="bars" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="x" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -589,6 +595,18 @@
     /* Header shadow on scroll */
     var header = document.querySelector('.site-header');
     addEventListener('scroll', function(){ header.classList.toggle('scrolled', scrollY > 18); }, {passive:true});
+
+    /* Mobile nav toggle (matches sub-pages) */
+    var navToggle = document.querySelector('.nav-toggle');
+    if(navToggle && header){
+      navToggle.addEventListener('click', function(){
+        var open = header.classList.toggle('menu-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      var navEl = header.querySelector('.nav-links');
+      if(navEl) navEl.addEventListener('click', function(e){ if(e.target.closest('a')){ header.classList.remove('menu-open'); navToggle.setAttribute('aria-expanded','false'); } });
+      addEventListener('keydown', function(e){ if(e.key==='Escape' && header.classList.contains('menu-open')){ header.classList.remove('menu-open'); navToggle.setAttribute('aria-expanded','false'); } });
+    }
 
     /* On-scroll reveal (JS-off-safe via <noscript>; reduced-motion shows all) */
     var reveals = document.querySelectorAll('.reveal');
