@@ -39,7 +39,7 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 - **Specific local projects, customer names, project photos** on city/segment pages.
 - **Cost numbers** — only industry ranges explicitly labeled as estimates, never "Landmark's price."
 - **Brand names carried** (Shaw/Mohawk/Stanton/etc.) — list only brands the client confirms they stock.
-- **"Since [year]" / project counts / trust stats**, and the **official logo** (`assets/logo.png`).
+- **"Since [year]" / project counts / trust stats.** (The **real logo is now supplied**: blue "LANDMARK FLOORING" wordmark, transparent, no icon, at `assets/logo.png` (700×120) — shown in every header/footer via `.brand-logo`; the dark footer renders it white with CSS `filter:brightness(0) invert(1)`. Source variants incl. white + LF-icon versions are in the client's logo zip.)
 
 ## Design system (match it exactly on new pages — see `index.html` + `styles.css`)
 - **Brand:** blue `#0074D4` (`--blue`), pale `#E6F4FF`; warm amber AA-token system
@@ -87,9 +87,11 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 - **City pages are an organic (blue-link) play, NOT a Map-Pack shortcut** — a single Carson City
   showroom can't proximity-rank in Reno/Sparks/Tahoe Maps. Each city page must earn unique local
   value (neighborhoods, climate, honest "serving X from our Carson City showroom" framing).
-  **Tier-3 cities (Lake Tahoe, Virginia City, Fallon) stay UNBUILT/UNLINKED until real local proof
-  exists.** Minden+Gardnerville may merge into one page if proof is thin. Avoid an 8-city footer
-  cross-link block (reads as doorway scaffolding).
+  **Built city pages:** Carson City, Reno, Sparks, **Minden+Gardnerville** (one combined page,
+  `/service-area/minden-gardnerville/`), **Dayton**. **Lake Tahoe, Virginia City & Fallon stay
+  UNBUILT/UNLINKED until real local proof exists** — the client explicitly HELD Lake Tahoe on
+  2026-07-01 pending a real Tahoe project (organic-only play; a single Carson City showroom can't
+  proximity-rank the Tahoe Map Pack). Avoid an 8-city footer cross-link block (doorway scaffolding).
 - **Guides** are top-of-funnel + AI-citation/assist, NOT a money-page ranking lever; each must link
   to its money page + /free-estimate/. Sequence them after money pages.
 - The real Map-Pack lever is **off-site** (Google Business Profile + reviews + citations) — flag to client.

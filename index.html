@@ -72,6 +72,7 @@
       { "@type": "City", "name": "Sparks, NV" },
       { "@type": "City", "name": "Minden, NV" },
       { "@type": "City", "name": "Gardnerville, NV" },
+      { "@type": "City", "name": "Dayton, NV" },
       { "@type": "City", "name": "Lake Tahoe, NV" },
       { "@type": "City", "name": "Virginia City, NV" },
       { "@type": "City", "name": "Fallon, NV" },
@@ -91,7 +92,6 @@
     }
   }
   </script>
-  <!-- TODO (pre-publish): replace logo URL with the official Landmark Flooring logo SVG/PNG (brand.md GAP). -->
   <!-- TODO (pre-publish): when a real Google Business Profile rating + review count exist, add an "aggregateRating" block (ratingValue + reviewCount) to this node. Do NOT invent values. -->
   <!-- TODO (pre-publish): add the NV contractor license number near "Licensed, bonded & insured" (brand.md GAP). -->
 
@@ -113,7 +113,7 @@
   <header class="site-header" id="top">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Landmark Flooring home">
-        <span class="mark" id="logoMark">LF</span><span>Landmark&nbsp;Flooring</span>
+        <img class="brand-logo" id="logoMark" src="/assets/logo.png" width="700" height="120" alt="Landmark Flooring" />
       </a>
       <nav class="nav-links" id="primary-nav" aria-label="Primary">
         <a href="/flooring/">Flooring</a>
@@ -418,8 +418,9 @@
           <a href="/service-area/carson-city/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Carson City</a>
           <a href="/service-area/reno/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Reno</a>
           <a href="/service-area/sparks/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Sparks</a>
-          <a href="/service-area/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Minden</a>
-          <a href="/service-area/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Gardnerville</a>
+          <a href="/service-area/minden-gardnerville/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Minden</a>
+          <a href="/service-area/minden-gardnerville/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Gardnerville</a>
+          <a href="/service-area/dayton/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Dayton</a>
           <a href="/service-area/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Lake Tahoe</a>
           <a href="/service-area/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Virginia City</a>
           <a href="/service-area/"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Fallon</a>
@@ -542,9 +543,8 @@
     <div class="container">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a class="brand" href="#top" aria-label="Landmark Flooring home"><span class="mark">LF</span><span>Landmark&nbsp;Flooring</span></a>
+          <a class="brand" href="#top" aria-label="Landmark Flooring home"><img class="brand-logo" src="/assets/logo.png" width="700" height="120" alt="Landmark Flooring" /></a>
           <p>Carson City&#39;s premier flooring store &amp; installer — serving all of Northern Nevada.</p>
-          <!-- TODO (pre-publish): official Landmark Flooring logo SVG + clear-space rules (brand.md GAP). -->
         </div>
         <div class="foot-col">
           <h4>Flooring</h4>

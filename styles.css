@@ -113,6 +113,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   box-shadow:0 4px 12px rgba(0,116,212,.35); cursor:pointer; user-select:none;
 }
 .nav-links{display:flex; gap:var(--s3); align-items:center}
+/* Real wordmark logo (replaces the LF text mark) */
+.brand{line-height:0}
+.brand-logo{height:40px; width:auto; display:block}
+.site-header.scrolled .brand-logo{height:38px}
+.site-footer .brand-logo{height:34px; filter:brightness(0) invert(1)}
+@media (max-width:560px){.brand-logo{height:30px}}
 .nav-links a{color:var(--ink-soft); font-weight:500; font-size:.96rem; position:relative; padding:6px 2px}
 .nav-links a::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
