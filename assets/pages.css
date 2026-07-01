@@ -196,6 +196,27 @@ table.cmp .no{color:#C0392B; font-weight:700}
 .cta-mini p{color:#EAF2FB;margin-top:6px;font-size:.98rem;max-width:60ch}
 .cta-mini .cm-actions{position:relative;z-index:1;display:flex;gap:12px;flex-wrap:wrap}
 
+/* Full-bleed BLUE CTA band — the blue section is the strongest contrast device,
+   so every page's bottom CTA becomes a full blue band (not a floating card).
+   Uses :has() so no per-page markup changes; degrades to the blue card if unsupported. */
+.section:has(.cta-mini){
+  background:radial-gradient(120% 140% at 80% 0%,#1E86E6 0%,#0074D4 45%,#005CA8 100%);
+  color:#fff; position:relative; overflow:hidden; border-block:0;
+}
+.section:has(.cta-mini)::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5;
+  background-image:
+    repeating-linear-gradient(90deg,transparent 0 47px,rgba(255,255,255,.08) 47px 48px),
+    repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.07) 47px 48px);
+}
+.section:has(.cta-mini) > .container{position:relative; z-index:1}
+.section:has(.cta-mini) .cta-mini{background:none; box-shadow:none; padding:0; overflow:visible}
+.section:has(.cta-mini) .cta-mini::before{display:none}
+.section:has(.cta-mini) .cta-mini h2{font-size:clamp(1.5rem,1.15rem + 1.4vw,2.2rem)}
+.section:has(.cta-mini) .cta-mini .btn-primary{background:#fff; color:var(--blue-ink); box-shadow:0 6px 18px rgba(4,18,40,.28)}
+.section:has(.cta-mini) .cta-mini .btn-primary:hover{background:#EAF2FC; color:var(--blue-deep); transform:translateY(-2px)}
+.section:has(.cta-mini) .cta-mini .btn-amber{background:#fff; color:var(--blue-ink)}
+
 /* contact / showroom info grid */
 .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
 .info-grid .info{background:linear-gradient(160deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow-card);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease)}
