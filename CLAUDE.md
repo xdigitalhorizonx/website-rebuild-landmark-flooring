@@ -6,7 +6,7 @@ before working on the site. Detailed SEO research/plan lives in `docs/seo/`.
 ## What this is
 Static marketing site (plain HTML + CSS + a little inline vanilla JS, **no build
 step, no framework**) for **Landmark Flooring** — Carson City NV's flooring store
-**and** in-house installer, serving Northern Nevada. Host: any static host; serve
+**and** professional installer, serving Northern Nevada. Host: any static host; serve
 repo root, `index.html` is the entry point. Local preview: `python3 -m http.server`.
 
 ## Business facts (NAP — keep consistent on every page; verify against the live GBP)
@@ -18,7 +18,13 @@ repo root, `index.html` is the entry point. Local preview: `python3 -m http.serv
 - **Sells + installs:** Carpet · Luxury Vinyl (LVP/LVT, waterproof) · Laminate · Hardwood/wood · Custom Rugs · professional installation
 - **Segments:** Residential · Property Management · Commercial
 - **Service area (from the Carson City showroom):** Carson City, Reno, Sparks, Minden, Gardnerville, Lake Tahoe (NV), Virginia City, Fallon, + all Northern Nevada
-- **Differentiators:** "The Landmark Guarantee" (warrantied products + warrantied in-house labor) · licensed, bonded & insured · free estimates · financing available · in-store flooring visualizer · premium & budget options
+- **Differentiators:** "The Landmark Guarantee" (warrantied products + warrantied labor) · licensed, bonded & insured · free estimates · financing available · in-store flooring visualizer · premium & budget options
+
+## ⚑ Installer wording (LOCKED — client directive)
+- Describe installers as **"skilled installers on our team"** / **"our skilled installers"** / **"skilled installers who are part of our team."**
+- **Never** use "in-house", "our own crews/team", "warrantied in-house labor", or any wording that contrasts against subs. **Never** mention subcontractors or contractors in visible copy. Some installers are contractors — the site must not reveal or contrast that.
+- Keep all warranty/guarantee language: "warrantied", "warrantied labor", "warrantied installation", "The Landmark Guarantee", "licensed, bonded & insured".
+- The **only** allowed use of "contractor" is the *Nevada State Contractors Board license* (the licensing authority) — currently in `TODO (pre-publish)` comments.
 
 ## ⛔ DO NOT INVENT (placeholders only until the client supplies real data)
 - **NV State Contractors Board license number** (goes next to "Licensed, bonded & insured" on home, /about/, /installation/). Leave the existing `TODO (pre-publish)` markers.
