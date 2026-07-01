@@ -9,6 +9,12 @@ step, no framework**) for **Landmark Flooring** — Carson City NV's flooring st
 **and** professional installer, serving Northern Nevada. Host: any static host; serve
 repo root, `index.html` is the entry point. Local preview: `python3 -m http.server`.
 
+## ⚑ Always give a view link when finishing changes (client directive)
+After committing/pushing any change, ALWAYS end the reply with a link where the client can view it:
+- **Vercel preview (latest for this branch):** https://website-rebuild-landmark-git-ce7011-xdigitalhorizonxs-projects.vercel.app — the branch alias always points to the newest deploy of `claude/landmark-flooring-seo-pages-4y1jr0`.
+- Or the dashboard: https://vercel.com/xdigitalhorizonxs-projects/website-rebuild-landmark-flooring → **Deployments → top entry → Visit**.
+- Deployments are protection-gated, so the link opens for the client when signed in to Vercel. Give it ~1 min to rebuild after a push. (If a specific deploy URL is known from a Vercel webhook, prefer linking that.)
+
 ## Business facts (NAP — keep consistent on every page; verify against the live GBP)
 - **Name:** Landmark Flooring
 - **Address:** 2085 East William St, Suite 10, Carson City, NV 89701
