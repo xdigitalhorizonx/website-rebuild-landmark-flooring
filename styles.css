@@ -91,7 +91,9 @@ button{font-family:inherit}
 }
 .skip:focus{top:8px}
 :focus-visible{outline:3px solid var(--accent-fill); outline-offset:3px; border-radius:4px}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue); outline-offset:3px}
+/* surface-aware focus: white outline + colored halo stays visible on ANY band (keeps a real outline for Windows high-contrast) */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #fff; outline-offset:2px; box-shadow:0 0 0 6px var(--blue)}
+.band-blue a:focus-visible,.band-blue button:focus-visible,.fin a:focus-visible,.cta a:focus-visible,.hero .btn-ghost:focus-visible,.sticky-call a:focus-visible{outline-color:#fff; box-shadow:0 0 0 6px rgba(0,0,0,.55)}
 
 /* ==========================================================================
    HEADER
@@ -123,6 +125,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .nav-cta{display:flex; align-items:center; gap:var(--s2)}
 .nav-cta .phone{color:var(--ink); font-weight:700; font-size:.96rem; display:inline-flex; align-items:center; gap:6px}
 .nav-cta .phone svg{width:16px;height:16px}
+/* mobile menu toggle (hidden on desktop) */
+.nav-toggle{display:none; flex:none; align-items:center; justify-content:center; width:44px; height:44px; padding:0;
+  border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.6); color:var(--ink); cursor:pointer;
+  transition:background .18s var(--ease), border-color .18s var(--ease)}
+.nav-toggle:hover{background:#fff; border-color:var(--blue)}
+.nav-toggle svg{width:24px; height:24px}
+.nav-toggle .x{display:none}
+.nav-toggle[aria-expanded="true"] .bars{display:none}
+.nav-toggle[aria-expanded="true"] .x{display:block}
 
 /* ---------- Buttons ---------- */
 .btn{
@@ -140,6 +151,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .btn-ghost:hover{background:rgba(255,255,255,.22); transform:translateY(-2px)}
 .btn-outline{background:transparent; color:var(--blue-ink); border-color:var(--blue)}
 .btn-outline:hover{background:var(--blue); color:#fff; transform:translateY(-2px)}
+/* tactile press feedback (touch has no hover) — transform-only, GPU-cheap */
+.btn:active{transform:translateY(0) scale(.98); transition-duration:.08s}
+.area-grid a:active,.offer:active{transform:translateY(-1px) scale(.995); transition-duration:.09s}
+.sticky-call .btn:active{transform:scale(.97)}
+.rail a:active{transform:scale(1.1)}
+.chip:active,.more:active,.cta-phone:active{transform:scale(.97)}
 
 /* ---------- Eyebrow / kicker ---------- */
 .eyebrow{
@@ -168,9 +185,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   font-size:var(--f-num); font-weight:800; line-height:.85; letter-spacing:-.04em;
   background:linear-gradient(135deg,var(--accent-text),#C9821F);
   -webkit-background-clip:text; background-clip:text; color:transparent;
-  opacity:.9;
+  opacity:.9; margin-bottom:14px;
 }
-.section-head.center .sec-num{display:inline-block}
+.section-head.center .sec-num{display:inline-block; margin-bottom:16px}
+.stats-intro .sec-num{margin-bottom:12px}
 
 /* Surface variants — alternating textured bands */
 .band-cream{background:var(--cream)}
@@ -205,6 +223,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero-bg{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 62%;
   z-index:-3;
+  animation:heroKen 28s var(--ease) alternate infinite both; will-change:transform; transform-origin:60% 58%;
+}
+/* slow Ken-Burns drift — ≤6% scale / ≤1.4% pan, kept gentle so the scrim pool + framing hold */
+@keyframes heroKen{
+  from{transform:scale(1.06) translate3d(0,0,0)}
+  to{transform:scale(1.12) translate3d(-1.4%,-1.2%,0)}
 }
 /* layered scrim — radial pool behind centered text + bottom gradient + side vignette */
 .hero-scrim{position:absolute; inset:0; z-index:-2; pointer-events:none;
@@ -215,7 +239,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .hero-grain{position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.4; mix-blend-mode:soft-light;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 .hero-inner{width:100%; padding:clamp(96px,14vh,150px) 0 clamp(150px,20vh,210px)}
-.hero-copy{max-width:880px; margin-inline:auto; text-align:center; position:relative}
+.hero-copy{max-width:920px; margin-inline:auto; text-align:center; position:relative}
 /* frosted underlay plate behind the headline for effortless legibility */
 .hero-plate{
   position:absolute; inset:-26px -40px; z-index:-1; border-radius:30px;
@@ -223,9 +247,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 }
 .hero .eyebrow{margin-bottom:20px}
 .hero h1{
-  font-size:var(--f-h1); font-weight:800; color:#fff; letter-spacing:-.03em; line-height:1.0;
+  font-size:var(--f-h1); font-weight:800; color:#fff; letter-spacing:-.03em; line-height:1.04;
   text-shadow:0 2px 30px rgba(8,18,36,.72), 0 1px 3px rgba(8,18,36,.5);
-  text-wrap:balance;
+  text-wrap:pretty;
 }
 .hero h1 .blue{color:#7CC0FF}      /* lighter brand blue reads AA over the scrim */
 .hero h1 .amber{color:var(--accent-on-dark)}
@@ -404,6 +428,42 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 }
 
 /* ==========================================================================
+   BEFORE / AFTER REVEAL SLIDER (signature) — same room, floor transformed
+   clip-path technique: two full-size images stay pixel-aligned
+   ========================================================================== */
+.ba{
+  position:relative; max-width:1040px; margin-inline:auto; aspect-ratio:1600/1067;
+  border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-2);
+  --pos:50%; touch-action:pan-y; isolation:isolate; cursor:ew-resize;
+}
+.ba-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+.ba-before-layer{position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--pos)) 0 0); will-change:clip-path; z-index:2}
+.ba-divider{position:absolute; top:0; bottom:0; left:var(--pos); width:0; z-index:3;
+  border-left:3px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.18), 0 0 14px rgba(0,0,0,.35);
+  transform:translateX(-1.5px); pointer-events:none}
+.ba-knob{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:48px; height:48px; border-radius:50%; background:#fff; color:var(--blue);
+  display:grid; place-items:center; box-shadow:var(--shadow-2)}
+.ba-knob svg{width:24px; height:24px}
+.ba-tag{position:absolute; top:14px; z-index:3; padding:6px 13px; border-radius:30px; pointer-events:none;
+  font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; backdrop-filter:blur(4px)}
+.ba-tag--before{left:14px; background:rgba(20,26,38,.62); z-index:3}
+.ba-tag--after{right:14px; background:rgba(0,108,196,.82)}
+/* range stays for keyboard a11y only; pointer drag is handled on .ba for pixel accuracy */
+.ba-range{position:absolute; inset:0; width:100%; height:100%; margin:0; padding:0; z-index:4;
+  -webkit-appearance:none; appearance:none; background:transparent; pointer-events:none}
+.ba-range::-webkit-slider-thumb{-webkit-appearance:none; width:2px; height:100%; background:transparent}
+.ba-range::-moz-range-thumb{width:2px; height:100%; border:0; background:transparent}
+.ba-range:focus-visible{outline:none}
+.ba:focus-within{outline:3px solid var(--blue); outline-offset:3px; border-radius:var(--radius)}
+.ba:focus-within .ba-knob{box-shadow:0 0 0 4px var(--blue), var(--shadow-2)}
+.ba-cap{margin-top:18px}
+@media (max-width:560px){
+  .ba-knob{width:42px;height:42px}
+  .ba-tag{font-size:.66rem; padding:5px 10px}
+}
+
+/* ==========================================================================
    HOW IT WORKS — blue band, numbered steps (white text explicitly set)
    ========================================================================== */
 .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; counter-reset:step}
@@ -451,6 +511,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 }
 .quote:hover{transform:translateY(-4px); box-shadow:var(--shadow-2)}
 .quote .qmark{font-size:3.4rem; line-height:.6; color:var(--accent-text); opacity:.32; font-weight:800; font-family:Georgia,serif}
+.quote .qico{display:grid; place-items:center; width:48px; height:48px; border-radius:13px;
+  background:linear-gradient(150deg,rgba(0,116,212,.12),rgba(150,80,18,.10)); color:var(--blue); margin-bottom:16px}
+.quote .qico svg{width:25px; height:25px}
+.quote h3{font-size:1.18rem; color:var(--ink); margin-bottom:9px}
+.quote em{font-style:normal; color:var(--accent-text); font-weight:700}
 .stars{color:#E8A03C; letter-spacing:2px; font-size:1.05rem; margin:6px 0 12px}
 .quote p{color:var(--ink-soft); font-size:.97rem; line-height:1.55}
 .quote .who{margin-top:16px; font-weight:700; color:var(--ink); font-size:.92rem}
@@ -502,6 +567,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .faq details[open] summary::after{transform:rotate(135deg)}
 .faq summary:hover{color:var(--accent-text)}
 .faq .ans{padding:0 24px 22px; color:var(--ink-soft); font-size:.97rem; line-height:1.6}
+/* gentle fade-in on open to match the marker easing (native <details> content) */
+@keyframes faqIn{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+.faq details[open] .ans{animation:faqIn .28s var(--ease)}
 
 /* ==========================================================================
    FINAL CTA band over photo
@@ -574,6 +642,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .reveal{opacity:1 !important; transform:none !important; transition:none !important}
   *{scroll-behavior:auto !important}
   .marquee-track,.blink{animation:none !important}
+  .hero-bg{animation:none !important; transform:none !important}
+  .faq details[open] .ans{animation:none !important}
 }
 
 /* ==========================================================================
@@ -631,8 +701,19 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   .cred b{font-size:.9rem}
 }
 @media (max-width:900px){
-  .nav-links{display:none}
+  .nav-toggle{display:inline-flex}
   .nav-cta .phone{display:none}
+  /* collapse the inline nav into a right-anchored disclosure panel */
+  .nav-links{
+    display:none; position:absolute; top:calc(100% + 6px); right:0; left:auto; min-width:230px;
+    flex-direction:column; align-items:stretch; gap:4px; padding:10px;
+    background:rgba(251,246,239,.98); backdrop-filter:saturate(140%) blur(10px);
+    border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow-2);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 14px; border-radius:9px; font-size:1rem; color:var(--ink)}
+  .nav-links a::after{display:none}
+  .nav-links a:hover,.nav-links a:focus-visible{background:rgba(0,116,212,.08); color:var(--blue-ink)}
 }
 @media (max-width:680px){
   /* hero stacks vertically: H1 column over the credentials card + strip.
@@ -648,4 +729,18 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
 @media (max-width:560px){
   .nav-cta .btn{padding:11px 16px; font-size:.9rem}
   .brand span:not(.mark){font-size:.98rem}
+}
+@media (max-width:380px){
+  /* Keep the header on a single row without horizontal scroll on small phones
+     (≤375px iPhone SE / mini, ~360px Android). The verified ≥384px layout is
+     untouched — these only tighten the brand/CTA spacing below that. */
+  .nav{gap:var(--s2)}
+  .nav-cta{gap:10px}
+  .nav-cta .btn{padding:10px 12px; font-size:.85rem}
+  .brand span:not(.mark){font-size:.92rem}
+}
+@media (max-width:345px){
+  /* Ultra-narrow phones: drop the header CTA so brand + menu toggle never
+     overflow. The fixed bottom bar still offers "Free Estimate" + "Call Now". */
+  .nav-cta .btn{display:none}
 }

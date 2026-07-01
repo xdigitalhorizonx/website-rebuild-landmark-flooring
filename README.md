@@ -37,15 +37,24 @@ S3/CDN bucket. Serve the repository root; `index.html` is the entry point.
 
 ## Features
 
-- Responsive, single-page layout with a sticky header and a desktop
-  section-index rail.
-- Accessible by default: skip link, focus-visible outlines, `aria` labels,
-  and a `prefers-reduced-motion` path.
+- Responsive, single-page layout with a sticky header, a desktop
+  section-index rail, and a real mobile disclosure menu (hamburger with
+  `aria-expanded`, Escape-to-close, and click-outside-to-close).
+- Performance-tuned hero: a responsive `srcset`/`sizes` image (768–2560px
+  variants plus the full-resolution original) with `rel=preload` and
+  `fetchpriority=high` for a fast LCP, and below-the-fold images that are
+  lazy-loaded and `decoding=async`.
+- Interactive "See the Difference" before/after install reveal slider —
+  draggable via Pointer Events (mouse + touch) and operable from the keyboard
+  via an overlaid range input.
+- Accessible by default: skip link, surface-aware focus-visible outlines,
+  `aria` labels, tactile `:active` states, and a `prefers-reduced-motion` path
+  (including a reduced-motion-safe Ken Burns hero drift).
 - On-scroll reveal animations that degrade gracefully with JS disabled
   (via `<noscript>`) and with reduced-motion enabled.
-- SEO/structured data: Open Graph + Twitter card meta, plus
-  `HomeAndConstructionBusiness`/`Store` and `FAQPage` JSON-LD. The on-page FAQ
-  text is kept codepoint-identical to the `FAQPage` schema.
+- SEO/structured data: Open Graph + Twitter card meta (absolute image URLs),
+  plus `HomeAndConstructionBusiness`/`Store` and `FAQPage` JSON-LD. The on-page
+  FAQ text is kept codepoint-identical to the `FAQPage` schema.
 - A hidden "Subfloor / blueprint" mode easter egg (Konami code, typing
   `subfloor`, tapping the `LF` logo 5×, or the `#subfloor` URL hash).
 
@@ -59,9 +68,10 @@ values:
   JSON-LD and footer).
 - Nevada contractor license number, alongside the "Licensed, bonded & insured"
   copy and inside the FAQ answer + matching JSON-LD.
-- Real Google reviews and a live aggregate rating/review count (the three
-  testimonials and the "What customers say" section are placeholders; do **not**
-  add `aggregateRating` to the JSON-LD until real data exists).
+- Real Google reviews and a live aggregate rating/review count. The reviews
+  section currently shows honest "what to expect" commitments rather than
+  invented quotes, names, or star ratings; do **not** add `aggregateRating` to
+  the JSON-LD until real review data exists.
 - Specific financing terms (APR/partner), if and when confirmed.
 
 ## Notes

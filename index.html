@@ -16,7 +16,7 @@
   <meta property="og:title" content="Carson City Flooring Store &amp; Installer | Landmark Flooring" />
   <meta property="og:description" content="Premier flooring store &amp; installer for Carson City, Reno &amp; Northern Nevada. Licensed, bonded &amp; insured · The Landmark Guarantee · free estimates." />
   <meta property="og:url" content="https://landmarkflooringusa.com/" />
-  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta property="og:image" content="https://landmarkflooringusa.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Landmark Flooring — Carson City's premier flooring store and installer" />
@@ -25,13 +25,18 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Carson City Flooring Store &amp; Installer | Landmark Flooring" />
   <meta name="twitter:description" content="Carpet, LVP, hardwood, laminate &amp; custom rugs for Northern Nevada. Licensed, bonded &amp; insured · free estimates — (775) 297-3236." />
-  <meta name="twitter:image" content="assets/og-image.jpg" />
+  <meta name="twitter:image" content="https://landmarkflooringusa.com/assets/og-image.jpg" />
 
   <!-- Fonts: Outfit (headings + body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- LCP: preload the responsive hero so the largest paint starts immediately -->
+  <link rel="preload" as="image" href="assets/hero-mountain-room-1280.jpg"
+        imagesrcset="assets/hero-mountain-room-768.jpg 768w, assets/hero-mountain-room-960.jpg 960w, assets/hero-mountain-room-1280.jpg 1280w, assets/hero-mountain-room-1920.jpg 1920w, assets/hero-mountain-room-2560.jpg 2560w, assets/hero-mountain-room.jpg 3840w"
+        imagesizes="100vw" fetchpriority="high" />
 
   <!-- JS-off-safe reveal guard -->
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
@@ -145,7 +150,7 @@
         "name": "Are you licensed and insured, and is the work guaranteed?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Landmark Flooring is licensed, bonded and insured, and every job is backed by The Landmark Guarantee — warrantied products plus our own warrantied, in-house labor, so you're covered on both the floor and the installation."
+          "text": "Yes. Landmark Flooring is licensed, bonded and insured, and every job is backed by The Landmark Guarantee — warrantied products plus warrantied labor from the skilled installers on our team, so you're covered on both the floor and the installation."
         }
       }
     ]
@@ -173,7 +178,7 @@
       <a class="brand" href="#top" aria-label="Landmark Flooring home">
         <span class="mark" id="logoMark">LF</span><span>Landmark&nbsp;Flooring</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav-links" id="navlinks" aria-label="Primary">
         <a href="#flooring">Flooring</a>
         <a href="#why">Why Landmark</a>
         <a href="#how">How It Works</a>
@@ -186,6 +191,10 @@
           (775)&nbsp;297-3236
         </a>
         <a class="btn btn-primary" href="#estimate">Free Estimate</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu">
+          <svg class="bars" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="x" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -195,10 +204,11 @@
     <a href="#top" data-label="Home" class="active" aria-label="Home"></a>
     <a href="#trust" data-label="Why us" aria-label="Why us"></a>
     <a href="#flooring" data-label="Flooring" aria-label="Flooring"></a>
+    <a href="#seethedifference" data-label="Before / after" aria-label="Before and after"></a>
     <a href="#why" data-label="Guarantee" aria-label="Guarantee"></a>
     <a href="#how" data-label="How it works" aria-label="How it works"></a>
     <a href="#area" data-label="Service area" aria-label="Service area"></a>
-    <a href="#reviews" data-label="Reviews" aria-label="Reviews"></a>
+    <a href="#reviews" data-label="What to expect" aria-label="What to expect"></a>
     <a href="#faq" data-label="FAQ" aria-label="FAQ"></a>
     <a href="#estimate" data-label="Free estimate" aria-label="Free estimate"></a>
   </nav>
@@ -207,7 +217,9 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero" aria-label="Landmark Flooring — Carson City's premier flooring store">
-      <img class="hero-bg" src="assets/hero-mountain-room.jpg" width="3840" height="2143"
+      <img class="hero-bg" src="assets/hero-mountain-room-1280.jpg"
+           srcset="assets/hero-mountain-room-768.jpg 768w, assets/hero-mountain-room-960.jpg 960w, assets/hero-mountain-room-1280.jpg 1280w, assets/hero-mountain-room-1920.jpg 1920w, assets/hero-mountain-room-2560.jpg 2560w, assets/hero-mountain-room.jpg 3840w"
+           sizes="100vw" width="3840" height="2143" fetchpriority="high" decoding="async"
            alt="Bright Northern Nevada mountain-modern living room with wide-plank warm honey-oak hardwood floors, a linear fireplace, and floor-to-ceiling windows framing snow-dusted Sierra Nevada mountains." />
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-grain" aria-hidden="true"></div>
@@ -217,7 +229,7 @@
           <div class="hero-copy">
             <div class="hero-plate" aria-hidden="true"></div>
             <p class="eyebrow eyebrow--light eyebrow--center">Carson City · Serving all of Northern Nevada</p>
-            <h1>Northern Nevada&#39;s <span class="blue">Premier Flooring Store</span> — floors you&#39;ll <span class="amber">love</span>, installed right.</h1>
+            <h1>Northern Nevada&#39;s <span class="blue">Premier Flooring Store</span>&nbsp;— floors you&#39;ll <span class="amber">love</span>, installed right.</h1>
             <p class="hero-sub">From our Carson City showroom, we help homeowners across Reno, Sparks, Lake Tahoe and all of Northern Nevada choose the right floor for their space, lifestyle and budget — backed by a free estimate and a guarantee.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#estimate">Get a Free Estimate
@@ -239,7 +251,7 @@
             </span>
             <span class="cred">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 5 5.6.5-4.2 3.7 1.3 5.5L12 19l-5.1 2.7 1.3-5.5L4 12.5 9.6 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              <span><b>The Landmark Guarantee</b><span>Warrantied products and in-house labor.</span></span>
+              <span><b>The Landmark Guarantee</b><span>Warrantied products and labor.</span></span>
             </span>
             <span class="cred">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -250,7 +262,7 @@
             <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Premium &amp; budget options</span>
             <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>In-store flooring visualizer</span>
             <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Financing available</span>
-            <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>In-house warrantied install</span>
+            <span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Warrantied installation</span>
           </div>
         </div>
       </div>
@@ -261,16 +273,16 @@
       <div class="container">
         <div class="stats-wrap">
           <div class="stats-intro reveal">
-            <p class="sec-num">02</p>
+            <p class="sec-num" aria-hidden="true">02</p>
             <p class="eyebrow">Why Landmark</p>
             <h2 id="trust-h">Northern Nevada&#39;s Trusted Local Flooring Experts</h2>
-            <p class="lead">We&#39;re a local showroom and installer — not a big-box counter — so you get honest advice, the right floor for your budget and a crew that stands behind the work.</p>
+            <p class="lead">We&#39;re a local showroom and installer — not a big-box counter — so you get honest advice, the right floor for your budget and a team that stands behind the work.</p>
           </div>
           <div class="stat-grid">
             <article class="stat reveal d1">
               <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7l8-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              <h3>In-house crews</h3>
-              <p>Your floor is installed by our own warrantied team, never a random sub.</p>
+              <h3>Skilled installers on our team</h3>
+              <p>Your floor is installed by skilled installers who are part of our team, and the work is warrantied.</p>
             </article>
             <article class="stat reveal d2">
               <div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
@@ -297,7 +309,7 @@
     <section class="section band-cream" id="flooring" aria-labelledby="flooring-h">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="sec-num">03</p>
+          <p class="sec-num" aria-hidden="true">03</p>
           <p class="eyebrow eyebrow--center">Our Flooring</p>
           <h2 id="flooring-h">Flooring for Every Room &amp; Budget</h2>
           <p class="lead">Explore our flooring lines below, then see and feel real samples — and preview them in your own room with our in-store visualizer.</p>
@@ -305,7 +317,7 @@
 
         <div class="offer-grid">
           <article class="offer reveal">
-            <div class="offer-media"><img src="assets/material-carpet.jpg" width="1100" height="856" loading="lazy" alt="Close-up of plush warm greige cut-pile residential carpet." /></div>
+            <div class="offer-media"><img src="assets/material-carpet.jpg" width="1100" height="856" loading="lazy" decoding="async" alt="Close-up of plush warm greige cut-pile residential carpet." /></div>
             <div class="offer-body">
               <h3>Carpet</h3>
               <p>Soft, warm and quiet underfoot — the cozy choice for bedrooms and family rooms, in styles for every budget.</p>
@@ -314,7 +326,7 @@
           </article>
 
           <article class="offer reveal d1">
-            <div class="offer-media"><img src="assets/material-luxury-vinyl.jpg" width="1100" height="856" loading="lazy" alt="Close-up of waterproof luxury vinyl plank flooring in a warm oak wood-look finish with a water droplet beading on the surface." /></div>
+            <div class="offer-media"><img src="assets/material-luxury-vinyl.jpg" width="1100" height="856" loading="lazy" decoding="async" alt="Close-up of waterproof luxury vinyl plank flooring in a warm oak wood-look finish with a water droplet beading on the surface." /></div>
             <div class="offer-body">
               <h3>Luxury Vinyl <span style="font-weight:600;font-size:.8em;color:var(--ink-mute)">(LVP/LVT, Waterproof)</span></h3>
               <p>100% waterproof and built for real life — the pet- and kid-friendly favorite that looks like real wood, spill after spill.</p>
@@ -323,7 +335,7 @@
           </article>
 
           <article class="offer reveal d2">
-            <div class="offer-media"><img src="assets/material-laminate.jpg" width="1100" height="856" loading="lazy" alt="Close-up of medium-brown oak wood-look laminate flooring planks with crisp grain detail and a bevelled seam." /></div>
+            <div class="offer-media"><img src="assets/material-laminate.jpg" width="1100" height="856" loading="lazy" decoding="async" alt="Close-up of medium-brown oak wood-look laminate flooring planks with crisp grain detail and a bevelled seam." /></div>
             <div class="offer-body">
               <h3>Laminate</h3>
               <p>A crisp, realistic wood look for less — durable, easy to live on and easy on the budget for busy households.</p>
@@ -332,7 +344,7 @@
           </article>
 
           <article class="offer reveal d3">
-            <div class="offer-media"><img src="assets/material-hardwood.jpg" width="1100" height="856" loading="lazy" alt="Close-up of genuine warm honey-oak solid hardwood flooring showing natural cathedral grain and a satin finish." /></div>
+            <div class="offer-media"><img src="assets/material-hardwood.jpg" width="1100" height="856" loading="lazy" decoding="async" alt="Close-up of genuine warm honey-oak solid hardwood flooring showing natural cathedral grain and a satin finish." /></div>
             <div class="offer-body">
               <h3>Hardwood / Wood</h3>
               <p>Genuine hardwood brings timeless warmth, character and lasting value to any Northern Nevada home.</p>
@@ -341,7 +353,7 @@
           </article>
 
           <article class="offer reveal d4">
-            <div class="offer-media"><img src="assets/material-custom-rug.jpg" width="1100" height="856" loading="lazy" alt="Close-up of a custom area rug's bound edge in warm cream and terracotta-amber wool." /></div>
+            <div class="offer-media"><img src="assets/material-custom-rug.jpg" width="1100" height="856" loading="lazy" decoding="async" alt="Close-up of a custom area rug's bound edge in warm cream and terracotta-amber wool." /></div>
             <div class="offer-body">
               <h3>Custom Rugs</h3>
               <p>Made to your size, color and binding — a finished custom rug that anchors any room beautifully.</p>
@@ -377,11 +389,36 @@
       </div>
     </section>
 
+    <!-- ============ SEE THE DIFFERENCE — before/after reveal slider (signature) ============ -->
+    <section class="section band-pale" id="seethedifference" aria-labelledby="rev-h">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow eyebrow--center">See the difference</p>
+          <h2 id="rev-h">Drag to See What a New Floor Does</h2>
+          <p class="lead">Tired, dated floors hold a whole room back. Drag the slider across the same Northern Nevada living room to watch it transform with new Landmark flooring.</p>
+        </div>
+        <div class="ba reveal d1" id="ba">
+          <img class="ba-img ba-after" src="assets/reveal-after.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+               alt="The same open-plan living and dining room after installation, with brand-new warm wood-look luxury vinyl flooring." />
+          <div class="ba-before-layer">
+            <img class="ba-img" src="assets/reveal-before.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+                 alt="The same room before, with old, worn, dated wall-to-wall carpet." />
+          </div>
+          <span class="ba-tag ba-tag--before">Before</span>
+          <span class="ba-tag ba-tag--after">After</span>
+          <div class="ba-divider"><span class="ba-knob"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <input class="ba-range" type="range" min="0" max="100" value="50" step="0.1"
+                 aria-label="Before and after reveal slider — drag to compare the old floor with the new floor" />
+        </div>
+        <p class="ba-cap note">Same room, same light — just a new floor. <a href="#estimate" style="color:var(--accent-text);font-weight:700">Get a free estimate</a> to transform yours.</p>
+      </div>
+    </section>
+
     <!-- ============ 04 · WHY LANDMARK / THE LANDMARK GUARANTEE (splits) ============ -->
     <section class="section band-cream2" id="why" aria-labelledby="why-h">
       <div class="container">
         <div class="section-head reveal">
-          <p class="sec-num">04</p>
+          <p class="sec-num" aria-hidden="true">04</p>
           <p class="eyebrow">The Landmark difference</p>
           <h2 id="why-h">Why Landmark Flooring</h2>
         </div>
@@ -389,7 +426,7 @@
         <!-- Split A: image left / text right -->
         <div class="split">
           <div class="split-media reveal">
-            <img src="assets/split-guarantee-room.jpg" width="1216" height="832" loading="lazy"
+            <img src="assets/split-guarantee-room.jpg" width="1216" height="832" loading="lazy" decoding="async"
                  alt="Cozy finished family room with warm wide-plank hardwood floors and a golden retriever resting in afternoon sunlight." />
           </div>
           <div class="split-text reveal d1">
@@ -397,10 +434,10 @@
             <p style="margin-top:14px">And because Northern Nevada floors live through dry high-desert summers, mountain winters and Tahoe moisture, we&#39;ll steer you toward materials built for our climate — so your floors look great for years, not just on day one.</p>
             <div class="split-sub">
               <h3>The Landmark Guarantee</h3>
-              <p>Every product is warrantied, and every install is done by our own crews — then warrantied too. With <strong>The Landmark Guarantee</strong>, you&#39;re covered on both the floor and the work, so there&#39;s no finger-pointing if anything ever needs attention. We&#39;re licensed, bonded and insured, with no project too large or small.</p>
+              <p>Every product is warrantied, and every install is handled by the skilled installers on our team — then warrantied too. With <strong>The Landmark Guarantee</strong>, you&#39;re covered on both the floor and the work, so there&#39;s no finger-pointing if anything ever needs attention. We&#39;re licensed, bonded and insured, with no project too large or small.</p>
             </div>
             <ul class="checklist">
-              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Warrantied products + in-house warrantied labor</li>
+              <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Warrantied products + warrantied labor</li>
               <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed, bonded &amp; insured<!-- TODO (pre-publish): add NV contractor license # (brand.md GAP) --></li>
               <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Premium &amp; budget options, never second-quality</li>
               <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Built for Northern Nevada&#39;s high-desert &amp; Tahoe climate</li>
@@ -411,12 +448,12 @@
         <!-- Split B: image right / text left -->
         <div class="split rev">
           <div class="split-media reveal">
-            <img src="assets/split-showroom.jpg" width="1216" height="832" loading="lazy"
+            <img src="assets/split-showroom.jpg" width="1216" height="832" loading="lazy" decoding="async"
                  alt="Bright modern flooring showroom with wood-look plank samples, carpet displays, and sample boards." />
           </div>
           <div class="split-text reveal d1">
             <p class="eyebrow">In our showroom</p>
-            <h2 style="font-size:var(--f-h3);margin-top:4px">See it, feel it, finance it</h2>
+            <h3 style="font-size:var(--f-h3);margin-top:4px;color:var(--ink)">See it, feel it, finance it</h3>
             <p style="margin-top:14px">Not sure what fits your space? Stop by our Carson City showroom to see and feel real samples, then preview your top picks in your own room with our <strong>in-store flooring visualizer</strong> — so you know exactly how it&#39;ll look before you buy. And with <strong>financing available</strong>, premium floors fit more budgets than you&#39;d think.</p>
             <div class="chips">
               <span class="chip"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Real samples to see &amp; feel</span>
@@ -434,7 +471,7 @@
     <section class="section band-blue" id="how" aria-labelledby="how-h">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="sec-num">05</p>
+          <p class="sec-num" aria-hidden="true">05</p>
           <p class="eyebrow eyebrow--center eyebrow--white">How it works</p>
           <h2 id="how-h">Your Flooring Project in 3 Easy Steps</h2>
         </div>
@@ -452,7 +489,7 @@
           <article class="step reveal d2">
             <div class="num">3</div>
             <h3>Guaranteed Install</h3>
-            <p>Our own crews install it right and stand behind it — backed by The Landmark Guarantee on both the floor and the labor.</p>
+            <p>The skilled installers on our team install it right and stand behind it — backed by The Landmark Guarantee on both the floor and the labor.</p>
           </article>
         </div>
       </div>
@@ -462,20 +499,20 @@
     <section class="section band-pale" id="area" aria-labelledby="area-h">
       <div class="container">
         <div class="section-head reveal">
-          <p class="sec-num">06</p>
+          <p class="sec-num" aria-hidden="true">06</p>
           <p class="eyebrow">Service area</p>
           <h2 id="area-h">Serving Carson City, Reno &amp; All of Northern Nevada</h2>
           <p class="lead">Visit our showroom at 2085 East William St, Suite 10 in Carson City — open Mon–Fri, 9am–5pm — and we&#39;ll bring premium and budget-friendly flooring to your project anywhere across the region.</p>
         </div>
         <div class="area-grid reveal d1">
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Carson City</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Reno</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Sparks</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Minden</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Gardnerville</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Lake Tahoe</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Virginia City</a>
-          <a href="#estimate"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Fallon</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Carson City"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Carson City</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Reno"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Reno</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Sparks"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Sparks</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Minden"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Minden</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Gardnerville"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Gardnerville</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Lake Tahoe"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Lake Tahoe</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Virginia City"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Virginia City</a>
+          <a href="#estimate" aria-label="Get a free flooring estimate in Fallon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>Fallon</a>
         </div>
       </div>
     </section>
@@ -484,35 +521,29 @@
     <section class="section band-cream" id="reviews" aria-labelledby="reviews-h">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="sec-num">07</p>
-          <p class="eyebrow eyebrow--center">What customers say</p>
-          <h2 id="reviews-h">What Northern Nevada Homeowners Say</h2>
+          <p class="sec-num" aria-hidden="true">07</p>
+          <p class="eyebrow eyebrow--center">The Landmark experience</p>
+          <h2 id="reviews-h">What to Expect When You Work With Us</h2>
+          <p class="lead">No high-pressure sales, no surprises — just honest help from local experts and a guarantee that covers the floor and the work.</p>
         </div>
-        <!-- TODO (pre-publish): replace these with real Google reviews and pull the live Google rating + review count. Do NOT invent quotes, names, ratings, or counts. No aggregateRating in JSON-LD until real data lands. -->
+        <!-- TODO (pre-publish): when a real Google Business Profile exists, replace this "what to expect" band with REAL Google reviews (verbatim quotes + names) and add an aggregateRating (ratingValue + reviewCount) to the business JSON-LD. Do NOT invent quotes, names, ratings, or counts. -->
         <div class="quotes">
-          <blockquote class="quote reveal">
-            <div class="qmark" aria-hidden="true">&ldquo;</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>They made the whole project easy — helped us pick the right floor for our budget, and the crew was clean, fast and professional.</p>
-            <div class="who">Homeowner <span>· Carson City, NV</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
-          </blockquote>
-          <blockquote class="quote reveal d1">
-            <div class="qmark" aria-hidden="true">&ldquo;</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>Great selection, fair prices, and they stand behind their work. The Landmark Guarantee is the real deal.</p>
-            <div class="who">Homeowner <span>· Northern Nevada</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
-          </blockquote>
-          <blockquote class="quote reveal d2">
-            <div class="qmark" aria-hidden="true">&ldquo;</div>
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>From the showroom to the install, everything was no-pressure and easy. We love our new floors.</p>
-            <div class="who">Homeowner <span>· Reno, NV</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
-          </blockquote>
+          <article class="quote reveal">
+            <div class="qico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 13c0-3 2.5-5 5-5s5 2 5 5M12 8V4M5 13h14M8 17h8M10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>No-pressure, honest advice</h3>
+            <p>We help you weigh budget, style and lifestyle, then point you to the floor that actually fits your home — never an upsell.</p>
+          </article>
+          <article class="quote reveal d1">
+            <div class="qico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7M5 10v9h14v-9M9 19v-5h6v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>A clean, professional install</h3>
+            <p>Our skilled installers arrive on schedule, protect your home while they work, and leave the space tidy and ready to enjoy.</p>
+          </article>
+          <article class="quote reveal d2">
+            <div class="qico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7l8-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Covered, start to finish</h3>
+            <p>Warrantied products <em>and</em> warrantied labor under The Landmark Guarantee — one team accountable for both, so there&#39;s no finger-pointing.</p>
+          </article>
         </div>
-        <p class="note">Reviews shown are representative — <strong>TODO (pre-publish):</strong> replace with real Google reviews &amp; pull the live rating + count.</p>
       </div>
     </section>
 
@@ -535,7 +566,7 @@
     <section class="section band-cream" id="faq" aria-labelledby="faq-h">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="sec-num">09</p>
+          <p class="sec-num" aria-hidden="true">09</p>
           <p class="eyebrow eyebrow--center">Questions</p>
           <h2 id="faq-h">Flooring Questions, Answered</h2>
         </div>
@@ -562,7 +593,7 @@
           </details>
           <details>
             <summary>Are you licensed and insured, and is the work guaranteed?</summary>
-            <div class="ans">Yes. Landmark Flooring is licensed, bonded and insured, and every job is backed by The Landmark Guarantee — warrantied products plus our own warrantied, in-house labor, so you're covered on both the floor and the installation.</div>
+            <div class="ans">Yes. Landmark Flooring is licensed, bonded and insured, and every job is backed by The Landmark Guarantee — warrantied products plus warrantied labor from the skilled installers on our team, so you're covered on both the floor and the installation.</div>
           </details>
         </div>
         <p class="note" style="margin-top:30px">Still deciding? <a href="#estimate" style="color:var(--accent-text);font-weight:700">Get a free estimate</a> or <a href="tel:+17752973236" style="color:var(--accent-text);font-weight:700">call (775) 297-3236</a> — and ask about <span class="egg-wink" title="Type the word… subfloor.">what's under the floor</span>.</p>
@@ -571,7 +602,7 @@
 
     <!-- ============ 10 · FINAL CTA BAND (over photo) ============ -->
     <section class="cta" id="estimate" aria-labelledby="cta-h">
-      <img class="cta-bg" src="assets/cta-tahoe-home.jpg" width="1216" height="832" loading="lazy"
+      <img class="cta-bg" src="assets/cta-tahoe-home.jpg" width="1216" height="832" loading="lazy" decoding="async"
            alt="Golden-hour Lake Tahoe mountain home interior with warm honey-oak hardwood floors and windows framing pines and snow-capped Sierra Nevada peaks." />
       <div class="cta-scrim" aria-hidden="true"></div>
       <div class="container">
@@ -579,10 +610,10 @@
         <h2 id="cta-h" class="reveal d1">Ready to Fall in Love with Your Floors?</h2>
         <p class="reveal d2">Get a free estimate or stop by our Carson City showroom — premium and budget options, an in-store visualizer, financing and guaranteed installation, all in one place.</p>
         <div class="cta-actions reveal d2">
-          <a class="btn btn-primary" href="tel:+17752973236">Get a Free Estimate</a>
-          <a class="cta-phone" href="tel:+17752973236">
+          <a class="btn btn-primary" href="tel:+17752973236" aria-label="Call Landmark Flooring at (775) 297-3236 for a free estimate">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-            (775) 297-3236</a>
+            Call for a Free Estimate</a>
+          <a class="cta-phone" href="tel:+17752973236">(775) 297-3236</a>
         </div>
       </div>
     </section>
@@ -659,6 +690,25 @@
       reveals.forEach(function(el){ io.observe(el); });
     }
 
+    /* Mobile nav disclosure menu */
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navlinks');
+    if (navToggle && navLinks) {
+      var setMenu = function(open){
+        navLinks.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      navToggle.addEventListener('click', function(){ setMenu(!navLinks.classList.contains('open')); });
+      navLinks.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+      addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && navLinks.classList.contains('open')){ setMenu(false); navToggle.focus(); }
+      });
+      addEventListener('click', function(e){
+        if(navLinks.classList.contains('open') && !e.target.closest('.nav-cta') && !e.target.closest('.nav-links')) setMenu(false);
+      });
+    }
+
     /* Section-index rail active state */
     var rail = document.querySelector('.rail');
     if (rail && 'IntersectionObserver' in window) {
@@ -674,6 +724,26 @@
         });
       }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
       Object.keys(map).forEach(function(id){ var s=document.getElementById(id); if(s) spy.observe(s); });
+    }
+
+    /* Before/after reveal slider — pixel-accurate pointer drag + native keyboard via the range */
+    var ba = document.getElementById('ba');
+    if (ba) {
+      var baRange = ba.querySelector('.ba-range');
+      var setBA = function(p, syncRange){
+        p = Math.max(0, Math.min(100, p));
+        ba.style.setProperty('--pos', p + '%');
+        if (syncRange && baRange) baRange.value = p;
+      };
+      var posFromX = function(clientX){ var r = ba.getBoundingClientRect(); return (clientX - r.left) / r.width * 100; };
+      var dragging = false;
+      ba.addEventListener('pointerdown', function(e){ dragging = true; try{ ba.setPointerCapture(e.pointerId); }catch(_){ } setBA(posFromX(e.clientX), true); });
+      ba.addEventListener('pointermove', function(e){ if(dragging) setBA(posFromX(e.clientX), true); });
+      var stopDrag = function(){ dragging = false; };
+      ba.addEventListener('pointerup', stopDrag);
+      ba.addEventListener('pointercancel', stopDrag);
+      if (baRange) baRange.addEventListener('input', function(){ setBA(parseFloat(baRange.value), false); });
+      setBA(parseFloat(baRange && baRange.value || 50), true);
     }
 
     /* ===== EASTER EGG: site-wide subfloor / blueprint mode =====
