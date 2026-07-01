@@ -12,10 +12,26 @@ step, framework, or dependencies are required.
 
 ```
 .
-├── index.html      # The full single-page site (markup + inline JS)
-├── styles.css      # All styling
-└── assets/         # Photography and the social-share (Open Graph) image
+├── index.html              # Home (single-page, markup + inline JS)
+├── styles.css              # Core styling (home + shared tokens/components)
+├── sitemap.xml, robots.txt, 404.html
+├── assets/
+│   ├── *.jpg               # Photography + Open Graph image
+│   ├── pages.css           # Components for the sub-pages
+│   └── site.js             # Shared sub-page JS (header, reveal, mobile nav)
+├── flooring/               # Materials hub + carpet / luxury-vinyl / laminate / hardwood / custom-rugs
+├── installation/           # Installation pillar + per-material + hardwood-refinishing spokes
+├── commercial/, property-management/
+├── service-area/           # Hub + carson-city / reno / sparks (Tier-3 cities gated, see docs)
+├── free-estimate/, contact/, about/, financing/
+├── guides/                 # Resource hub + buying/cost/comparison guides
+├── CLAUDE.md               # Project memory (brand facts, conventions, SEO strategy)
+└── docs/seo/               # PAGE-PLAN.md · KEYWORD-MAP.md · SEO-DECISIONS.md
 ```
+
+Each sub-page lives at `folder/index.html` for clean URLs (e.g.
+`/flooring/luxury-vinyl/`) and references assets root-relative (`/styles.css`,
+`/assets/...`). The home page keeps its original relative paths.
 
 ## Local preview
 
@@ -43,9 +59,11 @@ S3/CDN bucket. Serve the repository root; `index.html` is the entry point.
   and a `prefers-reduced-motion` path.
 - On-scroll reveal animations that degrade gracefully with JS disabled
   (via `<noscript>`) and with reduced-motion enabled.
-- SEO/structured data: Open Graph + Twitter card meta, plus
-  `HomeAndConstructionBusiness`/`Store` and `FAQPage` JSON-LD. The on-page FAQ
-  text is kept codepoint-identical to the `FAQPage` schema.
+- SEO/structured data: Open Graph + Twitter card meta, plus a single
+  `HomeAndConstructionBusiness`/`Store` JSON-LD node (`@id` `#business`) that
+  sub-pages reference via `Service`/`BreadcrumbList`/`Article` schema. The
+  `FAQPage` JSON-LD was removed — Google fully deprecated FAQ rich results on
+  2026-05-07; the visible FAQ accordion stays for users + AI engines.
 - A hidden "Subfloor / blueprint" mode easter egg (Konami code, typing
   `subfloor`, tapping the `LF` logo 5×, or the `#subfloor` URL hash).
 
@@ -66,7 +84,26 @@ values:
 
 ## Notes
 
-The "Explore …" product links and the footer's Flooring column currently point
-to the on-page `#flooring` section. Dedicated product detail pages (carpet,
-luxury vinyl, laminate, hardwood, custom rugs) are not part of this delivery; if
-they're added later, repoint those links to the new pages.
+Dedicated material, service, city, segment and guide pages now exist (see the
+`Structure` tree). The home page's "Explore …" cards, footer and service-area
+grid point at them, and the conversion CTAs point to `/free-estimate/`.
+
+## SEO architecture
+
+This site was expanded from a one-pager into a pillar-cluster structure so it can
+rank for the most common flooring-store / installer searches across Carson City
+and Northern Nevada. The full plan — page list, target keywords, ready-to-use
+title/meta/H1, section outlines, schema, and the internal-linking map — lives in
+[`docs/seo/PAGE-PLAN.md`](docs/seo/PAGE-PLAN.md), with the keyword→page map and
+the (adversarially verified) decisions + sources in the sibling docs. Brand facts,
+conventions and "do not invent" guardrails are in [`CLAUDE.md`](CLAUDE.md).
+
+Two intentional guardrails to keep in mind before launch:
+
+- **Tier-3 city pages** (Lake Tahoe, Virginia City, Fallon) are *not* built and
+  *not* linked from the service-area grid/sitemap — they stay unbuilt until real
+  local projects/photos/reviews exist, to avoid Google's doorway/thin-content
+  policies. Minden + Gardnerville may be consolidated into one page.
+- **The real local-pack lever is off-site** (Google Business Profile + reviews +
+  citations); a single Carson City showroom won't proximity-rank in Reno/Sparks/
+  Tahoe Maps. The city pages are an organic ("blue-link") play.
