@@ -4,10 +4,35 @@ Project memory for the **Landmark Flooring** marketing-site rebuild. Read this
 before working on the site. Detailed SEO research/plan lives in `docs/seo/`.
 
 ## What this is
-Static marketing site (plain HTML + CSS + a little inline vanilla JS, **no build
-step, no framework**) for **Landmark Flooring** — Carson City NV's flooring store
-**and** professional installer, serving Northern Nevada. Host: any static host; serve
-repo root, `index.html` is the entry point. Local preview: `python3 -m http.server`.
+Static marketing site (plain HTML + CSS + a little inline vanilla JS, **no framework**)
+for **Landmark Flooring** — Carson City NV's flooring store **and** professional
+installer, serving Northern Nevada. Host: any static host; serve repo root,
+`index.html` is the entry point. Local preview: `python3 -m http.server`.
+The only build step is an optional, fail-safe Sanity content injection (see
+**Sanity CMS** below) — the committed HTML is always a complete, servable site.
+
+## Sanity CMS (build-time content injection — SEO-safe)
+Client-editable content lives in the **"Landmark Flooring"** Sanity project
+(**projectId `qjx96i9p`**, dataset **`production`**, public read, org `o0aQQrsCl`,
+account brandon@landmarkflooringusa.com). Content is baked into the static HTML at
+**build time** by `scripts/build-from-sanity.mjs` (run via `npm run build`, wired in
+`vercel.json`) — **never** fetched client-side, so SEO is unaffected.
+- **Wired today (v1):** home hero eyebrow (`homePage.heroEyebrow`), hero subheadline
+  (`homePage.heroSub`), and the home FAQ accordion (`faqItem` documents, ordered by
+  `orderRank`). Injection points are `<!-- sanity:NAME -->…<!-- /sanity:NAME -->`
+  comment pairs in `index.html` — keep the marker pairs intact.
+- **Fail-safe:** on any Sanity error/timeout the build deploys the committed HTML
+  unchanged; a CMS outage can never break a deploy.
+- **Edit flow:** change content in Sanity → redeploy the site (content is baked at
+  build). After editing content in Sanity, also update the committed HTML to match
+  (or run the build script and commit) so the repo stays the source of truth.
+- **Not wired (phase 2 candidates):** the H1 (has designed `<span>` color markup —
+  needs portable text), guides/city-page bodies, NAP/site settings (NAP consistency
+  is binding — wire it everywhere at once or not at all), reviews (only when REAL
+  reviews exist — see DO-NOT-INVENT).
+- CORS origins registered: landmarkflooringusa.com (+www), the production
+  vercel.app alias, and localhost:8000 (build-time fetch needs none of these; they
+  future-proof any runtime/Studio use).
 
 ## ⚑ Always give a view link when finishing changes (client directive)
 After committing/pushing any change, ALWAYS end the reply with a link where the client can view it:
