@@ -17,19 +17,36 @@ Client-editable content lives in the **"Landmark Flooring"** Sanity project
 account brandon@landmarkflooringusa.com). Content is baked into the static HTML at
 **build time** by `scripts/build-from-sanity.mjs` (run via `npm run build`, wired in
 `vercel.json`) — **never** fetched client-side, so SEO is unaffected.
-- **Wired today (v1):** home hero eyebrow (`homePage.heroEyebrow`), hero subheadline
-  (`homePage.heroSub`), and the home FAQ accordion (`faqItem` documents, ordered by
-  `orderRank`). Injection points are `<!-- sanity:NAME -->…<!-- /sanity:NAME -->`
-  comment pairs in `index.html` — keep the marker pairs intact.
+- **Wired now (all 31 pages):** every page's `<main>` body copy (headings, paragraphs,
+  lists, FAQ answers, etc. — including the home H1) and its `<head>` SEO fields
+  (title, meta/OG/Twitter description, OG image alt) and in-body `img alt` text are
+  editable — **~1,750 fields**. Injection points are `<!-- sanity:KEY -->…<!-- /sanity:KEY -->`
+  comment pairs (body) and `<!--sanity-attr:KEY|ATTR-->` comments before a tag
+  (attributes). **Keep the marker comments intact** — they are how the build finds
+  what to replace. Home hero eyebrow/sub still come from `homePage`, and the home FAQ
+  from `faqItem` docs.
+- **Schema / where content lives:** one **`page`** document per URL (`_id: page-<slug>`)
+  holding `title`, `path`, and a `blocks[]` array of `contentBlock`s (each = a `key`
+  + read-only `label`/`group` + the editable `value`); plus the **`homePage`** singleton
+  (hero) and the **`faqItem`** collection. The build map is keyed by `contentBlock.key`;
+  **never edit a block's `key`** or the marker in the HTML will no longer match.
+- **Tooling:** `scripts/build-from-sanity.mjs` is the deploy-time injector (generic,
+  dependency-free, fail-safe). The one-time marker extractor + Sanity pusher used to
+  set this up live in the session scratchpad, not the repo.
 - **Fail-safe:** on any Sanity error/timeout the build deploys the committed HTML
-  unchanged; a CMS outage can never break a deploy.
-- **Edit flow:** change content in Sanity → redeploy the site (content is baked at
-  build). After editing content in Sanity, also update the committed HTML to match
-  (or run the build script and commit) so the repo stays the source of truth.
-- **Not wired (phase 2 candidates):** the H1 (has designed `<span>` color markup —
-  needs portable text), guides/city-page bodies, NAP/site settings (NAP consistency
-  is binding — wire it everywhere at once or not at all), reviews (only when REAL
-  reviews exist — see DO-NOT-INVENT).
+  unchanged; a CMS outage can never break a deploy. Injection is byte-exact for body
+  text; a few meta/alt attributes get harmless apostrophe re-encoding (`'`→`&#39;`).
+- **Edit flow:** change + **Publish** in Sanity Studio (https://landmark-flooring.sanity.studio/,
+  sign in as brandon@landmarkflooringusa.com) → **redeploy the site** (content is baked
+  at build). After editing in Sanity, also update the committed HTML to match (or run
+  `npm run build` and commit) so the repo stays the source of truth.
+- **Intentionally NOT editable (locked for consistency):** the **NAP** (business
+  name/address/phone/hours), the global **header/footer/sticky-call** chrome, and raw
+  **JSON-LD** structured data. Per the binding NAP rule these must be wired everywhere
+  at once or not at all — a future pass can add atomic NAP fields to a `siteSettings`
+  singleton and reference them site-wide (incl. JSON-LD). Reviews stay out until REAL
+  reviews exist (see DO-NOT-INVENT). Adding/removing/reordering whole sections is also
+  a future enhancement (today's blocks edit existing content in place).
 - CORS origins registered: landmarkflooringusa.com (+www), the production
   vercel.app alias, and localhost:8000 (build-time fetch needs none of these; they
   future-proof any runtime/Studio use).

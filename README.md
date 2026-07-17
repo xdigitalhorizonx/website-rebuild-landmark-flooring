@@ -8,9 +8,12 @@ This is a self-contained **static site** — plain HTML, CSS, and image assets,
 with a small amount of vanilla JavaScript inlined in `index.html`. No framework
 or dependencies are required. An optional, fail-safe build step
 (`npm run build` → `scripts/build-from-sanity.mjs`) injects client-editable
-content (home hero copy + FAQ) from the "Landmark Flooring" Sanity project
-(`qjx96i9p`/`production`) into the HTML at deploy time; if Sanity is
-unreachable the committed HTML deploys unchanged.
+content — every page's body copy and SEO fields (~1,750 fields across all 31
+pages), plus the home hero and FAQ — from the "Landmark Flooring" Sanity
+project (`qjx96i9p`/`production`) into the HTML at deploy time; if Sanity is
+unreachable the committed HTML deploys unchanged. Content is edited in Sanity
+Studio (https://landmark-flooring.sanity.studio/). NAP and the header/footer
+chrome are intentionally kept out of the CMS for site-wide consistency.
 
 ## Structure
 
