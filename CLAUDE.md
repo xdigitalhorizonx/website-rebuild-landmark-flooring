@@ -68,9 +68,9 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 - **Service area (from the Carson City showroom):** Carson City, Reno, Sparks, Minden, Gardnerville, Lake Tahoe (NV), Virginia City, Fallon, + all Northern Nevada
 - **Differentiators:** "The Landmark Guarantee" (warrantied products + warrantied labor) · licensed, bonded & insured · free estimates · financing available · in-store flooring visualizer · premium & budget options
 
-## ⚑ Installer wording (LOCKED — client directive)
-- Describe installers as **"skilled installers on our team"** / **"our skilled installers"** / **"skilled installers who are part of our team."**
-- **Never** use "in-house", "our own crews/team", "warrantied in-house labor", or any wording that contrasts against subs. **Never** mention subcontractors or contractors in visible copy. Some installers are contractors — the site must not reveal or contrast that.
+## ⚑ Installer wording (LOCKED — client directive, updated 2026-07-21)
+- Describe installation as **"we use skilled installers and warranty our labor"** / **"the skilled installers we use"** / **"our skilled installers."**
+- **Never** claim installers are "on our team", "part of our team", or "part of Landmark" (retired 2026-07-21 per client). **Never** use "in-house", "our own crews/team", "warrantied in-house labor", or any wording that contrasts against subs. **Never** mention subcontractors or contractors in visible copy. Some installers are contractors — the site must not reveal or contrast that.
 - Keep all warranty/guarantee language: "warrantied", "warrantied labor", "warrantied installation", "The Landmark Guarantee", "licensed, bonded & insured".
 - The **only** allowed use of "contractor" is the *Nevada State Contractors Board license* (the licensing authority) — currently in `TODO (pre-publish)` comments.
 
