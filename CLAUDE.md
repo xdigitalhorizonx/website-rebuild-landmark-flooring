@@ -66,7 +66,7 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 - **Sells + installs:** Carpet · Luxury Vinyl (LVP/LVT, waterproof) · Laminate · Hardwood/wood · Custom Rugs · professional installation
 - **Segments:** Residential · Property Management · Commercial
 - **Service area (from the Carson City showroom):** Carson City, Reno, Sparks, Minden, Gardnerville, Lake Tahoe (NV), Virginia City, Fallon, + all Northern Nevada
-- **Differentiators:** "The Landmark Guarantee" (warrantied products + warrantied labor) · licensed, bonded & insured · free estimates · financing available · in-store flooring visualizer · premium & budget options
+- **Differentiators:** "The Landmark Guarantee" (warrantied products + warrantied labor) · licensed, bonded & insured · free estimates · financing available · premium & budget options. (The **in-store flooring visualizer was REMOVED** as a feature on 2026-07-21 per client — do not mention it anywhere on the site.)
 
 ## ⚑ Installer wording (LOCKED — client directive, updated 2026-07-21)
 - Describe installation as **"we use skilled installers and warranty our labor"** / **"the skilled installers we use"** / **"our skilled installers."**
