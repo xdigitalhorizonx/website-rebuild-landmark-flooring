@@ -29,7 +29,10 @@ const TIMEOUT_MS = 9000;
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 async function groq(query) {
-  const url = `https://${PROJECT_ID}.apicdn.sanity.io/${API_VERSION}/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
+  // Uncached API host on purpose: the CDN (apicdn) caches query results for up
+  // to an hour, so a deploy right after a Studio publish could bake stale
+  // content. One uncached request per deploy is negligible load.
+  const url = `https://${PROJECT_ID}.api.sanity.io/${API_VERSION}/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
   const res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) });
   if (!res.ok) throw new Error(`Sanity query failed: HTTP ${res.status}`);
   return (await res.json()).result;
