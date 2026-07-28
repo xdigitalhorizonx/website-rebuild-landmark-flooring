@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/guides/refinish-vs-replace-hardwood-floors",
+      "destination": "/installation/hardwood-refinishing/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/refinish-vs-replace-hardwood-floors/",
+      "destination": "/installation/hardwood-refinishing/",
+      "permanent": true
+    }
+  ]
 }
