@@ -273,3 +273,7 @@ a.chip:hover svg{color:var(--blue)}
   a.chip{transition:none}
   a.chip:hover{transform:none}
 }
+
+/* guides index: the topic chips and the guide cards now share one section,
+   so give the card grid room to breathe under the chip row. */
+.chips + .related{margin-top:30px}
