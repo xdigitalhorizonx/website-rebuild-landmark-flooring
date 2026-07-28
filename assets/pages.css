@@ -260,3 +260,16 @@ table.cmp .no{color:#C0392B; font-weight:700}
 
 /* footer: expanded silo columns wrap nicely */
 .site-footer .foot-col a.sub{padding-left:0}
+
+/* clickable variant of .chip — topic chips that link straight to a guide.
+   Inherits the pill look from styles.css; only adds link affordance. */
+a.chip{color:var(--ink-soft); text-decoration:none;
+  transition:transform .2s var(--ease), box-shadow .2s var(--ease),
+             border-color .2s var(--ease), color .2s var(--ease)}
+a.chip:hover{transform:translateY(-2px); color:var(--blue-ink);
+  border-color:var(--line-blue); box-shadow:var(--shadow-2)}
+a.chip:hover svg{color:var(--blue)}
+@media (prefers-reduced-motion:reduce){
+  a.chip{transition:none}
+  a.chip:hover{transform:none}
+}
