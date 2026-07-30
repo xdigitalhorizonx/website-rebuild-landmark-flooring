@@ -98,7 +98,7 @@ _These overturned or qualified the raw research — they are the reason for the 
 - Add a custom 404.html and keep internal-link hygiene; once pages launch, fix any remaining anchor links that now have real destinations.
 - Per-page unique <title> (~51–60 chars) and <meta description> (~150–158 chars) with city/material/service intent; one unique H1 per page; title/H1/first-paragraph keyword coherence; no duplicate titles across the city set.
 - Image SEO: descriptive filenames + alt text on every real project photo (material + city/context); compress to WebP; set width/height to protect CLS; lazy-load below-fold media. Replace any stock used as 'our work' with real Landmark project photos.
-- Ensure NAP consistency sitewide and against GBP/citations; standardize the footer NAP block (2085 East William St, Suite 10, Carson City, NV 89701 / (775) 297-3236 / Mon–Fri 9am–5pm) on every page; embed Google Map on home + /contact/ + city pages.
+- Ensure NAP consistency sitewide and against GBP/citations; standardize the footer NAP block (2085 E William St #10, Carson City, NV 89701 / (775) 297-3236 / Mon–Fri 9am–5pm) on every page; embed Google Map on home + /contact/ + city pages.
 - Core Web Vitals targets (p75): LCP < 2.5s, INP < 200ms, CLS < 0.1; mobile-first responsive; readable tap targets (most local flooring traffic is mobile).
 - OFF-SITE (flag to client, out of HTML scope but the real Map-Pack lever): optimize the Google Business Profile (primary category 'Flooring contractor'/'Carpet store', services, products, photos, hours), build review quantity + velocity, and maintain citation/NAP consistency. City pages are an ORGANIC play only — a single Carson City showroom will not proximity-rank in Reno/Sparks/Tahoe Maps.
 - Add OpenGraph/Twitter meta per page (reuse existing pattern) with page-specific title/description/image.
@@ -555,7 +555,7 @@ Priority: **P0** = build first (highest value, fully defensible) · **P1** = bui
 
   **Section outline:**
   - **Breadcrumb: Home > Service Area** — Visible + schema.
-  - **Intro** — Serving Northern NV from the 2085 East William St Carson City showroom; we travel for free in-home estimates.
+  - **Intro** — Serving Northern NV from the 2085 E William St Carson City showroom; we travel for free in-home estimates.
   - **City grid (links to built city pages)** — Link only LIVE city pages. Group by region (Carson Valley, Truckee Meadows, Tahoe). Avoid a footer-style cross-link block on every page (reads as doorway scaffolding) — this hub is the right place to list them.
   - **How we serve the region (logistics)** — Drive-time framing from showroom; honest service-area-business framing (one showroom, we come to you).
   - **CTA + NAP + click-to-call** — → /free-estimate/.
@@ -576,7 +576,7 @@ Priority: **P0** = build first (highest value, fully defensible) · **P1** = bui
 
   **Section outline:**
   - **Breadcrumb: Home > Service Area > Carson City** — Visible + schema.
-  - **Intro (city in first sentence) + we're local here** — Showroom IS in Carson City at 2085 East William St — strongest proximity story; this is home base.
+  - **Intro (city in first sentence) + we're local here** — Showroom IS in Carson City at 2085 E William St — strongest proximity story; this is home base.
   - **Local context (neighborhoods/landmarks/climate)** — Name real areas (historic west side, ranch homes) + high-desert dry-climate flooring implications. Must read like a real local crew.
   - **Materials offered (links)** — Link all 5 material pages.
   - **Services offered (links)** — Link installation hub + spokes.
@@ -796,10 +796,10 @@ Priority: **P0** = build first (highest value, fully defensible) · **P1** = bui
 
 - **File:** `contact/index.html`
 - **Primary keyword:** flooring showroom Carson City
-- **Secondary keywords:** Landmark Flooring Carson City, flooring store hours Carson City, flooring showroom near me, 2085 East William St flooring
+- **Secondary keywords:** Landmark Flooring Carson City, flooring store hours Carson City, flooring showroom near me, 2085 E William St flooring
 - **Search intent:** Transactional/navigational — canonical on-site NAP source matching GBP; map + directions + hours.
 - **Title tag:** `Contact & Showroom — Carson City, NV | Landmark Flooring`
-- **Meta description:** Visit the Landmark Flooring showroom at 2085 East William St, Suite 10, Carson City, NV. Open Mon–Fri 9am–5pm. Call (775) 297-3236.
+- **Meta description:** Visit the Landmark Flooring showroom at 2085 E William St #10, Carson City, NV. Open Mon–Fri 9am–5pm. Call (775) 297-3236.
 - **H1:** Visit Our Carson City Flooring Showroom
 - **Schema:** LocalBusiness/HomeAndConstructionBusiness reference (same #business @id, NOT a duplicate node), BreadcrumbList
 - **Word-count target:** 300–600 words
@@ -808,7 +808,7 @@ Priority: **P0** = build first (highest value, fully defensible) · **P1** = bui
 
   **Section outline:**
   - **Breadcrumb: Home > Contact** — Visible + schema.
-  - **NAP block (top of page)** — Name, full address (2085 East William St, Suite 10, Carson City, NV 89701), tel:+17752973236 — EXACTLY matching GBP.
+  - **NAP block (top of page)** — Name, full address (2085 E William St #10, Carson City, NV 89701), tel:+17752973236 — EXACTLY matching GBP.
   - **Embedded Google Map + directions** — Map of showroom; link to GBP.
   - **Hours** — Mon–Fri 9am–5pm (matches GBP + OpeningHoursSpecification).
   - **In-store visualizer + samples** — What to expect in the showroom; experience signal.

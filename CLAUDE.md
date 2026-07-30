@@ -59,7 +59,7 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 
 ## Business facts (NAP — keep consistent on every page; verify against the live GBP)
 - **Name:** Landmark Flooring
-- **Address:** 2085 East William St, Suite 10, Carson City, NV 89701
+- **Address:** 2085 E William St #10, Carson City, NV 89701
 - **Phone:** (775) 297-3236  →  `tel:+17752973236`
 - **Hours:** Mon–Fri 9am–5pm
 - **Domain:** https://landmarkflooringusa.com/  (live domain currently returns 403 to bots)
