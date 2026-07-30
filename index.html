@@ -92,7 +92,7 @@
     }
   }
   </script>
-  <!-- TODO (pre-publish): when a real Google Business Profile rating + review count exist, add an "aggregateRating" block (ratingValue + reviewCount) to this node. Do NOT invent values. -->
+  <!-- Do NOT add an "aggregateRating" or "Review" block to this node, even once a real rating + count exist. Google's review-snippet policy makes self-serving review markup (a business marking up reviews about itself) ineligible for the review rich result, so it carries policy risk with no upside. Real reviews live on the Google Business Profile; the home page quotes them as plain visible HTML only. -->
   <!-- TODO (pre-publish): add the NV contractor license number near "Licensed, bonded & insured" (brand.md GAP). -->
 
   <!-- FAQPage JSON-LD removed: Google fully deprecated FAQ rich results on 2026-05-07 (restricted to gov/health since Aug 2023). The on-page FAQ accordion below remains as visible HTML for users + AI engines. Do not re-add FAQPage schema. -->
@@ -235,7 +235,7 @@
             </article>
           </div>
         </div>
-        <!-- TODO (pre-publish): optional numeric stat slot — e.g. "Serving Northern Nevada since [year]", "[X]+ projects completed", or "[rating]★ on Google". Do NOT invent; add only when real data lands. No aggregateRating until a real Google rating/count exists. -->
+        <!-- TODO (pre-publish): optional numeric stat slot — e.g. "Serving Northern Nevada since [year]", "[X]+ projects completed", or "[rating]★ on Google". Do NOT invent; add only when real data lands. A visible "[rating]★ on Google" figure is fine once the real number is known, but still no aggregateRating JSON-LD — see the note on the business node above. -->
       </div>
     </section>
 
@@ -434,35 +434,32 @@
           <p class="eyebrow eyebrow--center"><!--sanity:home.063-->What customers say<!--/sanity:home.063--></p>
           <h2 id="reviews-h"><!--sanity:home.064-->What Carson City Homeowners Say<!--/sanity:home.064--></h2>
         </div>
-        <!-- TODO (pre-publish): replace these with real Google reviews and pull the live Google rating + review count. Do NOT invent quotes, names, ratings, or counts. No aggregateRating in JSON-LD until real data lands. -->
+        <!-- REAL Google reviews, quoted verbatim from the Google Business Profile (names as the reviewers show them; all 5-star). Longer reviews are excerpted with … and never reworded. Refresh these periodically so the newest reviews show. Do NOT invent quotes, names, ratings, or counts, and do NOT add aggregateRating/Review JSON-LD — see the note on the business node above. -->
         <div class="quotes">
           <blockquote class="quote reveal"><!--sanity:home.065-->
             <div class="qmark" aria-hidden="true">&ldquo;</div>
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>They made the whole project easy — helped us pick the right floor for our budget, and the crew was clean, fast and professional.</p>
-            <div class="who">Homeowner <span>· Carson City, NV</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
+            <p>From the very beginning, Erick was professional, responsive, and incredibly helpful throughout the entire process. … When it came time for installation, the installer was friendly, professional, and did an outstanding job. The project was completed much faster than I expected, and our new carpets look absolutely amazing!</p>
+            <div class="who">Becky Hepler <span>· Google review</span></div>
           <!--/sanity:home.065--></blockquote>
           <blockquote class="quote reveal d1"><!--sanity:home.066-->
             <div class="qmark" aria-hidden="true">&ldquo;</div>
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>Great selection, fair prices, and they stand behind their work. The Landmark Guarantee is the real deal.</p>
-            <div class="who">Homeowner <span>· Northern Nevada</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
+            <p>Eric is incredible! Super helpful and always very responsive. Also, extremely kind and professional. … I used Eric on a couple patch spots that my puppy chewed up on the living room carpet and you couldn't even tell after he was finished. It was done so well.</p>
+            <div class="who">Gavin Gaudreault <span>· Google review</span></div>
           <!--/sanity:home.066--></blockquote>
           <blockquote class="quote reveal d2"><!--sanity:home.067-->
             <div class="qmark" aria-hidden="true">&ldquo;</div>
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-            <p>From the showroom to the install, everything was no-pressure and easy. We love our new floors.</p>
-            <div class="who">Homeowner <span>· Reno, NV</span></div>
-            <span class="tmark">Placeholder — pending real Google review</span>
+            <p>Professional, Quality Flooring, Great Pricing and Excellent Customer Service! Would not hesitate to use Landmark Flooring again!</p>
+            <div class="who">Liz Smith <span>· Google review</span></div>
           <!--/sanity:home.067--></blockquote>
         </div>
         <div style="text-align:center; margin-top:28px">
           <a class="btn btn-primary" href="https://g.page/r/CaOiDwk0Zz9yEAE/review" target="_blank" rel="noopener">Leave us a Google review
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
-        <p class="note"><!--sanity:home.068-->Reviews shown are representative — <strong>TODO (pre-publish):</strong> replace with real Google reviews &amp; pull the live rating + count.<!--/sanity:home.068--></p>
+        <p class="note"><!--sanity:home.068-->Recent reviews from our Google Business Profile, quoted as written; longer reviews are excerpted. <a href="https://g.page/r/CaOiDwk0Zz9yEAE" target="_blank" rel="noopener">Read them all on Google</a>.<!--/sanity:home.068--></p>
       </div>
     </section>
 
