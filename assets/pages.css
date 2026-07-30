@@ -102,7 +102,8 @@
 .prose blockquote{margin:0; padding:16px 22px; border-left:4px solid var(--accent-fill);
   background:linear-gradient(170deg,#fff,#F8FAFC); border-radius:0 var(--radius-s) var(--radius-s) 0; color:var(--ink-soft)}
 .prose figure{margin:0}
-.prose figure img{border-radius:var(--radius); box-shadow:var(--shadow-card)}
+.prose figure img{width:100%; height:auto;   /* lesson: height:auto on responsive imgs */
+  border-radius:var(--radius); box-shadow:var(--shadow-card)}
 .prose figcaption{margin-top:8px; font-size:.84rem; color:var(--ink-mute); text-align:center}
 
 /* two-column content layout: article + sticky aside (TOC / CTA) */
