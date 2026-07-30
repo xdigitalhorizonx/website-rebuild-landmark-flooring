@@ -3,6 +3,22 @@
 Project memory for the **Landmark Flooring** marketing-site rebuild. Read this
 before working on the site. Detailed SEO research/plan lives in `docs/seo/`.
 
+## ⚑ Answer style (LOCKED — client directive, 2026-07-30)
+**Lead with the conclusion in ~2 sentences. Stop there unless more is asked for.**
+- Answer the question that was asked. Don't pad with methodology, coverage tables,
+  tool versions, per-item triage, caveats, or "next steps" the client didn't request.
+- **No unrequested headers, and no multi-section reports.** Plain sentences win.
+- Findings/results: state the verdict + the one fact that backs it. Nothing else.
+- Bullets only when the content is genuinely a list (e.g. 3 files changed) — never
+  as a way to smuggle a long answer past the 2-sentence rule.
+- Detail is **available on request** — if there's real depth behind an answer, offer
+  it in a short clause ("say the word if you want the breakdown"), don't pre-emptively
+  dump it.
+- This rule outranks any instinct to be thorough in the *reply*. It governs the
+  **reply only** — investigation, scanning, and verification stay as rigorous as ever.
+  Do the deep work; report the short version.
+- Applies to every reply, not just summaries.
+
 ## What this is
 Static marketing site (plain HTML + CSS + a little inline vanilla JS, **no framework**)
 for **Landmark Flooring** — Carson City NV's flooring store **and** professional
