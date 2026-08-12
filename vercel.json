@@ -6,417 +6,442 @@
     {
       "source": "/all-flooring-options",
       "destination": "/flooring/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/all-flooring-options/",
       "destination": "/flooring/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet-2",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet-2/",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvt-lvp",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvt-lvp/",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-2",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-2/",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/wood",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/wood/",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/rugs",
       "destination": "/flooring/custom-rugs/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/rugs/",
       "destination": "/flooring/custom-rugs/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet/",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate/",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvp",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvp/",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwood",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwood/",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blog",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blog/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/residential",
       "destination": "/flooring/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/residential/",
       "destination": "/flooring/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/information",
       "destination": "/about/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/information/",
       "destination": "/about/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/project-discovery",
       "destination": "/free-estimate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/project-discovery/",
       "destination": "/free-estimate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet-care",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/carpet-care/",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvt-lvp-care",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvt-lvp-care/",
       "destination": "/flooring/luxury-vinyl/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-care",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-care/",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-carson-city-nv",
       "destination": "/service-area/carson-city/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-carson-city-nv/",
       "destination": "/service-area/carson-city/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-reno-nv",
       "destination": "/service-area/reno/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-reno-nv/",
       "destination": "/service-area/reno/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-minden-gardnerville-nv",
       "destination": "/service-area/minden-gardnerville/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-minden-gardnerville-nv/",
       "destination": "/service-area/minden-gardnerville/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-lake-tahoe",
       "destination": "/service-area/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-in-lake-tahoe/",
       "destination": "/service-area/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blog-home",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/blog-home/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-floor-care-northern-nevada",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/laminate-floor-care-northern-nevada/",
       "destination": "/flooring/laminate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-installations-in-virginia-city-nv",
       "destination": "/service-area/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-installations-in-virginia-city-nv/",
       "destination": "/service-area/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvp-vs-hardwood-lake-tahoe-incline-village",
       "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/lvp-vs-hardwood-lake-tahoe-incline-village/",
       "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benefits-of-carpet-in-your-carson-city-home",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benefits-of-carpet-in-your-carson-city-home/",
       "destination": "/flooring/carpet/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooringoptionsforpets",
       "destination": "/guides/best-flooring-for-pets-and-kids/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooringoptionsforpets/",
       "destination": "/guides/best-flooring-for-pets-and-kids/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/pet-kid-friendly-flooring-northern-nevada",
       "destination": "/guides/best-flooring-for-pets-and-kids/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/pet-kid-friendly-flooring-northern-nevada/",
       "destination": "/guides/best-flooring-for-pets-and-kids/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwoodfloorsandclimate",
       "destination": "/guides/best-flooring-for-northern-nevada-climate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwoodfloorsandclimate/",
       "destination": "/guides/best-flooring-for-northern-nevada-climate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwood-floors-and-climate-northern-nevada",
       "destination": "/guides/best-flooring-for-northern-nevada-climate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hardwood-floors-and-climate-northern-nevada/",
       "destination": "/guides/best-flooring-for-northern-nevada-climate/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benefitsofusingwoodflooring",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/benefitsofusingwoodflooring/",
       "destination": "/flooring/hardwood/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooringincarsonandreno",
       "destination": "/service-area/carson-city/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooringincarsonandreno/",
       "destination": "/service-area/carson-city/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/reno-carson-city-flooring-store-guide",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/reno-carson-city-flooring-store-guide/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-makeover-ideas",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-makeover-ideas/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada",
       "destination": "/financing/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada/",
       "destination": "/financing/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hello-world-2",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/hello-world-2/",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/guides/refinish-vs-replace-hardwood-floors",
       "destination": "/installation/hardwood-refinishing/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/guides/refinish-vs-replace-hardwood-floors/",
       "destination": "/installation/hardwood-refinishing/",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/blog-home/page/:n*",
+      "source": "/blog-home/page",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/tag/:slug*",
+      "source": "/blog-home/page/(.*)",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/category/:slug*",
+      "source": "/tag",
       "destination": "/guides/",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/template/:slug*",
+      "source": "/tag/(.*)",
+      "destination": "/guides/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category",
+      "destination": "/guides/",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/(.*)",
+      "destination": "/guides/",
+      "statusCode": 301
+    },
+    {
+      "source": "/template",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/author/:slug*",
+      "source": "/template/(.*)",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author",
       "destination": "/about/",
-      "permanent": true
+      "statusCode": 301
+    },
+    {
+      "source": "/author/(.*)",
+      "destination": "/about/",
+      "statusCode": 301
     }
   ]
 }
