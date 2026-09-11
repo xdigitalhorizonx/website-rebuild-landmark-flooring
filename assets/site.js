@@ -48,4 +48,50 @@
   /* Footer year */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
+
+  /* Free-estimate form: progressive enhancement over a real form POST.
+     With JS off the form still submits normally to /api/lead; this just keeps
+     the visitor on the page and reports success or failure inline. */
+  var leadForm = document.getElementById("lead-form");
+  if (leadForm) {
+    var status = document.getElementById("lead-status");
+    var submit = leadForm.querySelector('button[type="submit"]');
+    var submitLabel = submit ? submit.innerHTML : "";
+
+    function say(msg, kind) {
+      if (!status) return;
+      status.textContent = msg;
+      status.hidden = false;
+      status.className = "form-status is-" + kind;
+    }
+
+    leadForm.addEventListener("submit", function (e) {
+      if (!window.fetch || !leadForm.checkValidity()) return;   // let the browser handle it
+      e.preventDefault();
+
+      if (submit) { submit.disabled = true; submit.textContent = "Sending\u2026"; }
+      say("Sending your request\u2026", "pending");
+
+      fetch(leadForm.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(leadForm)))
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok && d.ok, d: d }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.d && res.d.error);
+          leadForm.reset();
+          say("Thanks \u2014 your request is in. We'll call you to schedule your free estimate.", "ok");
+          if (submit) submit.remove();
+        })
+        .catch(function (err) {
+          say(
+            (err && err.message) ||
+              "Something went wrong sending that. Please call (775) 297-3236 and we'll take your details.",
+            "err"
+          );
+          if (submit) { submit.disabled = false; submit.innerHTML = submitLabel; }
+        });
+    });
+  }
 })();

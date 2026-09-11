@@ -75,7 +75,10 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 - The **only** allowed use of "contractor" is the *Nevada State Contractors Board license* (the licensing authority) — currently in `TODO (pre-publish)` comments.
 
 ## ⛔ DO NOT INVENT (placeholders only until the client supplies real data)
-- **NV State Contractors Board license number** (goes next to "Licensed, bonded & insured" on home, /about/, /installation/). Leave the existing `TODO (pre-publish)` markers.
+- ~~NV State Contractors Board license number~~ — **RESOLVED 2026-09-11: `#0088180`** (client-supplied).
+  Wired into all 26 credential spots + the footer line on every page, and into the matching Sanity blocks.
+  Rendered as "Nevada State Contractors Board license **#0088180**" in body copy and
+  "· NV Lic. #0088180" in the footer / home badge. This is the ONLY approved use of "contractor" in visible copy.
 - **Google rating value + review count, and any review quotes/names.** Never add `aggregateRating`/`Review` schema. Replace placeholder testimonials with REAL reviews only.
 - ~~Financing APR / lender / terms~~ — **RESOLVED 2026-09-11.** The client supplied the real
   terms (sourced verbatim from the live WordPress page https://landmarkflooringusa.com/financing/).
@@ -112,6 +115,47 @@ what you buy → who installs it → how you pay → where we serve. Present in 
   **900px → 992px** (`styles.css` + `assets/pages.css` — the two `@media (max-width:992px)` blocks
   **must stay in sync**), and `.nav-links` got a responsive `clamp()` gap/font plus `white-space:nowrap`.
 - **Before adding an 8th nav item, re-measure** — the row has no slack left at ~993px.
+
+## Forms → Resend (the site's only backend)
+The lead form posts to **`api/lead.mjs`**, a Vercel serverless function that emails the
+submission via **Resend**. Everything else on the site is static. Client directive: all
+forms go through Resend — never Bricks, Netlify Forms, Formspree or a mailto fallback.
+- **Required env vars** (Vercel → Project → Settings → Environment Variables):
+  `RESEND_API_KEY` · `LEAD_TO` (destination inbox, comma-separated for several) ·
+  `LEAD_FROM` (a sender on a **Resend-verified domain**, else the send is rejected).
+  The destination comes only from the env, never the request body — so it can't be an open relay.
+- **Behaviour:** validates name/phone/email, drops unknown `project_type`, strips CR/LF so a
+  field can't inject mail headers, and has an off-canvas **honeypot** (`name="company"`) that
+  returns a silent 200 without sending. `reply_to` is set to the visitor so Jeff can reply directly.
+- **Content negotiation:** a `fetch` (JS on) gets JSON and an inline status message; a plain
+  JS-off form POST gets a **303 redirect to `/thank-you/`**, and on failure a small styled
+  error page carrying the phone number. A visitor must never see raw JSON — and a
+  misconfigured deploy must fail **loudly**, never fake a success that drops the lead.
+- **`/thank-you/`** is `noindex,follow` and deliberately **absent from sitemap.xml** — a
+  confirmation page must never rank or be counted as a landing page.
+- Progressive enhancement lives in `assets/site.js` (`#lead-form`); styles in `assets/pages.css`
+  (`.lead-form .hp`, `.form-status`).
+- `/contact/` currently has **no** form — only the free-estimate page does. Any new form
+  should post to this same endpoint.
+
+## ⚑ The `<title>` marker trap (fixed 2026-09-11 — don't reintroduce)
+`<title>` is **RCDATA**: comments inside it are NOT markup, they are literal text. A
+`<!--sanity:KEY-->…<!--/sanity:KEY-->` pair placed *inside* `<title>` therefore renders the
+marker text in the browser tab and in Google's SERP, on every page — and the build preserves
+markers, so it never self-corrects. All 30 pages had this.
+- **Correct form:** `<!--sanity-title:KEY--><title>…</title>` — marker **before** the tag.
+  `scripts/build-from-sanity.mjs` has a `titleRe` pass that rewrites the title's text and escapes it.
+- Title values are stored **decoded** in Sanity (like attribute values), so a title containing
+  `&` round-trips instead of double-encoding to `&amp;amp;`.
+
+## ⚑ CSS grid: always set `min-width:0` on grid items
+Grid items default to `min-width:auto`, whose floor is the content's min-content width. A wide
+child (a `table.cmp` at `min-width:560px`, a flex heading, an `li` with an icon) therefore
+**stretches the track past the viewport** instead of shrinking or scrolling inside its own
+wrapper. This caused horizontal page scroll on 8 pages at phone widths.
+Fixed via `.layout > *`, `.proscons .pc/h3/li`, `.quotes > *`, and `minmax(0,1fr)` in the
+collapsed media query. **Verified: 0 of 30 pages scroll horizontally from 320px to 1600px.**
+Re-check this whenever you add a two-column layout or a wide table.
 
 ## Design system (match it exactly on new pages — see `index.html` + `styles.css`)
 - **Brand:** blue `#0074D4` (`--blue`), pale `#E6F4FF`; warm amber AA-token system

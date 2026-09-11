@@ -166,14 +166,15 @@
             </div>
 
             <h2 id="why-landmark"><!--sanity:free-estimate.021-->Why homeowners choose Landmark<!--/sanity:free-estimate.021--></h2>
-            <p><!--sanity:free-estimate.022-->Landmark Flooring is a local Carson City store <em>and</em> installer. Every floor we sell, we install with skilled installers, and we stand behind both with <strong>The Landmark Guarantee</strong>: warrantied products plus warrantied labor from the skilled installers we use, so you're covered on the floor and the work. We're licensed, bonded and insured.
-            <!-- TODO (pre-publish): insert NV contractor license number here once supplied by the client. Do not invent a number. --><!--/sanity:free-estimate.022--></p>
+            <p><!--sanity:free-estimate.022-->Landmark Flooring is a local Carson City store <em>and</em> installer. Every floor we sell, we install with skilled installers, and we stand behind both with <strong>The Landmark Guarantee</strong>: warrantied products plus warrantied labor from the skilled installers we use, so you're covered on the floor and the work. We're licensed, bonded and insured. Nevada State Contractors Board license <strong>#0088180</strong>.<!--/sanity:free-estimate.022--></p>
 
             <!-- ESTIMATE FORM -->
             <h2 id="estimate-form"><!--sanity:free-estimate.023-->Request your free estimate<!--/sanity:free-estimate.023--></h2>
             <p><!--sanity:free-estimate.024-->Fill out the form and we'll get back to you to schedule. All fields except the message are quick — the more you tell us, the more accurate your first conversation will be.<!--/sanity:free-estimate.024--></p>
-            <!-- TODO (pre-publish): this form has NO backend yet. Wire the action/method to a form handler or email service (e.g. Formspree, Netlify Forms, or a mailto fallback) before launch. -->
-            <form class="lead-form" name="free-estimate" method="post" action="#" aria-label="Free flooring estimate request">
+            <!-- Posts to the Resend-backed serverless function in api/lead.js.
+                 Works without JS (normal form POST); assets/site.js upgrades it to
+                 an inline fetch with success/error states. -->
+            <form class="lead-form" id="lead-form" name="free-estimate" method="post" action="/api/lead" aria-label="Free flooring estimate request">
               <div class="row">
                 <label>Name
                   <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
@@ -207,6 +208,10 @@
                 <textarea name="message" placeholder="Which rooms, approximate square footage, timing, and anything else that helps us prepare."></textarea>
               </label>
               <p class="form-note"><!--sanity:free-estimate.025-->By submitting, you agree to be contacted about your estimate. We never share your information. Prefer to talk now? Call <a href="tel:+17752973236">(775) 297-3236</a>.<!--/sanity:free-estimate.025--></p>
+              <div class="hp" aria-hidden="true">
+                <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <p class="form-status" id="lead-status" role="status" aria-live="polite" hidden></p>
               <button class="btn btn-primary" type="submit">Request My Free Estimate
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             </form>
@@ -323,7 +328,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured</span>
+        <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured · NV Lic. #0088180</span>
         <span>Carson City · Reno · Northern Nevada</span>
       </div>
     </div>
