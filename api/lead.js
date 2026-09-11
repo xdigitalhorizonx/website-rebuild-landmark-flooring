@@ -49,6 +49,14 @@ async function readBody(req) {
   if (ct.includes('application/json')) {
     try { return JSON.parse(raw); } catch { return {}; }
   }
+  if (ct.includes('multipart/form-data')) {
+    // Not parsed here on purpose. The browser path sends URLSearchParams and the
+    // no-JS path sends urlencoded, so multipart means a caller regressed — fail
+    // loudly rather than silently reporting every field as missing.
+    const e = new Error('multipart/form-data is not supported by this endpoint');
+    e.code = 'UNSUPPORTED_MEDIA_TYPE';
+    throw e;
+  }
   return Object.fromEntries(new URLSearchParams(raw));
 }
 
@@ -77,7 +85,11 @@ module.exports = async (req, res) => {
   let body;
   try {
     body = await readBody(req);
-  } catch {
+  } catch (e) {
+    if (e && e.code === 'UNSUPPORTED_MEDIA_TYPE') {
+      console.error('[lead] unsupported content-type:', req.headers['content-type']);
+      return res.status(415).json({ ok: false, error: 'Unsupported content type' });
+    }
     return res.status(413).json({ ok: false, error: 'Request too large' });
   }
 

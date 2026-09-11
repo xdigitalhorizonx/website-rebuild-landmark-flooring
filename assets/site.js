@@ -81,7 +81,10 @@
       fetch(lf.action, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: new FormData(lf)
+        /* URLSearchParams, not FormData: FormData posts multipart/form-data,
+           which the handler does not parse. This sends the same encoding the
+           plain no-JS form POST uses. */
+        body: new URLSearchParams(new FormData(lf))
       }).then(function (r) {
         return r.json().catch(function () { return { ok: r.ok }; });
       }).then(function (d) {
