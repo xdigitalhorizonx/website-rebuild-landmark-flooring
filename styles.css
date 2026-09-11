@@ -379,7 +379,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .serve-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-2)}
 .serve-card .ico{display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:#fff;color:var(--blue);box-shadow:var(--shadow-1);margin-bottom:14px}
 .serve-card .ico svg{width:24px;height:24px}
-.serve-card h4{font-size:1.12rem; color:var(--ink); margin-bottom:7px}
+.serve-card h3,.serve-card h4{font-size:1.12rem; color:var(--ink); margin-bottom:7px}
 .serve-card p{font-size:.92rem; color:var(--ink-soft); line-height:1.5}
 @media (max-width:759px){.serve-grid{grid-template-columns:1fr}}
 
@@ -458,6 +458,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
    TESTIMONIALS
    ========================================================================== */
 .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.quotes > *{min-width:0}   /* grid items default to min-width:auto and overflow on narrow phones */
 .quote{
   position:relative; background:linear-gradient(170deg,#fff,#F8FAFC); border:1px solid var(--line);
   border-radius:var(--radius); padding:28px 26px 24px; box-shadow:var(--shadow-card);
@@ -548,7 +549,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .foot-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:clamp(28px,4vw,52px)}
 .foot-brand .brand{color:#fff; margin-bottom:14px}
 .foot-brand p{font-size:.94rem; line-height:1.6; max-width:34ch; color:#9AA6B5}
-.foot-col h4{color:#fff; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:16px}
+.foot-col h3{color:#fff; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:16px}
 .foot-col a{display:block; color:#B7C0CD; font-size:.94rem; padding:5px 0; transition:color .16s var(--ease)}
 .foot-col a:hover{color:var(--accent-on-dark)}
 .foot-col p{font-size:.94rem; line-height:1.6; color:#9AA6B5; margin-bottom:8px}
