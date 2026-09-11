@@ -235,12 +235,12 @@
     },
     {
       "source": "/flooring-makeover-ideas",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
       "source": "/flooring-makeover-ideas/",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
@@ -285,12 +285,12 @@
     },
     {
       "source": "/hello-world-2",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
       "source": "/hello-world-2/",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
@@ -425,12 +425,12 @@
     },
     {
       "source": "/flooring-makeover-ideas/feed",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
       "source": "/flooring-makeover-ideas/feed/",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
@@ -475,12 +475,12 @@
     },
     {
       "source": "/hello-world-2/feed",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
       "source": "/hello-world-2/feed/",
-      "destination": "/flooring/",
+      "destination": "/guides/flooring-renovation-ideas/",
       "permanent": true
     },
     {
