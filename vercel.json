@@ -544,6 +544,46 @@
       "permanent": true
     },
     {
+      "source": "/lvt/lvp-care",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt/lvp-care/",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/all-flooring",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/all-flooring/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/lander",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/lander/",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
       "source": "/tag/:slug*",
       "destination": "/guides/",
       "permanent": true
