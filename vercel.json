@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/api/:fn.js",
+      "destination": "/api/:fn",
+      "permanent": false
+    },
+    {
       "source": "/guides/refinish-vs-replace-hardwood-floors",
       "destination": "/installation/hardwood-refinishing/",
       "permanent": true
