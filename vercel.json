@@ -12,6 +12,551 @@
       "source": "/guides/refinish-vs-replace-hardwood-floors/",
       "destination": "/installation/hardwood-refinishing/",
       "permanent": true
+    },
+    {
+      "source": "/all-flooring-options",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/all-flooring-options/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/carpet-2",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/carpet-2/",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/carpet-care",
+      "destination": "/flooring/carpet/#care",
+      "permanent": true
+    },
+    {
+      "source": "/carpet-care/",
+      "destination": "/flooring/carpet/#care",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-carson-city-nv",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-carson-city-nv/",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-lake-tahoe",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-lake-tahoe/",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-minden-gardnerville-nv",
+      "destination": "/service-area/minden-gardnerville/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-minden-gardnerville-nv/",
+      "destination": "/service-area/minden-gardnerville/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-reno-nv",
+      "destination": "/service-area/reno/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-in-reno-nv/",
+      "destination": "/service-area/reno/",
+      "permanent": true
+    },
+    {
+      "source": "/information",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/information/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-2",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-2/",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-care",
+      "destination": "/flooring/laminate/#care",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-care/",
+      "destination": "/flooring/laminate/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt-lvp",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt-lvp/",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt-lvp-care",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt-lvp-care/",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/project-discovery",
+      "destination": "/free-estimate/",
+      "permanent": true
+    },
+    {
+      "source": "/project-discovery/",
+      "destination": "/free-estimate/",
+      "permanent": true
+    },
+    {
+      "source": "/residential",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/residential/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/rugs",
+      "destination": "/flooring/custom-rugs/",
+      "permanent": true
+    },
+    {
+      "source": "/rugs/",
+      "destination": "/flooring/custom-rugs/",
+      "permanent": true
+    },
+    {
+      "source": "/wood",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/wood/",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-carpet-in-your-carson-city-home",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-carpet-in-your-carson-city-home/",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/benefitsofusingwoodflooring",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/benefitsofusingwoodflooring/",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada/",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-installations-in-virginia-city-nv",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-installations-in-virginia-city-nv/",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-makeover-ideas",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-makeover-ideas/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringincarsonandreno",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringincarsonandreno/",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringoptionsforpets",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringoptionsforpets/",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwood-floors-and-climate-northern-nevada",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwood-floors-and-climate-northern-nevada/",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwoodfloorsandclimate",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwoodfloorsandclimate/",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world-2",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world-2/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-floor-care-northern-nevada",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-floor-care-northern-nevada/",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/lvp-vs-hardwood-lake-tahoe-incline-village",
+      "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/lvp-vs-hardwood-lake-tahoe-incline-village/",
+      "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/pet-kid-friendly-flooring-northern-nevada",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/pet-kid-friendly-flooring-northern-nevada/",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/reno-carson-city-flooring-store-guide",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/reno-carson-city-flooring-store-guide/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/benchmark-commercial-cleaning-educates-on-how-to-keep-lvp-laminate-and-carpet-clean-in-reno-carson-city-lake-tahoe-and-make-them-last-for-years/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-carpet-in-your-carson-city-home/feed",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-carpet-in-your-carson-city-home/feed/",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/benefitsofusingwoodflooring/feed",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/benefitsofusingwoodflooring/feed/",
+      "destination": "/flooring/hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/category/general/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/general/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/general/flooring/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/general/flooring/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/uncategorized/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/uncategorized/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada/feed",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-and-carpet-financing-benefits-reno-northern-nevada/feed/",
+      "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-installations-in-virginia-city-nv/feed",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-installations-in-virginia-city-nv/feed/",
+      "destination": "/service-area/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-makeover-ideas/feed",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/flooring-makeover-ideas/feed/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringincarsonandreno/feed",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringincarsonandreno/feed/",
+      "destination": "/service-area/carson-city/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringoptionsforpets/feed",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/flooringoptionsforpets/feed/",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwood-floors-and-climate-northern-nevada/feed",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwood-floors-and-climate-northern-nevada/feed/",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwoodfloorsandclimate/feed",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hardwoodfloorsandclimate/feed/",
+      "destination": "/guides/best-flooring-for-northern-nevada-climate/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world-2/feed",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world-2/feed/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-keep-hardwood-lvp-and-laminate-floors-clean-in-carson-city-reno-and-lake-tahoe/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-floor-care-northern-nevada/feed",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate-floor-care-northern-nevada/feed/",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/lvp-vs-hardwood-lake-tahoe-incline-village/feed",
+      "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/lvp-vs-hardwood-lake-tahoe-incline-village/feed/",
+      "destination": "/guides/lvp-vs-laminate-vs-hardwood/",
+      "permanent": true
+    },
+    {
+      "source": "/pet-kid-friendly-flooring-northern-nevada/feed",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/pet-kid-friendly-flooring-northern-nevada/feed/",
+      "destination": "/guides/best-flooring-for-pets-and-kids/",
+      "permanent": true
+    },
+    {
+      "source": "/reno-carson-city-flooring-store-guide/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/reno-carson-city-flooring-store-guide/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home/page/2",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home/page/2/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:slug*",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:slug*",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home/page/:n*",
+      "destination": "/guides/",
+      "permanent": true
     }
   ]
 }
