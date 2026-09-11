@@ -468,7 +468,26 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .quote .qmark{font-size:3.4rem; line-height:.6; color:var(--accent-text); opacity:.32; font-weight:800; font-family:Georgia,serif}
 .stars{color:#E8A03C; letter-spacing:2px; font-size:1.05rem; margin:6px 0 12px}
 .quote p{color:var(--ink-soft); font-size:.97rem; line-height:1.55}
-.quote .who{margin-top:16px; font-weight:700; color:var(--ink); font-size:.92rem}
+/* Cards are grid items, so they all stretch to the tallest. Clamping the quote to
+   a fixed number of lines keeps them short and even instead of leaving the shorter
+   reviews with dead space underneath. The clamp is applied by JS (.is-clamped), so
+   with JS off the full review is simply shown. */
+.quote{display:flex; flex-direction:column}
+.quote p{margin:0}
+.quote.is-clamped p{
+  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6;
+  overflow:hidden;
+}
+.quote.is-open p{-webkit-line-clamp:unset; overflow:visible}
+.quote-more{
+  align-self:flex-start; margin-top:10px; padding:0; border:0; background:none;
+  font:inherit; font-size:.9rem; font-weight:700; color:var(--blue); cursor:pointer;
+  display:inline-flex; align-items:center; gap:5px; border-radius:4px;
+}
+.quote-more:hover{text-decoration:underline}
+.quote-more svg{width:14px; height:14px; transition:transform .18s var(--ease)}
+.quote.is-open .quote-more svg{transform:rotate(180deg)}
+.quote .who{margin-top:auto; padding-top:16px; font-weight:700; color:var(--ink); font-size:.92rem}
 .quote .who span{color:var(--ink-mute); font-weight:500}
 .tmark{display:inline-block; margin-top:8px; font-size:.7rem; font-weight:600; letter-spacing:.04em; color:var(--ink-mute); background:#EEF2F7; padding:3px 8px; border-radius:6px}
 .note{text-align:center; margin-top:26px; color:var(--ink-mute); font-size:.85rem}
