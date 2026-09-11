@@ -5,6 +5,12 @@
  * Every editable region of the committed HTML is wrapped in markers:
  *   body text:  <!-- sanity:KEY -->…<!-- /sanity:KEY -->
  *   attributes: <!--sanity-attr:KEY|ATTR--><tag …>   (rewrites ATTR on the next tag)
+ *   title:      <!--sanity-title:KEY--><title>…</title>  (rewrites the title's text)
+ *
+ * The title needs its own marker form because <title> is parsed as RCDATA: comments
+ * inside it are NOT markup, they are literal text. A <!--sanity:KEY--> pair placed
+ * inside <title> therefore renders as part of the page title in browsers and SERPs.
+ * Title values are stored DECODED in Sanity (like attribute values) and escaped here.
  * plus one special body key `faq`, rendered from the faqItem collection.
  *
  * At build time this script fetches published content from the "Landmark
@@ -66,6 +72,7 @@ try {
 
   const bodyRe = /(<!--\s*sanity:([\w.-]+)\s*-->)([\s\S]*?)(<!--\s*\/sanity:\2\s*-->)/g;
   const attrRe = /(<!--sanity-attr:([\w.-]+)\|([\w-]+)-->\s*)(<[^>]*?>)/g;
+  const titleRe = /(<!--sanity-title:([\w.-]+)-->\s*)<title>[\s\S]*?<\/title>/g;
 
   const files = execSync(`find ${root} -name "*.html" -not -path "*/.git/*" -not -path "*/node_modules/*"`, { encoding: 'utf8' })
     .trim().split('\n').filter(Boolean);
@@ -88,6 +95,11 @@ try {
       const re = new RegExp(`(\\s${attr}=")[^"]*(")`);
       if (!re.test(tag)) return m;
       return lead + tag.replace(re, `$1${escAttr(map.get(key))}$2`);
+    });
+
+    html = html.replace(titleRe, (m, lead, key) => {
+      if (!map.has(key)) return m;                       // unknown key → leave committed
+      return `${lead}<title>${escHtml(map.get(key))}</title>`;
     });
 
     if (html !== before) { writeFileSync(file, html); changed++; }

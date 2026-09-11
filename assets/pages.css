@@ -109,8 +109,12 @@
 
 /* two-column content layout: article + sticky aside (TOC / CTA) */
 .layout{display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:clamp(40px,5vw,76px); align-items:start}
+/* Grid items default to min-width:auto, so a wide child (table.cmp has min-width:560px)
+   stretches the track past the viewport instead of scrolling inside .cmp-wrap.
+   min-width:0 lets the column shrink and hands the overflow back to the scroller. */
+.layout > *{min-width:0}
 .layout .aside{position:sticky; top:90px; display:grid; gap:18px}
-@media (max-width:980px){.layout{grid-template-columns:1fr}.layout .aside{position:static; order:2}}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}.layout .aside{position:static; order:2}}
 
 /* table of contents */
 .toc{background:linear-gradient(170deg,#fff,#F8FAFC); border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px; box-shadow:var(--shadow-1)}
@@ -152,12 +156,15 @@ table.cmp .no{color:#C0392B; font-weight:700}
 
 /* ---------- Pros / cons ---------- */
 .proscons{display:grid; grid-template-columns:1fr 1fr; gap:20px}
-.proscons .pc{border-radius:var(--radius); padding:22px 24px; border:1px solid var(--line); box-shadow:var(--shadow-card)}
+.proscons .pc{border-radius:var(--radius); padding:22px 24px; border:1px solid var(--line); box-shadow:var(--shadow-card); min-width:0}
 .proscons .pros{background:linear-gradient(160deg,#F4FBF6,#fff); border-color:#CDEAD7}
 .proscons .cons{background:linear-gradient(160deg,#FBF3F2,#fff); border-color:#EAD4D0}
-.proscons h3{font-size:1.1rem; color:var(--ink); margin-bottom:12px; display:flex; align-items:center; gap:9px}
+/* min-width:0 + wrap: the flex heading's min-content width otherwise pushes .pc
+   past its grid track on narrow phones (the card has 48px of horizontal padding). */
+.proscons h3{font-size:1.1rem; color:var(--ink); margin-bottom:12px; display:flex; align-items:flex-start; gap:9px; flex-wrap:wrap; min-width:0}
 .proscons ul{display:grid; gap:10px; margin:0; padding:0; list-style:none}
-.proscons li{display:flex; gap:10px; align-items:flex-start; font-size:.94rem; color:var(--ink-soft); line-height:1.45}
+.proscons li{display:flex; gap:10px; align-items:flex-start; font-size:.94rem; color:var(--ink-soft); line-height:1.45; min-width:0}
+.proscons li > *{min-width:0}
 .proscons svg{width:19px;height:19px;flex:none;margin-top:1px}
 .proscons .pros svg{color:#1f7a3d} .proscons .cons svg{color:#C0392B}
 @media (max-width:680px){.proscons{grid-template-columns:1fr}}
