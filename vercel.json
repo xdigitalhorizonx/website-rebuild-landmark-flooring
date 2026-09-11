@@ -589,12 +589,27 @@
       "permanent": true
     },
     {
+      "source": "/tag/:slug*/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
       "source": "/category/:slug*",
       "destination": "/guides/",
       "permanent": true
     },
     {
+      "source": "/category/:slug*/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
       "source": "/blog-home/page/:n*",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-home/page/:n*/",
       "destination": "/guides/",
       "permanent": true
     }
