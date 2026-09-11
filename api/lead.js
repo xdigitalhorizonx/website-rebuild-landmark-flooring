@@ -7,7 +7,7 @@
  *
  * Environment variables (set in Vercel → Settings → Environment Variables):
  *   RESEND_API_KEY  (required)  — also accepts RESEND_TOKEN / RESEND_API_TOKEN
- *   LEAD_TO         (optional)  — defaults to sales@landmarkflooringusa.com
+ *   LEAD_TO         (optional)  — defaults to brandon@ + jeff@landmarkflooringusa.com
  *   LEAD_FROM       (optional)  — defaults to website@landmarkflooringusa.com;
  *                                 the domain MUST be verified in Resend first.
  *
@@ -17,7 +17,7 @@
 
 const KEY_NAMES = ['RESEND_API_KEY', 'RESEND_TOKEN', 'RESEND_API_TOKEN', 'RESEND'];
 
-const DEFAULT_TO = 'sales@landmarkflooringusa.com';
+const DEFAULT_TO = 'brandon@landmarkflooringusa.com,jeff@landmarkflooringusa.com';
 const DEFAULT_FROM = 'Landmark Flooring Website <website@landmarkflooringusa.com>';
 
 function resolveKey() {
