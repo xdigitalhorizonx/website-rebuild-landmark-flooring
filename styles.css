@@ -457,7 +457,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 /* ==========================================================================
    TESTIMONIALS
    ========================================================================== */
-.quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+/* align-items:start so each card is its own height: otherwise the grid row
+   stretches every sibling to match an expanded card, putting the dead space
+   straight back into the two you did not open. */
+.quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start}
 .quotes > *{min-width:0}   /* grid items default to min-width:auto and overflow on narrow phones */
 .quote{
   position:relative; background:linear-gradient(170deg,#fff,#F8FAFC); border:1px solid var(--line);
