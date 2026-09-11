@@ -172,8 +172,14 @@
             <!-- ESTIMATE FORM -->
             <h2 id="estimate-form"><!--sanity:free-estimate.023-->Request your free estimate<!--/sanity:free-estimate.023--></h2>
             <p><!--sanity:free-estimate.024-->Fill out the form and we'll get back to you to schedule. All fields except the message are quick — the more you tell us, the more accurate your first conversation will be.<!--/sanity:free-estimate.024--></p>
-            <!-- TODO (pre-publish): this form has NO backend yet. Wire the action/method to a form handler or email service (e.g. Formspree, Netlify Forms, or a mailto fallback) before launch. -->
-            <form class="lead-form" name="free-estimate" method="post" action="#" aria-label="Free flooring estimate request">
+            <!-- Posts to /api/lead (Vercel serverless fn) which sends via Resend.
+                 Works with JS off: plain POST, then a 303 back to ?sent=ok|invalid|error. -->
+            <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+            <form class="lead-form" name="free-estimate" method="post" action="/api/lead" aria-label="Free flooring estimate request">
+              <!-- honeypot: hidden from people, catches bots -->
+              <div class="hp" aria-hidden="true">
+                <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+              </div>
               <div class="row">
                 <label>Name
                   <input type="text" name="name" autocomplete="name" required placeholder="Your name" />

@@ -45,6 +45,62 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+
+  /* Lead form -> /api/lead (progressive enhancement; plain POST still works) */
+  var lf = document.querySelector(".lead-form");
+  var st = document.getElementById("form-status");
+
+  function say(kind, title, body) {
+    if (!st) return;
+    st.className = "form-status " + (kind === "ok" ? "is-ok" : "is-err");
+    st.innerHTML = "<strong></strong><span></span>";
+    st.firstChild.textContent = title;
+    st.lastChild.textContent = body;
+    st.hidden = false;
+  }
+
+  /* Show the no-JS redirect result (?sent=ok|invalid|error) */
+  var sent = new URLSearchParams(location.search).get("sent");
+  if (sent === "ok") {
+    say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+  } else if (sent === "invalid") {
+    say("err", "Please check the form.", "Name, phone and a valid email are required.");
+  } else if (sent === "error") {
+    say("err", "That didn’t send.", "Something went wrong on our end. Please call (775) 297-3236 and we’ll take the details directly.");
+  }
+
+  if (lf) {
+    lf.addEventListener("submit", function (e) {
+      if (!lf.reportValidity()) return;          /* let the browser show its own errors */
+      e.preventDefault();
+      lf.setAttribute("aria-busy", "true");
+      var btn = lf.querySelector('button[type="submit"]');
+      var label = btn ? btn.textContent : "";
+      if (btn) btn.textContent = "Sending…";
+
+      fetch(lf.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(lf)
+      }).then(function (r) {
+        return r.json().catch(function () { return { ok: r.ok }; });
+      }).then(function (d) {
+        if (d && d.ok) {
+          lf.reset();
+          say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+        } else {
+          say("err", "That didn’t send.", (d && d.error) || "Please call (775) 297-3236 and we’ll take the details directly.");
+        }
+      }).catch(function () {
+        say("err", "That didn’t send.", "Please call (775) 297-3236 and we’ll take the details directly.");
+      }).then(function () {
+        lf.removeAttribute("aria-busy");
+        if (btn) btn.textContent = label;
+        if (st) st.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+  }
+
   /* Footer year */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
