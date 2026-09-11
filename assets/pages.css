@@ -19,7 +19,8 @@
 .nav-toggle .x{display:none}
 .site-header.menu-open .nav-toggle .x{display:block}
 .site-header.menu-open .nav-toggle .bars{display:none}
-@media (max-width:900px){
+/* must match the 992px nav breakpoint in styles.css */
+@media (max-width:992px){
   .nav-toggle{display:inline-flex}
   /* turn the primary nav into a dropdown panel */
   .site-header .nav-links{
@@ -282,3 +283,59 @@ a.chip:hover svg{color:var(--blue)}
 /* guides index: the intro now lives in the hero, so the guide list starts
    straight under the hero rule instead of a full section's worth of padding. */
 .section--tight{padding-top:clamp(30px,2vw + 18px,48px)}
+
+/* ==========================================================================
+   FINANCING — Synchrony promotional offer cards (/financing/ only)
+   Deferred-interest offers are regulated: the disclosure must stay visible
+   (never collapsed behind a click), so .promo-fine is always rendered.
+   ========================================================================== */
+.promo-lede{
+  display:flex; align-items:center; justify-content:space-between; gap:26px; flex-wrap:wrap;
+  padding:clamp(24px,3vw,36px) clamp(24px,3.4vw,42px); border-radius:calc(var(--radius) + 4px);
+  background:radial-gradient(120% 160% at 100% 0%,#0A78D6,#0068BE 55%,#005CA8);
+  box-shadow:var(--shadow-2); position:relative; overflow:hidden;
+}
+.promo-lede::before{content:""; position:absolute; inset:0; opacity:.4; pointer-events:none;
+  background-image:repeating-linear-gradient(115deg,transparent 0 30px,rgba(255,255,255,.05) 30px 31px)}
+.promo-lede .pl-body{flex:1; min-width:260px; position:relative; z-index:1}
+.promo-lede h2{color:#fff; font-size:clamp(1.35rem,1.05rem + 1.1vw,1.85rem)}
+.promo-lede p{color:#fff; margin-top:8px; font-size:1rem; max-width:64ch}
+.promo-lede .btn{position:relative; z-index:1; flex:none}
+
+.promo-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:26px}
+.promo{
+  display:flex; flex-direction:column; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius); box-shadow:var(--shadow-1); overflow:hidden; position:relative;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+.promo:hover{transform:translateY(-4px); box-shadow:var(--shadow-2); border-color:var(--line-blue)}
+.promo::before{content:""; position:absolute; left:0; right:0; top:0; height:4px;
+  background:linear-gradient(90deg,var(--blue),#41A5F0)}
+.promo-head{
+  display:flex; align-items:center; gap:18px;
+  padding:26px clamp(20px,2.4vw,28px) 18px; border-bottom:1px solid var(--line);
+  background:linear-gradient(170deg,var(--pale),#fff);
+}
+.promo-term{
+  display:grid; place-items:center; flex:none; width:82px; height:82px; border-radius:20px;
+  background:linear-gradient(160deg,#0A78D6,#005CA8); color:#fff; box-shadow:var(--shadow-1);
+  line-height:1;
+}
+.promo-term b{font-size:2.1rem; font-weight:800; letter-spacing:-.02em}
+.promo-term span{font-size:.62rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin-top:4px; opacity:.9}
+.promo-head h3{font-size:1.12rem; line-height:1.32; color:var(--ink)}
+.promo-head .promo-cond{margin-top:6px; font-size:.85rem; font-weight:700; color:var(--accent-text)}
+.promo-body{padding:20px clamp(20px,2.4vw,28px) 24px; display:flex; flex-direction:column; flex:1}
+.promo-body > p{color:var(--ink-soft); font-size:.94rem; line-height:1.55}
+.promo-fine{
+  margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
+  font-size:.72rem; line-height:1.5; color:var(--ink-soft); opacity:.85;
+}
+.promo .btn{margin-top:18px; align-self:flex-start}
+
+@media (max-width:860px){ .promo-grid{grid-template-columns:1fr} }
+@media (max-width:420px){
+  .promo-head{flex-direction:column; align-items:flex-start; gap:14px}
+  .promo-term{width:70px; height:70px}
+  .promo-term b{font-size:1.8rem}
+}

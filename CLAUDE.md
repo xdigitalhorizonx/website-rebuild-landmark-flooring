@@ -77,11 +77,41 @@ After committing/pushing any change, ALWAYS end the reply with a link where the 
 ## ⛔ DO NOT INVENT (placeholders only until the client supplies real data)
 - **NV State Contractors Board license number** (goes next to "Licensed, bonded & insured" on home, /about/, /installation/). Leave the existing `TODO (pre-publish)` markers.
 - **Google rating value + review count, and any review quotes/names.** Never add `aggregateRating`/`Review` schema. Replace placeholder testimonials with REAL reviews only.
-- **Financing APR / lender / terms** — keep generic "financing available" wording.
+- ~~Financing APR / lender / terms~~ — **RESOLVED 2026-09-11.** The client supplied the real
+  terms (sourced verbatim from the live WordPress page https://landmarkflooringusa.com/financing/).
+  See **Financing** below — use those exact figures, never invent new ones.
 - **Specific local projects, customer names, project photos** on city/segment pages.
 - **Cost numbers** — only industry ranges explicitly labeled as estimates, never "Landmark's price."
 - **Brand names carried** (Shaw/Mohawk/Stanton/etc.) — list only brands the client confirms they stock.
 - **"Since [year]" / project counts / trust stats.** (The **real logo is now supplied**: blue "LANDMARK FLOORING" wordmark, transparent, no icon, at `assets/logo.png` (700×120) — shown in every header/footer via `.brand-logo`; the dark footer renders it white with CSS `filter:brightness(0) invert(1)`. Source variants incl. white + LF-icon versions are in the client's logo zip.)
+
+## Financing (REAL terms — Synchrony; sourced from the live site 2026-09-11)
+`/financing/` carries the client's actual promotional financing, copied verbatim from
+https://landmarkflooringusa.com/financing/. **Do not paraphrase, round, or invent any of it.**
+- **Lender/partner:** Synchrony. **Card:** *Mohawk Flooring Synchrony HOME™ Credit Card.*
+- **Apply Now link (exact, do not alter the querystring — it is the store's tracking code):**
+  `https://www.synchrony.com/mmc/MI235043200?sitecode=ac0lpi0e6` (opens in a new tab, `rel="noopener"`).
+- **Two offers:** *No Interest if paid in full within 6 months\** (qualifying purchases) and
+  *No Interest if paid in full within 12 months\** (purchases of **$5,000.00 or more**).
+- Both are **deferred-interest** offers. Each card prints the **full Synchrony disclosure verbatim**
+  (As of 07/16/2024 · Purchase APR 34.99% · Penalty APR 39.99% · Min Interest Charge $2 · 2% promo fee
+  on equal-payment no-interest promos of 18 months or more · subject to credit approval).
+- ⚑ **The disclosure must stay visible** — never collapse it behind a `<details>`/accordion or truncate it.
+  Deferred-interest offers are regulated; the terms have to be clear and conspicuous next to the claim.
+  It lives in `.promo-fine` (`assets/pages.css`), which is always rendered.
+- When Synchrony changes the promotion, update **both** the HTML and the matching Sanity blocks
+  (`financing.035`–`financing.042`) and re-check the "As of" date.
+- ⛔ Still DO NOT INVENT: monthly payment examples, approval odds/amounts, or any claim that a
+  specific cost (e.g. labor) is guaranteed financeable — the offers only specify "one receipt."
+
+## Primary navigation (7 items — order is deliberate)
+`Flooring · Installation · Financing · Service Area · Guides · About · Contact` — a funnel:
+what you buy → who installs it → how you pay → where we serve. Present in the header nav of **all
+30 HTML files** and the footer "Company" column (404.html has no footer columns).
+- Adding a 7th item made the desktop header overflow, so the hamburger breakpoint moved
+  **900px → 992px** (`styles.css` + `assets/pages.css` — the two `@media (max-width:992px)` blocks
+  **must stay in sync**), and `.nav-links` got a responsive `clamp()` gap/font plus `white-space:nowrap`.
+- **Before adding an 8th nav item, re-measure** — the row has no slack left at ~993px.
 
 ## Design system (match it exactly on new pages — see `index.html` + `styles.css`)
 - **Brand:** blue `#0074D4` (`--blue`), pale `#E6F4FF`; warm amber AA-token system

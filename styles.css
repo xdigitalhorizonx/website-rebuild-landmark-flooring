@@ -112,22 +112,22 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   color:#fff; font-weight:800; font-size:.92rem; letter-spacing:.01em;
   box-shadow:0 4px 12px rgba(0,116,212,.35); cursor:pointer; user-select:none;
 }
-.nav-links{display:flex; gap:var(--s3); align-items:center}
+.nav-links{display:flex; gap:clamp(12px,1.5vw,24px); align-items:center; flex:none}
 /* Real wordmark logo (replaces the LF text mark) */
 .brand{line-height:0}
 .brand-logo{height:40px; width:auto; display:block}
 .site-header.scrolled .brand-logo{height:38px}
 .site-footer .brand-logo{height:34px; filter:brightness(0) invert(1)}
 @media (max-width:560px){.brand-logo{height:30px}}
-.nav-links a{color:var(--ink-soft); font-weight:500; font-size:.96rem; position:relative; padding:6px 2px}
+.nav-links a{color:var(--ink-soft); font-weight:500; font-size:clamp(.88rem,.72rem + .34vw,.96rem); position:relative; padding:6px 2px; white-space:nowrap}
 .nav-links a::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
   background:var(--accent-fill); transform:scaleX(0); transform-origin:left;
   transition:transform .22s var(--ease);
 }
 .nav-links a:hover{color:var(--ink)} .nav-links a:hover::after{transform:scaleX(1)}
-.nav-cta{display:flex; align-items:center; gap:var(--s2)}
-.nav-cta .phone{color:var(--ink); font-weight:700; font-size:.96rem; display:inline-flex; align-items:center; gap:6px}
+.nav-cta{display:flex; align-items:center; gap:var(--s2); flex:none}
+.nav-cta .phone{color:var(--ink); font-weight:700; font-size:.96rem; display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
 .nav-cta .phone svg{width:16px;height:16px}
 
 /* ---------- Buttons ---------- */
@@ -642,7 +642,9 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   .cred span{display:none}
   .cred b{font-size:.9rem}
 }
-@media (max-width:900px){
+/* 992, not 900: the 7-item primary nav (incl. Financing) no longer fits the
+   header row below ~980px, so the hamburger has to take over before that. */
+@media (max-width:992px){
   .nav-links{display:none}
   .nav-cta .phone{display:none}
 }
