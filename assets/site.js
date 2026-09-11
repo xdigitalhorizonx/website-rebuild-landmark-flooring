@@ -45,53 +45,67 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+
+  /* Lead form -> /api/lead (progressive enhancement; plain POST still works) */
+  var lf = document.querySelector(".lead-form");
+  var st = document.getElementById("form-status");
+
+  function say(kind, title, body) {
+    if (!st) return;
+    st.className = "form-status " + (kind === "ok" ? "is-ok" : "is-err");
+    st.innerHTML = "<strong></strong><span></span>";
+    st.firstChild.textContent = title;
+    st.lastChild.textContent = body;
+    st.hidden = false;
+  }
+
+  /* Show the no-JS redirect result (?sent=ok|invalid|error) */
+  var sent = new URLSearchParams(location.search).get("sent");
+  if (sent === "ok") {
+    say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+  } else if (sent === "invalid") {
+    say("err", "Please check the form.", "Name, phone and a valid email are required.");
+  } else if (sent === "error") {
+    say("err", "That didn’t send.", "Something went wrong on our end. Please call (775) 297-3236 and we’ll take the details directly.");
+  }
+
+  if (lf) {
+    lf.addEventListener("submit", function (e) {
+      if (!lf.reportValidity()) return;          /* let the browser show its own errors */
+      e.preventDefault();
+      lf.setAttribute("aria-busy", "true");
+      var btn = lf.querySelector('button[type="submit"]');
+      var label = btn ? btn.textContent : "";
+      if (btn) btn.textContent = "Sending…";
+
+      fetch(lf.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        /* URLSearchParams, not FormData: FormData posts multipart/form-data,
+           which the handler does not parse. This sends the same encoding the
+           plain no-JS form POST uses. */
+        body: new URLSearchParams(new FormData(lf))
+      }).then(function (r) {
+        return r.json().catch(function () { return { ok: r.ok }; });
+      }).then(function (d) {
+        if (d && d.ok) {
+          lf.reset();
+          say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+        } else {
+          say("err", "That didn’t send.", (d && d.error) || "Please call (775) 297-3236 and we’ll take the details directly.");
+        }
+      }).catch(function () {
+        say("err", "That didn’t send.", "Please call (775) 297-3236 and we’ll take the details directly.");
+      }).then(function () {
+        lf.removeAttribute("aria-busy");
+        if (btn) btn.textContent = label;
+        if (st) st.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+  }
+
   /* Footer year */
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* Free-estimate form: progressive enhancement over a real form POST.
-     With JS off the form still submits normally to /api/lead; this just keeps
-     the visitor on the page and reports success or failure inline. */
-  var leadForm = document.getElementById("lead-form");
-  if (leadForm) {
-    var status = document.getElementById("lead-status");
-    var submit = leadForm.querySelector('button[type="submit"]');
-    var submitLabel = submit ? submit.innerHTML : "";
-
-    function say(msg, kind) {
-      if (!status) return;
-      status.textContent = msg;
-      status.hidden = false;
-      status.className = "form-status is-" + kind;
-    }
-
-    leadForm.addEventListener("submit", function (e) {
-      if (!window.fetch || !leadForm.checkValidity()) return;   // let the browser handle it
-      e.preventDefault();
-
-      if (submit) { submit.disabled = true; submit.textContent = "Sending\u2026"; }
-      say("Sending your request\u2026", "pending");
-
-      fetch(leadForm.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(leadForm)))
-      })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok && d.ok, d: d }; }); })
-        .then(function (res) {
-          if (!res.ok) throw new Error(res.d && res.d.error);
-          leadForm.reset();
-          say("Thanks \u2014 your request is in. We'll call you to schedule your free estimate.", "ok");
-          if (submit) submit.remove();
-        })
-        .catch(function (err) {
-          say(
-            (err && err.message) ||
-              "Something went wrong sending that. Please call (775) 297-3236 and we'll take your details.",
-            "err"
-          );
-          if (submit) { submit.disabled = false; submit.innerHTML = submitLabel; }
-        });
-    });
-  }
 })();

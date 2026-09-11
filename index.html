@@ -680,6 +680,64 @@
       });
     }
 
+    /* Reviews: clamp to 6 lines and add a Read more toggle.
+       The button is injected at runtime rather than written into the HTML because
+       the review markup lives inside a <!--sanity:home.06x--> region — anything
+       committed in there gets overwritten by the Sanity value at build time. */
+    (function reviewClamp(){
+      var quotes = [].slice.call(document.querySelectorAll('.quote'));
+      if (!quotes.length) return;
+
+      function build(q, i){
+        var p = q.querySelector('p');
+        if (!p) return;
+
+        /* Measure against the clamp, then decide. Re-runs on font load and resize
+           because the answer changes with both: measuring once (before the webfont
+           swaps in, or at a width that is briefly 0) can wrongly conclude the text
+           fits and leave the card unclamped with no way to expand it. */
+        q.classList.add('is-clamped');
+        var truncated = p.scrollHeight > p.clientHeight + 2;
+        var btn = q.querySelector('.quote-more');
+
+        if (!truncated) {
+          /* Only unclamp when the width is real. A 0-width or not-yet-laid-out
+             container reports scrollHeight === clientHeight and would otherwise
+             look like "it fits". */
+          if (q.clientWidth > 0) {
+            q.classList.remove('is-clamped', 'is-open');
+            if (btn) btn.remove();
+          }
+          return;
+        }
+        if (btn) return;                       /* already wired */
+
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quote-more';
+        btn.setAttribute('aria-expanded', 'false');
+        if (!p.id) p.id = 'review-text-' + (i + 1);
+        btn.setAttribute('aria-controls', p.id);
+        btn.innerHTML = '<span>Read more</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+        btn.addEventListener('click', function () {
+          var open = q.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.querySelector('span').textContent = open ? 'Read less' : 'Read more';
+          if (!open) q.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        });
+
+        p.insertAdjacentElement('afterend', btn);
+      }
+
+      function run(){ quotes.forEach(build); }
+
+      run();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+      var t;
+      window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(run, 180); });
+    })();
+
     /* deep-link: #subfloor opens blueprint mode on load (also handy for sharing the wink) */
     if(location.hash.toLowerCase() === '#subfloor'){ toggleBlueprint(true); }
 
