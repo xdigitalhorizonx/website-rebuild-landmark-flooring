@@ -169,8 +169,7 @@
             </div>
 
             <h2 id="why-landmark"><!--sanity:free-estimate.021-->Why homeowners choose Landmark<!--/sanity:free-estimate.021--></h2>
-            <p><!--sanity:free-estimate.022-->Landmark Flooring is a local Carson City store <em>and</em> installer. Every floor we sell, we install with skilled installers, and we stand behind both with <strong>The Landmark Guarantee</strong>: warrantied products plus warrantied labor from the skilled installers we use, so you're covered on the floor and the work. We're licensed, bonded and insured.
-            <!-- TODO (pre-publish): insert NV contractor license number here once supplied by the client. Do not invent a number. --><!--/sanity:free-estimate.022--></p>
+            <p><!--sanity:free-estimate.022-->Landmark Flooring is a local Carson City store <em>and</em> installer. Every floor we sell, we install with skilled installers, and we stand behind both with <strong>The Landmark Guarantee</strong>: warrantied products plus warrantied labor from the skilled installers we use, so you're covered on the floor and the work. We're licensed, bonded and insured. Nevada State Contractors Board license <strong>#0088180</strong>.<!--/sanity:free-estimate.022--></p>
 
             <!-- ESTIMATE FORM -->
             <h2 id="estimate-form"><!--sanity:free-estimate.023-->Request your free estimate<!--/sanity:free-estimate.023--></h2>
@@ -178,6 +177,7 @@
             <!-- Posts to /api/lead (Vercel serverless fn) which sends via Resend.
                  Works with JS off: plain POST, then a 303 back to ?sent=ok|invalid|error. -->
             <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+            <noscript><p class="form-status is-err" style="display:block">JavaScript is off, so this form will open a confirmation page when you submit. If anything goes wrong, call <a href="tel:+17752973236">(775) 297-3236</a>.</p></noscript>
             <form class="lead-form" name="free-estimate" method="post" action="/api/lead" aria-label="Free flooring estimate request">
               <!-- honeypot: hidden from people, catches bots -->
               <div class="hp" aria-hidden="true">
@@ -339,7 +339,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured</span>
+        <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured · NV Lic. #0088180</span>
         <span>Carson City · Reno · Northern Nevada</span>
         <a class="foot-credit" href="https://digitalhorizon.dev/" target="_blank" rel="noopener">Carson City web design by <strong>Digital Horizon</strong></a>
       </div>

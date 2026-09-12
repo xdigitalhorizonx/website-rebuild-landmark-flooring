@@ -19,8 +19,8 @@
 .nav-toggle .x{display:none}
 .site-header.menu-open .nav-toggle .x{display:block}
 .site-header.menu-open .nav-toggle .bars{display:none}
-/* must match the 992px nav breakpoint in styles.css */
-@media (max-width:992px){
+/* must match the 1023px nav breakpoint in styles.css */
+@media (max-width:1023px){
   .nav-toggle{display:inline-flex}
   /* turn the primary nav into a dropdown panel */
   .site-header .nav-links{
@@ -250,6 +250,15 @@ table.cmp .no{color:#C0392B; font-weight:700}
 
 /* lead form (free-estimate / contact) — posts nowhere yet; progressive enhancement TODO */
 .lead-form{display:grid;gap:16px;background:linear-gradient(170deg,#fff,#F8FAFC);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,3vw,34px);box-shadow:var(--shadow-card)}
+/* Honeypot: must be reachable by bots that parse CSS-less HTML but never seen
+   or focusable by people, so it is moved off-canvas rather than display:none. */
+.lead-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* Submission status (aria-live) */
+.form-status{margin:0;padding:12px 14px;border-radius:var(--radius-s);font-size:.94rem;font-weight:600;border:1px solid transparent}
+.form-status.is-pending{background:#F1F5F9;border-color:var(--line);color:var(--ink-soft)}
+.form-status.is-ok{background:#F0FAF3;border-color:#CDEAD7;color:#1f7a3d}
+.form-status.is-err{background:#FCF3F2;border-color:#EAD4D0;color:#B33A2B}
+.lead-form button[disabled]{opacity:.65;cursor:progress}
 .lead-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:620px){.lead-form .row{grid-template-columns:1fr}}
 .lead-form label{display:grid;gap:6px;font-size:.86rem;font-weight:600;color:var(--ink)}
