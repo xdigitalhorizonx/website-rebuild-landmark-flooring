@@ -714,13 +714,15 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   .brand span:not(.mark){font-size:.98rem}
 }
 
-/* Footer: profile links + agency credit */
-.foot-social{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px}
-.foot-social a{display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:1px solid rgba(255,255,255,.14); border-radius:999px;
-  color:#C7CFDB; font-size:.82rem; font-weight:600; letter-spacing:.02em; transition:color .16s var(--ease), border-color .16s var(--ease), background .16s var(--ease)}
-.foot-social a::after{content:""; width:6px; height:6px; border-top:1.5px solid currentColor; border-right:1.5px solid currentColor; transform:rotate(45deg); opacity:.7}
-.foot-social a:hover{color:#fff; border-color:var(--accent-on-dark); background:rgba(237,176,104,.08)}
+/* Footer: profile links (brand glyphs) + agency credit */
+.foot-social{list-style:none; margin:20px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px}
+.foot-social a{width:38px; height:38px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid rgba(255,255,255,.16); color:#C7CFDB; background:rgba(255,255,255,.03);
+  transition:color .16s var(--ease), border-color .16s var(--ease), background .16s var(--ease), transform .16s var(--ease)}
+.foot-social svg{width:18px; height:18px; fill:currentColor; display:block}
+.foot-social a:hover, .foot-social a:focus-visible{background:var(--brand); border-color:var(--brand); color:#fff; transform:translateY(-2px)}
 .foot-credit{color:#8A95A4; transition:color .16s var(--ease)}
 .foot-credit strong{color:#B7C0CD; font-weight:600}
 .foot-credit:hover, .foot-credit:hover strong{color:var(--accent-on-dark)}
+.lic-line{font-size:.94rem; color:var(--ink-soft)}
 @media (max-width:520px){.foot-bottom{flex-direction:column; gap:8px}}

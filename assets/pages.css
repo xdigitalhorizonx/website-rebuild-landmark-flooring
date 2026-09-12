@@ -364,3 +364,21 @@ a.chip:hover svg{color:var(--blue)}
 .form-status.is-err{background:#FEF3F2;border-color:#FECDCA;color:#B42318}
 .form-status strong{display:block;font-weight:700;margin-bottom:2px}
 .lead-form[aria-busy="true"]{opacity:.65;pointer-events:none}
+
+
+/* Real Google reviews: rating badge, inline review callout, article quote grid */
+.rating-badge{text-align:center; margin:-6px 0 28px}
+.rating-badge a{display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:999px; background:#fff;
+  border:1px solid var(--line); box-shadow:var(--shadow-1); color:var(--ink); font-size:.95rem; transition:border-color .16s var(--ease), transform .16s var(--ease)}
+.rating-badge a:hover{border-color:var(--line-blue); transform:translateY(-2px)}
+.rating-badge .rb-star{color:#E8A03C; font-size:1.15rem; line-height:1}
+.rating-badge strong{font-weight:800}
+.review-inline{margin:22px 0 28px; padding:22px 24px; border-left:4px solid var(--blue); background:#fff; border-radius:0 14px 14px 0; box-shadow:var(--shadow-1)}
+.review-inline .stars{margin:0 0 8px}
+.review-inline blockquote{margin:0}
+.review-inline blockquote p{margin:0; font-size:1.02rem; line-height:1.6; color:var(--ink)}
+.review-inline figcaption{margin-top:12px; font-weight:700; font-size:.9rem; color:var(--ink)}
+.review-inline figcaption span{color:var(--ink-mute); font-weight:500}
+.review-inline figcaption a{color:var(--blue); font-weight:600}
+.quotes--article{margin:18px 0 8px}
+@media (max-width:900px){.quotes--article{grid-template-columns:1fr}}
