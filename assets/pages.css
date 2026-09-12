@@ -381,4 +381,7 @@ a.chip:hover svg{color:var(--blue)}
 .review-inline figcaption span{color:var(--ink-mute); font-weight:500}
 .review-inline figcaption a{color:var(--blue); font-weight:600}
 .quotes--article{margin:18px 0 8px}
+.prose .quotes--article .quote{border-left:1px solid var(--line); padding:26px 24px 22px; background:#fff; border-radius:16px}
+.prose .quotes--article .quote p{font-style:normal; font-size:.97rem; color:var(--ink-soft)}
+.prose .rating-badge{text-align:left; margin:8px 0 22px}
 @media (max-width:900px){.quotes--article{grid-template-columns:1fr}}

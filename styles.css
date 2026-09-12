@@ -720,6 +720,7 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   border:1px solid rgba(255,255,255,.16); color:#C7CFDB; background:rgba(255,255,255,.03);
   transition:color .16s var(--ease), border-color .16s var(--ease), background .16s var(--ease), transform .16s var(--ease)}
 .foot-social svg{width:18px; height:18px; fill:currentColor; display:block}
+.foot-social .bbb-mark{font-size:10.5px; font-weight:800; letter-spacing:.01em; line-height:1}
 .foot-social a:hover, .foot-social a:focus-visible{background:var(--brand); border-color:var(--brand); color:#fff; transform:translateY(-2px)}
 .foot-credit{color:#8A95A4; transition:color .16s var(--ease)}
 .foot-credit strong{color:#B7C0CD; font-weight:600}
