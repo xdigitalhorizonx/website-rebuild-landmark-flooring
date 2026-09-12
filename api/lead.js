@@ -33,6 +33,17 @@ const esc = (s) =>
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
+/* Field caps and an allowlist for the one field with a fixed vocabulary. */
+const MAX = { name: 120, phone: 40, email: 200, address: 200, project_type: 60, message: 4000 };
+const PROJECT_TYPES = new Set([
+  '', 'luxury-vinyl', 'carpet', 'hardwood', 'laminate',
+  'hardwood-refinishing', 'custom-rugs', 'commercial', 'not-sure',
+]);
+
+/* Strip CR/LF and clamp. `name` is interpolated into the Subject header, so a
+   raw newline there could inject additional headers. */
+const clean = (v, max) => String(v == null ? '' : v).replace(/[\r\n]+/g, ' ').trim().slice(0, max);
+
 async function readBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
   const raw = await new Promise((resolve, reject) => {
@@ -96,20 +107,24 @@ module.exports = async (req, res) => {
   const wantsJson = String(req.headers.accept || '').includes('application/json');
   const done = (status, payload, flag) => {
     if (wantsJson) return res.status(status).json(payload);
-    // no-JS fallback: bounce back to the form with a status flag
-    res.setHeader('Location', `/free-estimate/?sent=${flag}#estimate-form`);
+    // no-JS fallback. Success goes to a static page that renders the confirmation
+    // without JS (the ?sent=ok message is painted by site.js, so a JS-off visitor
+    // would otherwise see nothing). Failures return to the form.
+    const location = flag === 'ok' ? '/thank-you/' : `/free-estimate/?sent=${flag}#estimate-form`;
+    res.setHeader('Location', location);
     return res.status(303).end();
   };
 
   // Honeypot: real users never fill this; bots do. Accept and discard silently.
   if (String(body.company || '').trim()) return done(200, { ok: true }, 'ok');
 
-  const name = String(body.name || '').trim();
-  const phone = String(body.phone || '').trim();
-  const email = String(body.email || '').trim();
-  const address = String(body.address || '').trim();
-  const projectType = String(body.project_type || '').trim();
-  const message = String(body.message || '').trim();
+  const name = clean(body.name, MAX.name);
+  const phone = clean(body.phone, MAX.phone);
+  const email = clean(body.email, MAX.email);
+  const address = clean(body.address, MAX.address);
+  let projectType = clean(body.project_type, MAX.project_type);
+  if (!PROJECT_TYPES.has(projectType)) projectType = '';   // never echo an unexpected value
+  const message = String(body.message || '').trim().slice(0, MAX.message);
 
   const missing = [];
   if (!name) missing.push('name');
