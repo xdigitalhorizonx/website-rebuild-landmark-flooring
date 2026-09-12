@@ -536,14 +536,68 @@
            alt="Golden-hour Lake Tahoe mountain home interior with warm honey-oak hardwood floors and windows framing pines and snow-capped Sierra Nevada peaks." />
       <div class="cta-scrim" aria-hidden="true"></div>
       <div class="container">
-        <p class="eyebrow eyebrow--center eyebrow--light reveal"><!--sanity:home.075-->Let&#39;s talk floors<!--/sanity:home.075--></p>
-        <h2 id="cta-h" class="reveal d1"><!--sanity:home.076-->Ready to Fall in Love with Your Floors?<!--/sanity:home.076--></h2>
-        <p class="reveal d2"><!--sanity:home.077-->Get a free estimate or stop by our Carson City showroom — premium and budget options, financing and guaranteed installation, all in one place.<!--/sanity:home.077--></p>
-        <div class="cta-actions reveal d2">
-          <a class="btn btn-primary" href="tel:+17752973236">Get a Free Estimate</a>
-          <a class="cta-phone" href="tel:+17752973236">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-            (775) 297-3236</a>
+        <div class="cta-grid">
+          <div class="cta-copy">
+          <p class="eyebrow eyebrow--center eyebrow--light reveal"><!--sanity:home.075-->Let&#39;s talk floors<!--/sanity:home.075--></p>
+          <h2 id="cta-h" class="reveal d1"><!--sanity:home.076-->Ready to Fall in Love with Your Floors?<!--/sanity:home.076--></h2>
+          <p class="reveal d2"><!--sanity:home.077-->Get a free estimate or stop by our Carson City showroom — premium and budget options, financing and guaranteed installation, all in one place.<!--/sanity:home.077--></p>
+          <div class="cta-actions reveal d2">
+            <a class="btn btn-primary" href="tel:+17752973236">Get a Free Estimate</a>
+            <a class="cta-phone" href="tel:+17752973236">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              (775) 297-3236</a>
+          </div>
+          </div>
+          <div class="cta-form reveal d2">
+            <form class="lead-form lead-form--home" name="home-estimate" method="post" action="/api/lead" aria-label="Free flooring estimate request">
+              <p class="form-title">Request your free estimate</p>
+              <div class="hp" aria-hidden="true">
+                <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <div class="row">
+                <label>Name
+                  <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+                </label>
+                <label>Email
+                  <input type="email" name="email" autocomplete="email" required placeholder="you@email.com" />
+                </label>
+              </div>
+              <div class="row">
+                <label>Mobile phone <span class="opt">(optional — so we can text you about your project)</span>
+                  <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(775) 000-0000" />
+                </label>
+                <label>Project type
+                  <select name="project_type">
+                    <option value="">Select a flooring type…</option>
+                    <option value="luxury-vinyl">Luxury vinyl (LVP/LVT)</option>
+                    <option value="carpet">Carpet</option>
+                    <option value="hardwood">Hardwood</option>
+                    <option value="laminate">Laminate</option>
+                    <option value="hardwood-refinishing">Hardwood refinishing</option>
+                    <option value="custom-rugs">Custom rugs</option>
+                    <option value="commercial">Commercial / property management</option>
+                    <option value="not-sure">Not sure yet — help me choose</option>
+                  </select>
+                </label>
+              </div>
+              <label>Tell us about your project
+                <textarea name="message" rows="3" placeholder="Rooms, approximate square footage, timing."></textarea>
+              </label>
+              <!-- SMS consent (A2P 10DLC). Compliance strings: do NOT reword. Both boxes unchecked + optional by design. -->
+              <fieldset class="sms-consent">
+                <legend>Text message preferences</legend>
+                <label class="check"><input type="checkbox" name="sms_consent_care" value="yes" /><span><b>Text me about my project.</b> I agree to receive customer-care text messages from Landmark Flooring about my estimate, appointments, installation scheduling and job status.</span></label>
+                <label class="check"><input type="checkbox" name="sms_consent_promo" value="yes" /><span><b>Text me offers and promotions.</b> <em class="opt-tag">Optional</em> I agree to receive promotional text messages from Landmark Flooring about sales, seasonal offers and new products.</span></label>
+                <p class="sms-disclosure">By checking a box above, you consent to receive text messages from <strong>Landmark Flooring</strong> at the mobile number you provide, sent using an automatic telephone dialing system. <strong>Consent is not a condition of purchase.</strong> Customer-care message frequency varies based on your project; promotional messages are limited to <strong>4 per month</strong>. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to unsubscribe at any time, or reply <strong>HELP</strong> for help. Carriers are not liable for delayed or undelivered messages. Your mobile number and opt-in consent will never be shared with third parties for marketing purposes. See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms-conditions/">Terms &amp; Conditions</a>.</p>
+              </fieldset>
+              <input type="hidden" name="form_name" value="home" />
+              <input type="hidden" name="page_url" value="https://landmarkflooringusa.com/" />
+              <input type="hidden" name="disclosure_version" value="2026-09-12" />
+              <button class="btn btn-primary" type="submit">Request My Free Estimate
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <p class="form-note">Prefer to talk now? Call <a href="tel:+17752973236">(775) 297-3236</a>. We never share your information.</p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -594,6 +648,7 @@
       </div>
       <div class="foot-bottom">
         <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured · NV Lic. #0088180</span>
+        <nav class="foot-legal" aria-label="Legal"><a href="/privacy-policy/">Privacy Policy</a><span aria-hidden="true">·</span><a href="/terms-conditions/">Terms &amp; Conditions</a></nav>
         <span>Carson City · Reno · Northern Nevada</span>
         <a class="foot-credit" href="https://digitalhorizon.dev/" target="_blank" rel="noopener">Carson City web design by <strong>Digital Horizon</strong></a>
       </div>

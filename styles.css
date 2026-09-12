@@ -722,6 +722,10 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
 .foot-social svg{width:18px; height:18px; fill:currentColor; display:block}
 .foot-social .bbb-mark{font-size:10.5px; font-weight:800; letter-spacing:.01em; line-height:1}
 .foot-social a:hover, .foot-social a:focus-visible{background:var(--brand); border-color:var(--brand); color:#fff; transform:translateY(-2px)}
+.foot-legal{display:inline-flex; align-items:center; gap:10px}
+.foot-legal a{color:#B7C0CD; transition:color .16s var(--ease)}
+.foot-legal a:hover{color:var(--accent-on-dark)}
+.foot-legal span{color:#5A6472}
 .foot-credit{color:#8A95A4; transition:color .16s var(--ease)}
 .foot-credit strong{color:#B7C0CD; font-weight:600}
 .foot-credit:hover, .foot-credit:hover strong{color:var(--accent-on-dark)}

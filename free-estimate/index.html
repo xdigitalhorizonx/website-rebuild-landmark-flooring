@@ -194,8 +194,8 @@
                 <label>Name
                   <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
                 </label>
-                <label>Phone
-                  <input type="tel" name="phone" autocomplete="tel" required placeholder="(775) 000-0000" />
+                <label>Mobile phone <span class="opt">(optional — so we can text you about your project)</span>
+                  <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(775) 000-0000" />
                 </label>
               </div>
               <div class="row">
@@ -222,6 +222,16 @@
               <label>Tell us about your project
                 <textarea name="message" placeholder="Which rooms, approximate square footage, timing, and anything else that helps us prepare."></textarea>
               </label>
+              <!-- SMS consent (A2P 10DLC). Compliance strings: do NOT reword. Both boxes unchecked + optional by design. -->
+              <fieldset class="sms-consent">
+                <legend>Text message preferences</legend>
+                <label class="check"><input type="checkbox" name="sms_consent_care" value="yes" /><span><b>Text me about my project.</b> I agree to receive customer-care text messages from Landmark Flooring about my estimate, appointments, installation scheduling and job status.</span></label>
+                <label class="check"><input type="checkbox" name="sms_consent_promo" value="yes" /><span><b>Text me offers and promotions.</b> <em class="opt-tag">Optional</em> I agree to receive promotional text messages from Landmark Flooring about sales, seasonal offers and new products.</span></label>
+                <p class="sms-disclosure">By checking a box above, you consent to receive text messages from <strong>Landmark Flooring</strong> at the mobile number you provide, sent using an automatic telephone dialing system. <strong>Consent is not a condition of purchase.</strong> Customer-care message frequency varies based on your project; promotional messages are limited to <strong>4 per month</strong>. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to unsubscribe at any time, or reply <strong>HELP</strong> for help. Carriers are not liable for delayed or undelivered messages. Your mobile number and opt-in consent will never be shared with third parties for marketing purposes. See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms-conditions/">Terms &amp; Conditions</a>.</p>
+              </fieldset>
+              <input type="hidden" name="form_name" value="free-estimate" />
+              <input type="hidden" name="page_url" value="https://landmarkflooringusa.com/free-estimate/" />
+              <input type="hidden" name="disclosure_version" value="2026-09-12" />
               <p class="form-note"><!--sanity:free-estimate.025-->By submitting, you agree to be contacted about your estimate. We never share your information. Prefer to talk now? Call <a href="tel:+17752973236">(775) 297-3236</a>.<!--/sanity:free-estimate.025--></p>
               <button class="btn btn-primary" type="submit">Request My Free Estimate
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -347,6 +357,7 @@
       </div>
       <div class="foot-bottom">
         <span>© <span id="year">2026</span> Landmark Flooring · Licensed, bonded &amp; insured · NV Lic. #0088180</span>
+        <nav class="foot-legal" aria-label="Legal"><a href="/privacy-policy/">Privacy Policy</a><span aria-hidden="true">·</span><a href="/terms-conditions/">Terms &amp; Conditions</a></nav>
         <span>Carson City · Reno · Northern Nevada</span>
         <a class="foot-credit" href="https://digitalhorizon.dev/" target="_blank" rel="noopener">Carson City web design by <strong>Digital Horizon</strong></a>
       </div>
