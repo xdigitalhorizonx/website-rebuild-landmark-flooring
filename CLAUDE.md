@@ -109,34 +109,63 @@ https://landmarkflooringusa.com/financing/. **Do not paraphrase, round, or inven
 
 ## Primary navigation (7 items — order is deliberate)
 `Flooring · Installation · Financing · Service Area · Guides · About · Contact` — a funnel:
-what you buy → who installs it → how you pay → where we serve. Present in the header nav of **all
-30 HTML files** and the footer "Company" column (404.html has no footer columns).
-- Adding a 7th item made the desktop header overflow, so the hamburger breakpoint moved
-  **900px → 992px** (`styles.css` + `assets/pages.css` — the two `@media (max-width:992px)` blocks
-  **must stay in sync**), and `.nav-links` got a responsive `clamp()` gap/font plus `white-space:nowrap`.
-- **Before adding an 8th nav item, re-measure** — the row has no slack left at ~993px.
+what you buy → who installs it → how you pay → where we serve. In the header nav of every
+page and the footer "Company" column (404.html has no footer columns).
+
+**The header row cannot shrink.** `.brand`, `.nav-links` and `.nav-cta` are all `flex:none`
+(`.brand` deliberately so — letting it shrink is what squashed the mobile wordmark), so the
+row either fits or it overflows the page. Full-width it needs ~1250px. Three rules keep it
+honest — **change one and re-measure all of them**:
+- **≤1023px** → hamburger (`@media (max-width:1023px)` in **both** `styles.css` and
+  `assets/pages.css` — these must stay in sync).
+- **1024–1279px** → desktop nav, but the logo eases to 32px and the header phone is hidden
+  (`.site-header .nav-cta .phone` — the `.site-header` prefix is required to beat the later
+  base rule). Click-to-call stays available via `.sticky-call` and the footer.
+- **≥1280px** → everything on: 40px logo, phone visible.
+
+`.nav-links` also uses a responsive `clamp()` gap and font with `white-space:nowrap`.
+**Verified 320px → 1600px: zero horizontal overflow on all 32 pages, and the nav is always
+reachable (never both nav and hamburger, never neither).** Re-run that sweep before adding
+an 8th nav item or changing the logo size — there is no slack left at 1024px.
 
 ## Forms → Resend (the site's only backend)
-The lead form posts to **`api/lead.mjs`**, a Vercel serverless function that emails the
+The lead form posts to **`api/lead.js`**, a Vercel serverless function that emails the
 submission via **Resend**. Everything else on the site is static. Client directive: all
 forms go through Resend — never Bricks, Netlify Forms, Formspree or a mailto fallback.
-- **Required env vars** (Vercel → Project → Settings → Environment Variables):
-  `RESEND_API_KEY` · `LEAD_TO` (destination inbox, comma-separated for several) ·
-  `LEAD_FROM` (a sender on a **Resend-verified domain**, else the send is rejected).
-  The destination comes only from the env, never the request body — so it can't be an open relay.
-- **Behaviour:** validates name/phone/email, drops unknown `project_type`, strips CR/LF so a
-  field can't inject mail headers, and has an off-canvas **honeypot** (`name="company"`) that
-  returns a silent 200 without sending. `reply_to` is set to the visitor so Jeff can reply directly.
-- **Content negotiation:** a `fetch` (JS on) gets JSON and an inline status message; a plain
-  JS-off form POST gets a **303 redirect to `/thank-you/`**, and on failure a small styled
-  error page carrying the phone number. A visitor must never see raw JSON — and a
-  misconfigured deploy must fail **loudly**, never fake a success that drops the lead.
+- **Env vars** (Vercel → Project → Settings → Environment Variables):
+  `RESEND_API_KEY` (also accepts `RESEND_TOKEN` / `RESEND_API_TOKEN` / `RESEND`) ·
+  `LEAD_TO` (defaults to brandon@ + jeff@landmarkflooringusa.com) ·
+  `LEAD_FROM` (defaults to `website@landmarkflooringusa.com` — **the domain must be
+  verified in Resend**, or every send is rejected while the key still looks fine).
+  The destination comes from env or those defaults, **never the request body**, so the
+  endpoint cannot be used as an open relay.
+- ⚠️ **`RESEND_API_KEY` is Production-scoped.** Preview deploys return
+  `{"ok":false,"keyEnvVar":null}` and cannot send. Tick **Preview** on the variable to
+  test from a PR URL.
+- **`GET /api/lead` is a config check** — reports which env var name resolved, the
+  to/from addresses and whether the key was found, with no secret values. Use it to
+  verify wiring on any deploy without submitting a real lead.
+- **Behaviour:** validates name/phone/email; strips CR/LF from every field (`name` is
+  interpolated into the `Subject` header, so a raw newline could inject headers); caps
+  field and payload sizes; drops an unrecognised `project_type` rather than echoing it;
+  rejects `multipart/form-data` with 415 (the browser paths send urlencoded/JSON, so
+  multipart means a caller regressed); 10s timeout; `reply_to` is the visitor. An
+  off-canvas **honeypot** (`name="company"`) returns a silent 200 without sending.
+- **Content negotiation** (`Accept: application/json` ⇒ JSON, else redirect):
+  JS on → JSON + an inline message painted by `assets/site.js` (`.lead-form`,
+  `#form-status`). JS off → **303 to `/thank-you/` on success**, or back to
+  `/free-estimate/?sent=invalid|error` on failure. Success needs the static page
+  because the `?sent=ok` message is painted by JS — a JS-off visitor would otherwise
+  see nothing. A `<noscript>` note on the form points at the phone number.
+- A misconfigured deploy must fail **loudly** (logged + an honest error naming the
+  phone number), never fake a success that drops the lead.
 - **`/thank-you/`** is `noindex,follow` and deliberately **absent from sitemap.xml** — a
   confirmation page must never rank or be counted as a landing page.
-- Progressive enhancement lives in `assets/site.js` (`#lead-form`); styles in `assets/pages.css`
-  (`.lead-form .hp`, `.form-status`).
-- `/contact/` currently has **no** form — only the free-estimate page does. Any new form
-  should post to this same endpoint.
+- `outputDirectory: "."` serves the repo root statically. Vercel routes `api/*.js` to the
+  function, but a `.mjs` handler would be served as **downloadable source**, so
+  `vercel.json` redirects `/api/:fn(.*)\.(mjs|js)` → `/api/:fn` as a guard. Prefer `.js`.
+- `/contact/` has **no** form — only the free-estimate page does. Any new form should
+  post to this same endpoint.
 
 ## ⚑ The `<title>` marker trap (fixed 2026-09-11 — don't reintroduce)
 `<title>` is **RCDATA**: comments inside it are NOT markup, they are literal text. A

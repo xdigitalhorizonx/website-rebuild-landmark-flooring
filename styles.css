@@ -121,6 +121,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
    then caps the image's width while its height stays fixed — a squashed wordmark. */
 .site-header .brand{flex:none}
 .site-header.scrolled .brand-logo{height:38px}
+/* Between the hamburger breakpoint (1024px) and ~1280px the header row cannot fit:
+   .brand (233px, flex:none since the logo-squash fix), .nav-links and .nav-cta are
+   all unshrinkable, so the row needs ~1250px. Rather than hand the nav to the
+   hamburger on every tablet and small laptop, this band drops the header phone
+   (still one tap away via .sticky-call and the footer) and eases the logo down.
+   Verified: no horizontal overflow anywhere from 320px to 1600px. */
+@media (min-width:1024px) and (max-width:1279px){
+  .site-header .brand-logo{height:32px}
+  .site-header.scrolled .brand-logo{height:32px}
+  /* .site-header prefix so this beats the later base .nav-cta .phone rule */
+  .site-header .nav-cta .phone{display:none}
+}
 .site-footer .brand-logo{height:34px; filter:brightness(0) invert(1)}
 @media (max-width:560px){
   /* On phones the header row is tight (logo + CTA + menu). A fixed-height logo either
@@ -680,9 +692,9 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   .cred span{display:none}
   .cred b{font-size:.9rem}
 }
-/* 992, not 900: the 7-item primary nav (incl. Financing) no longer fits the
+/* 1023, not 900: the 7-item primary nav (incl. Financing) no longer fits the
    header row below ~980px, so the hamburger has to take over before that. */
-@media (max-width:992px){
+@media (max-width:1023px){
   .nav-links{display:none}
   .nav-cta .phone{display:none}
 }
