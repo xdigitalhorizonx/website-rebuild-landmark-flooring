@@ -115,10 +115,25 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .nav-links{display:flex; gap:clamp(12px,1.5vw,24px); align-items:center; flex:none}
 /* Real wordmark logo (replaces the LF text mark) */
 .brand{line-height:0}
-.brand-logo{height:40px; width:auto; display:block}
+.brand-logo{height:40px; width:auto; display:block; max-width:none; flex:none}
+/* The logo lives in .brand (flex) inside .nav (flex). Without flex:none the row can
+   shrink .brand below the logo's natural width, and the global img{max-width:100%}
+   then caps the image's width while its height stays fixed — a squashed wordmark. */
+.site-header .brand{flex:none}
 .site-header.scrolled .brand-logo{height:38px}
 .site-footer .brand-logo{height:34px; filter:brightness(0) invert(1)}
-@media (max-width:560px){.brand-logo{height:30px}}
+@media (max-width:560px){
+  /* On phones the header row is tight (logo + CTA + menu). A fixed-height logo either
+     fits or overflows, and the old rule let flex squash its width while the height
+     stayed pinned. Instead let .brand absorb the shrink and size the logo by WIDTH
+     with height:auto, so it scales proportionally (152x26 at 375px, ~144x25 at 360px)
+     and can never distort. Also covers .scrolled, whose 38px rule out-specified the
+     old bare .brand-logo rule and grew the logo on scroll. */
+  .site-header .brand{flex:1 1 auto; min-width:0; max-width:152px}
+  .site-header .brand-logo,.site-header.scrolled .brand-logo{height:auto; width:100%; max-width:152px}
+  .nav{gap:6px}
+  .nav-cta{gap:6px}
+}
 .nav-links a{color:var(--ink-soft); font-weight:500; font-size:clamp(.88rem,.72rem + .34vw,.96rem); position:relative; padding:6px 2px; white-space:nowrap}
 .nav-links a::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
@@ -683,6 +698,6 @@ body.blueprint .wrap{filter:saturate(.35) contrast(1.04)}
   .hero-inner{padding:110px 0 40px}
 }
 @media (max-width:560px){
-  .nav-cta .btn{padding:11px 16px; font-size:.9rem}
+  .nav-cta .btn{padding:10px 10px; font-size:.82rem}
   .brand span:not(.mark){font-size:.98rem}
 }

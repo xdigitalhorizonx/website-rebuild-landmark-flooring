@@ -4,11 +4,6 @@
   "outputDirectory": ".",
   "redirects": [
     {
-      "source": "/api/:fn.js",
-      "destination": "/api/:fn",
-      "permanent": false
-    },
-    {
       "source": "/guides/refinish-vs-replace-hardwood-floors",
       "destination": "/installation/hardwood-refinishing/",
       "permanent": true
@@ -586,6 +581,56 @@
     {
       "source": "/lander/",
       "destination": "/financing/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/post-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/post-sitemap.xml/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/page-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/page-sitemap.xml/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/category-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/category-sitemap.xml/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/bricks_template-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/bricks_template-sitemap.xml/",
+      "destination": "/sitemap.xml",
       "permanent": true
     },
     {
