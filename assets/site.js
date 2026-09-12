@@ -62,6 +62,7 @@
   /* Show the no-JS redirect result (?sent=ok|invalid|error) */
   var sent = new URLSearchParams(location.search).get("sent");
   if (sent === "ok") {
+    if (window.gtag) gtag("event", "generate_lead", { form: "free-estimate", method: "post" });
     say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
   } else if (sent === "invalid") {
     say("err", "Please check the form.", "Name, phone and a valid email are required.");
@@ -90,6 +91,7 @@
       }).then(function (d) {
         if (d && d.ok) {
           lf.reset();
+          if (window.gtag) gtag("event", "generate_lead", { form: "free-estimate", method: "fetch" });
           say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
         } else {
           say("err", "That didn’t send.", (d && d.error) || "Please call (775) 297-3236 and we’ll take the details directly.");
