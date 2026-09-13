@@ -389,13 +389,13 @@ a.chip:hover svg{color:var(--blue)}
 
 /* SMS consent block (A2P 10DLC) — shared by every lead form */
 .lead-form .opt{font-weight:500; color:var(--ink-mute); font-size:.8rem}
-.sms-consent{margin:4px 0 0; padding:18px 20px 16px; border:1px solid var(--line-blue); border-left:4px solid var(--blue); border-radius:0 12px 12px 0; background:var(--pale,#E6F4FF)}
-.sms-consent legend{float:left; width:100%; margin:0 0 12px; padding:0; font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--blue)}
-.sms-consent .check{clear:both; display:flex; align-items:flex-start; gap:12px; margin:0 0 12px; font-size:.9rem; font-weight:500; line-height:1.5; color:var(--ink-soft); cursor:pointer}
-.sms-consent .check input[type="checkbox"]{flex:0 0 auto; width:20px; height:20px; margin:2px 0 0; accent-color:var(--blue); cursor:pointer}
+.sms-consent{margin:2px 0 0; padding:12px 14px 11px; border:1px solid var(--line-blue); border-left:4px solid var(--blue); border-radius:0 10px 10px 0; background:var(--pale,#E6F4FF)}
+.sms-consent legend{float:left; width:100%; margin:0 0 7px; padding:0; font-size:.66rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--blue)}
+.sms-consent .check{clear:both; display:flex; align-items:flex-start; gap:10px; margin:0 0 7px; font-size:.8rem; font-weight:500; line-height:1.38; color:var(--ink-soft); cursor:pointer}
+.sms-consent .check input[type="checkbox"]{flex:0 0 auto; width:18px; height:18px; margin:1px 0 0; accent-color:var(--blue); cursor:pointer}
 .sms-consent .check b{color:var(--ink); font-weight:700}
-.sms-consent .opt-tag{display:inline-block; font-style:normal; font-size:.66rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); background:#fff; border:1px solid var(--line); border-radius:4px; padding:1px 6px; margin:0 4px 0 0; vertical-align:1px}
-.sms-consent .sms-disclosure{clear:both; margin:8px 0 0; padding-top:12px; border-top:1px solid var(--line-blue); font-size:.8rem; line-height:1.6; color:var(--ink-mute); font-weight:500}
+.sms-consent .opt-tag{display:inline-block; font-style:normal; font-size:.58rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); background:#fff; border:1px solid var(--line); border-radius:4px; padding:0 5px; margin:0 3px 0 0; vertical-align:1px}
+.sms-consent .sms-disclosure{clear:both; margin:3px 0 0; padding-top:8px; border-top:1px solid var(--line-blue); font-size:.7rem; line-height:1.42; color:var(--ink-mute); font-weight:500}
 .sms-consent .sms-disclosure strong{color:var(--ink); font-weight:700}
 .sms-consent .sms-disclosure a{color:var(--blue); text-decoration:underline; text-underline-offset:2px}
 
