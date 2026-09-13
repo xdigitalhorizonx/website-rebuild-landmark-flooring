@@ -4,6 +4,30 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "4914"
+        }
+      ],
+      "destination": "/terms-conditions/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id",
+          "value": "4911"
+        }
+      ],
+      "destination": "/privacy-policy/",
+      "permanent": true
+    },
+    {
       "source": "/api/:fn(.*)\\.(mjs|js)",
       "destination": "/api/:fn",
       "permanent": false
@@ -667,6 +691,16 @@
       "source": "/blog-home/page/:n*/",
       "destination": "/guides/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/terms-conditions",
+      "destination": "/privacy-policy/"
+    },
+    {
+      "source": "/terms-conditions/",
+      "destination": "/privacy-policy/"
     }
   ]
 }
