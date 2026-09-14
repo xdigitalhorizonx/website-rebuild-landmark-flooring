@@ -46,15 +46,13 @@ const PROJECT_TYPES = new Set([
    exact language a subscriber saw, so we store it with each record. Bump
    SMS_DISCLOSURE_VERSION (and the hidden disclosure_version inputs) whenever
    the wording changes. */
-const SMS_DISCLOSURE_VERSION = '2026-09-13';
+const SMS_DISCLOSURE_VERSION = '2026-09-13.2';
 const SMS_DISCLOSURE =
-  'By checking the box above, you consent to receive conversational customer-care text messages from ' +
-  'Landmark Flooring at the mobile number you provide about your estimate, appointments, installation ' +
-  'scheduling and job status, sent using an automatic telephone dialing system. Consent is not a ' +
-  'condition of purchase. Message frequency varies based on your project. Message and data rates may ' +
-  'apply. Reply STOP to unsubscribe at any time, or reply HELP for help. Carriers are not liable for ' +
-  'delayed or undelivered messages. Your mobile number and opt-in consent will not be shared with third ' +
-  'parties. See our Privacy Policy and Terms & Conditions.';
+  'By checking the box above, you agree to receive customer-care text messages from Landmark Flooring at ' +
+  'the mobile number you provide about your estimate, appointments, installation scheduling and job status. ' +
+  'Message frequency varies based on your project. Message and data rates may apply. Reply STOP to opt out ' +
+  'at any time, or reply HELP for help. Carriers are not liable for delayed or undelivered messages. Your ' +
+  'mobile number will not be shared with third parties. See our Privacy Policy and Terms & Conditions.';
 const FORM_PAGES = {
   'free-estimate': 'https://landmarkflooringusa.com/free-estimate/',
   'home': 'https://landmarkflooringusa.com/',
