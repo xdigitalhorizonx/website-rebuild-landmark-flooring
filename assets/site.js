@@ -49,6 +49,10 @@
   /* Lead form -> /api/lead (progressive enhancement; plain POST still works) */
   var lf = document.querySelector(".lead-form");
   var st = document.getElementById("form-status");
+  /* Per-form copy: a form may set data-ok-title / data-ok-body; the estimate wording is the default. */
+  var formName = (lf && lf.getAttribute("name")) || "free-estimate";
+  var okTitle = (lf && lf.getAttribute("data-ok-title")) || "Thanks — we’ve got it.";
+  var okBody = (lf && lf.getAttribute("data-ok-body")) || "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.";
 
   function say(kind, title, body) {
     if (!st) return;
@@ -62,8 +66,8 @@
   /* Show the no-JS redirect result (?sent=ok|invalid|error) */
   var sent = new URLSearchParams(location.search).get("sent");
   if (sent === "ok") {
-    if (window.gtag) gtag("event", "generate_lead", { form: "free-estimate", method: "post" });
-    say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+    if (window.gtag) gtag("event", "generate_lead", { form: formName, method: "post" });
+    say("ok", okTitle, okBody);
   } else if (sent === "invalid") {
     say("err", "Please check the form.", "Name and a valid email are required.");
   } else if (sent === "error") {
@@ -91,8 +95,8 @@
       }).then(function (d) {
         if (d && d.ok) {
           lf.reset();
-          if (window.gtag) gtag("event", "generate_lead", { form: "free-estimate", method: "fetch" });
-          say("ok", "Thanks — we’ve got it.", "We’ll be in touch shortly to schedule your free estimate. Need us sooner? Call (775) 297-3236.");
+          if (window.gtag) gtag("event", "generate_lead", { form: formName, method: "fetch" });
+          say("ok", okTitle, okBody);
         } else {
           say("err", "That didn’t send.", (d && d.error) || "Please call (775) 297-3236 and we’ll take the details directly.");
         }

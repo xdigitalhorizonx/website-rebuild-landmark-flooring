@@ -56,6 +56,13 @@ const SMS_DISCLOSURE =
 const FORM_PAGES = {
   'free-estimate': 'https://landmarkflooringusa.com/free-estimate/',
   'home': 'https://landmarkflooringusa.com/',
+  'text-updates': 'https://landmarkflooringusa.com/text-updates/',
+};
+// Where a JS-off submit lands. Failures return to the form that was submitted.
+const FORM_RETURN = {
+  'free-estimate': { ok: '/thank-you/', back: '/free-estimate/?sent={flag}#estimate-form' },
+  'home': { ok: '/thank-you/', back: '/?sent={flag}#estimate-form' },
+  'text-updates': { ok: '/text-updates/confirmed/', back: '/text-updates/?sent={flag}#text-updates-form' },
 };
 const yes = (v) => /^(yes|on|true|1)$/i.test(String(v == null ? '' : v).trim());
 
@@ -164,12 +171,14 @@ module.exports = async (req, res) => {
   }
 
   const wantsJson = String(req.headers.accept || '').includes('application/json');
+  const formName = FORM_PAGES[clean(body.form_name, 40)] ? clean(body.form_name, 40) : 'free-estimate';
   const done = (status, payload, flag) => {
     if (wantsJson) return res.status(status).json(payload);
     // no-JS fallback. Success goes to a static page that renders the confirmation
     // without JS (the ?sent=ok message is painted by site.js, so a JS-off visitor
     // would otherwise see nothing). Failures return to the form.
-    const location = flag === 'ok' ? '/thank-you/' : `/free-estimate/?sent=${flag}#estimate-form`;
+    const ret = FORM_RETURN[formName];
+    const location = flag === 'ok' ? ret.ok : ret.back.replace('{flag}', flag);
     res.setHeader('Location', location);
     return res.status(303).end();
   };
@@ -184,7 +193,6 @@ module.exports = async (req, res) => {
   let projectType = clean(body.project_type, MAX.project_type);
   if (!PROJECT_TYPES.has(projectType)) projectType = '';   // never echo an unexpected value
   const message = String(body.message || '').trim().slice(0, MAX.message);
-  const formName = FORM_PAGES[clean(body.form_name, 40)] ? clean(body.form_name, 40) : 'free-estimate';
   const pageUrl = FORM_PAGES[formName];
   const consentCare = yes(body.sms_consent_care);
   const consentPromo = yes(body.sms_consent_promo);
@@ -281,7 +289,9 @@ module.exports = async (req, res) => {
         from,
         to: to.split(',').map((s) => s.trim()).filter(Boolean),
         reply_to: email,
-        subject: `Free estimate request — ${name}${projectType ? ` (${projectType})` : ''}`,
+        subject: formName === 'text-updates'
+          ? `Text message opt-in — ${name}${consentCare ? '' : ' (box not checked)'}`
+          : `Free estimate request — ${name}${projectType ? ` (${projectType})` : ''}`,
         html,
         text,
       }),

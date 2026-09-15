@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Analytics 4 (gtag.js) — property "Landmark Flooring", stream G-KPV3BK2621 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPV3BK2621"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-KPV3BK2621');</script>
+
+  <title>Text Message Updates | Landmark Flooring, Carson City, NV</title>
+  <meta name="description" content="Add your mobile number so Landmark Flooring can text you about your estimate, appointments, installation scheduling and job status. Reply STOP to opt out." />
+  <link rel="canonical" href="https://landmarkflooringusa.com/text-updates/" />
+  <!-- Utility page for customers already in contact with us; kept out of search results on purpose. -->
+  <meta name="robots" content="noindex,follow" />
+  <meta name="theme-color" content="#0074D4" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Landmark Flooring" />
+  <meta property="og:title" content="Text Message Updates | Landmark Flooring" />
+  <meta property="og:description" content="Get updates about your flooring project by text. Reply STOP to opt out, HELP for help." />
+  <meta property="og:url" content="https://landmarkflooringusa.com/text-updates/" />
+  <meta property="og:image" content="https://landmarkflooringusa.com/assets/split-showroom.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/assets/pages.css" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  <!-- Single-purpose consent page: one centred column, no aside. Scoped here so styles.css / pages.css stay untouched. -->
+  <style>
+    .optin .container{max-width:760px}
+    .optin .subhero-inner{max-width:none}
+    .optin .lead-form{margin-top:8px}
+    .optin .sms-consent{margin-top:6px}
+    .optin .facts{display:grid;gap:18px;margin-top:8px}
+    .optin .fact{padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+    .optin .fact h2{font-size:1.05rem;margin:0 0 8px}
+    .optin .fact ul{margin:0;padding-left:20px;display:grid;gap:5px}
+    .optin .fact p{margin:0}
+    .optin .kw{display:inline-block;background:var(--blue);color:#fff;font-weight:700;border-radius:4px;padding:.05em .45em;letter-spacing:.03em}
+    @media (min-width:700px){.optin .facts{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="wrap">
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Landmark Flooring home">
+        <img class="brand-logo" src="/assets/logo.png" width="700" height="120" alt="Landmark Flooring" />
+      </a>
+      <div class="nav-cta">
+        <a class="phone" href="tel:+17752973236" aria-label="Call Landmark Flooring at (775) 297-3236">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          (775)&nbsp;297-3236
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span aria-current="page">Text updates</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="main" class="optin">
+    <section class="subhero" aria-labelledby="page-h1">
+      <div class="container">
+        <div class="subhero-inner reveal">
+          <p class="eyebrow">Text message updates</p>
+          <h1 id="page-h1">Get updates about your flooring project by text</h1>
+          <p class="lead">Working with Landmark Flooring on an estimate or installation? Add your mobile number below and we can text you about your estimate, appointment times, installation scheduling and job status.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band-cream2" aria-labelledby="form-h" id="text-updates-form">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="form-h" style="font-size:var(--f-h2)">Your details</h2>
+        </div>
+        <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+        <noscript><p class="form-status is-err" style="display:block">JavaScript is off, so this form will open a confirmation page when you submit.</p></noscript>
+        <form class="lead-form reveal d1" name="text-updates" method="post" action="/api/lead" aria-label="Text message updates"
+              data-ok-title="Thanks — you're set." data-ok-body="We'll text you about your project from (775) 297-3236. Reply STOP at any time to opt out.">
+          <!-- honeypot: hidden from people, catches bots -->
+          <div class="hp" aria-hidden="true">
+            <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div class="row">
+            <label>Name
+              <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+            </label>
+            <label>Mobile phone
+              <input type="tel" name="phone" autocomplete="tel" inputmode="tel" required placeholder="(775) 000-0000" />
+            </label>
+          </div>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required placeholder="you@email.com" />
+          </label>
+          <!-- SMS consent (A2P 10DLC). Compliance strings: do NOT reword. Box unchecked + optional by design. -->
+          <fieldset class="sms-consent">
+            <legend>Text message preferences</legend>
+            <label class="check"><input type="checkbox" name="sms_consent_care" value="yes" /><span><b>Text me about my project.</b> I agree to receive customer-care text messages from Landmark Flooring about my estimate, appointments, installation scheduling and job status.</span></label>
+            <p class="sms-disclosure">By checking the box above, you agree to receive customer-care text messages from <strong>Landmark Flooring</strong> at the mobile number you provide about your estimate, appointments, installation scheduling and job status. Message frequency varies based on your project. <strong>Message and data rates may apply.</strong> Reply <strong>STOP</strong> to opt out at any time, or reply <strong>HELP</strong> for help. Carriers are not liable for delayed or undelivered messages. Your mobile number will not be shared with third parties. See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/privacy-policy/#terms-conditions">Terms &amp; Conditions</a>.</p>
+          </fieldset>
+          <input type="hidden" name="form_name" value="text-updates" />
+          <input type="hidden" name="page_url" value="https://landmarkflooringusa.com/text-updates/" />
+          <input type="hidden" name="disclosure_version" value="2026-09-13.2" />
+          <p class="form-note">Questions about your project? Call <a href="tel:+17752973236">(775) 297-3236</a>, Mon–Fri 9am–5pm.</p>
+          <button class="btn btn-primary" type="submit">Save my text preferences
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section band-cream" aria-labelledby="facts-h">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="facts-h" style="font-size:var(--f-h2)">How text updates work</h2>
+        </div>
+        <div class="facts reveal d1">
+          <div class="fact">
+            <h2>What we text about</h2>
+            <ul>
+              <li>Your estimate and any questions we have about it</li>
+              <li>Appointment reminders and arrival windows</li>
+              <li>Material arrival and installation scheduling</li>
+              <li>Job status and follow-up on your project</li>
+            </ul>
+          </div>
+          <div class="fact">
+            <h2>Stopping at any time</h2>
+            <p>Reply <span class="kw">STOP</span> to any message and we stop texting you. Reply <span class="kw">HELP</span> for help, or call <a href="tel:+17752973236">(775) 297-3236</a>. Message frequency varies by project, and message and data rates may apply. Your number is never shared with third parties. Full details are in our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/privacy-policy/#terms-conditions">Terms &amp; Conditions</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="plank" aria-hidden="true"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot-bottom" style="border-top:0">
+        <span>© <span id="year">2026</span> Landmark Flooring · 2085 E William St #10, Carson City, NV 89701 · (775) 297-3236 · NV Lic. #0088180</span>
+        <nav class="foot-legal" aria-label="Legal"><a href="/privacy-policy/">Privacy Policy</a> · <a href="/privacy-policy/#terms-conditions">Terms &amp; Conditions</a></nav>
+        <span>Carson City · Reno · Northern Nevada</span>
+      </div>
+    </div>
+  </footer>
+  </div><!-- /.wrap -->
+
+  <script src="/assets/site.js"></script>
+</body>
+</html>
