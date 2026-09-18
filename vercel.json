@@ -663,6 +663,116 @@
       "permanent": true
     },
     {
+      "source": "/lvt%2Flvp",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2Flvp/",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2flvp",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2flvp/",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt/lvp",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt/lvp/",
+      "destination": "/flooring/luxury-vinyl/",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2Flvp-care",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2Flvp-care/",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2flvp-care",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/lvt%2flvp-care/",
+      "destination": "/flooring/luxury-vinyl/#care",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/carpet",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/carpet/",
+      "destination": "/flooring/carpet/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/laminate/",
+      "destination": "/flooring/laminate/",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/products/",
+      "destination": "/flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/shoppingforflooringguidefornevadans",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
+      "source": "/shoppingforflooringguidefornevadans/",
+      "destination": "/guides/",
+      "permanent": true
+    },
+    {
       "source": "/tag/:slug*",
       "destination": "/guides/",
       "permanent": true
