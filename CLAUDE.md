@@ -51,6 +51,27 @@ account brandon@landmarkflooringusa.com). Content is baked into the static HTML 
   vercel.app alias, and localhost:8000 (build-time fetch needs none of these; they
   future-proof any runtime/Studio use).
 
+## Assets, fonts, icons & headers (performance pass 2026-09-23)
+- **Fonts are self-hosted.** `assets/fonts/outfit-variable-latin.woff2` (one variable file,
+  weights 400–800, latin subset, OFL.txt alongside) is declared by the `@font-face` at the top of
+  `styles.css`, with an Arial metric-matched `'Outfit Fallback'` face so text does not reflow when
+  the webfont swaps in (this was the hero CLS). Every page preloads the woff2 in `<head>`.
+  **Never re-add a `fonts.googleapis.com` link** — the privacy policy (§5) now states that no
+  request goes to Google Fonts.
+- **Images ship as WebP** (`assets/*.webp`, q82) in every `src`/`srcset`; the original JPEGs stay in
+  the repo because their URLs are indexed, and `og-image.jpg` stays JPEG on purpose (social scrapers).
+  The home hero is a `<picture>` with AVIF → WebP → JPEG sources; its `<!--sanity-attr:home.alt078|alt-->`
+  marker sits **inside** the `<picture>`, immediately before the `<img>`, which is what the build's
+  attribute regex needs. New photos: export JPEG + WebP (and AVIF for anything above the fold).
+- **Favicon set** at the repo root: `favicon.ico` (16/32/48), `favicon.svg`, `favicon-96.png`,
+  `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `site.webmanifest`; linked from every
+  page's `<head>` after `theme-color`. Design: white Outfit "L" on brand blue — **no LF monogram**.
+- **`vercel.json` `headers`:** nosniff / SAMEORIGIN / Referrer-Policy / Permissions-Policy on every
+  route, 1-year immutable cache on `assets/fonts/`, 30-day cache on images. The first redirect rule
+  sends `www.` → apex (the canonical host and the GSC property).
+- **Sitemap dates:** run `node scripts/update-sitemap-lastmod.mjs` before committing a change that
+  touches pages — it writes each page's last-commit date (today for files with uncommitted changes).
+
 ## ⚑ Always give a view link when finishing changes (client directive)
 After committing/pushing any change, ALWAYS end the reply with a link where the client can view it:
 - **Vercel preview (latest for this branch):** https://website-rebuild-landmark-git-ce7011-xdigitalhorizonxs-projects.vercel.app — the branch alias always points to the newest deploy of `claude/landmark-flooring-seo-pages-4y1jr0`.

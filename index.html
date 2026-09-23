@@ -12,6 +12,10 @@
   <link rel="canonical" href="https://landmarkflooringusa.com/" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0074D4" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
@@ -30,10 +34,8 @@
   <!--sanity-attr:meta.home.twDescription|content--><meta name="twitter:description" content="Carpet, LVP, hardwood, laminate &amp; custom rugs for Northern Nevada. Licensed, bonded &amp; insured · free estimates — (775) 297-3236." />
   <meta name="twitter:image" content="https://landmarkflooringusa.com/assets/og-image.jpg" />
 
-  <!-- Fonts: Outfit (headings + body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts: Outfit (headings + body) — self-hosted in assets/fonts/, @font-face lives in styles.css -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/outfit-variable-latin.woff2" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/pages.css" />
 
@@ -165,8 +167,13 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero" aria-label="Landmark Flooring — Carson City's premier flooring store">
-      <!--sanity-attr:home.alt078|alt--><img class="hero-bg" src="assets/hero-mountain-room.jpg" width="3840" height="2143"
-           alt="Bright Northern Nevada mountain-modern living room with wide-plank warm honey-oak hardwood floors, a linear fireplace, and floor-to-ceiling windows framing snow-dusted Sierra Nevada mountains." / srcset="assets/hero-mountain-room-1280.jpg 1280w, assets/hero-mountain-room-1920.jpg 1920w, assets/hero-mountain-room-2560.jpg 2560w, assets/hero-mountain-room.jpg 3840w" sizes="100vw" fetchpriority="high" decoding="async" />
+      <picture>
+        <source type="image/avif" srcset="assets/hero-mountain-room-1280.avif 1280w, assets/hero-mountain-room-1920.avif 1920w, assets/hero-mountain-room-2560.avif 2560w, assets/hero-mountain-room.avif 3840w" sizes="100vw" />
+        <source type="image/webp" srcset="assets/hero-mountain-room-1280.webp 1280w, assets/hero-mountain-room-1920.webp 1920w, assets/hero-mountain-room-2560.webp 2560w, assets/hero-mountain-room.webp 3840w" sizes="100vw" />
+        <!--sanity-attr:home.alt078|alt--><img class="hero-bg" src="assets/hero-mountain-room-1280.jpg" width="3840" height="2143"
+             alt="Bright Northern Nevada mountain-modern living room with wide-plank warm honey-oak hardwood floors, a linear fireplace, and floor-to-ceiling windows framing snow-dusted Sierra Nevada mountains."
+             srcset="assets/hero-mountain-room-1280.jpg 1280w, assets/hero-mountain-room-1920.jpg 1920w, assets/hero-mountain-room-2560.jpg 2560w, assets/hero-mountain-room.jpg 3840w" sizes="100vw" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-grain" aria-hidden="true"></div>
 
@@ -262,7 +269,7 @@
 
         <div class="offer-grid">
           <article class="offer reveal">
-            <div class="offer-media"><!--sanity-attr:home.alt079|alt--><img src="assets/material-carpet.jpg" width="1100" height="856" loading="lazy" alt="Close-up of plush warm greige cut-pile residential carpet." /></div>
+            <div class="offer-media"><!--sanity-attr:home.alt079|alt--><img src="assets/material-carpet.webp" width="1100" height="856" loading="lazy" alt="Close-up of plush warm greige cut-pile residential carpet." /></div>
             <div class="offer-body">
               <h3><!--sanity:home.017-->Carpet<!--/sanity:home.017--></h3>
               <p><!--sanity:home.018-->Soft, warm and quiet underfoot — the cozy choice for bedrooms and family rooms, in styles for every budget.<!--/sanity:home.018--></p>
@@ -271,7 +278,7 @@
           </article>
 
           <article class="offer reveal d1">
-            <div class="offer-media"><!--sanity-attr:home.alt080|alt--><img src="assets/material-luxury-vinyl.jpg" width="1100" height="856" loading="lazy" alt="Close-up of waterproof luxury vinyl plank flooring in a warm oak wood-look finish with a water droplet beading on the surface." /></div>
+            <div class="offer-media"><!--sanity-attr:home.alt080|alt--><img src="assets/material-luxury-vinyl.webp" width="1100" height="856" loading="lazy" alt="Close-up of waterproof luxury vinyl plank flooring in a warm oak wood-look finish with a water droplet beading on the surface." /></div>
             <div class="offer-body">
               <h3><!--sanity:home.019-->Luxury Vinyl <span style="font-weight:600;font-size:.8em;color:var(--ink-mute)">(LVP/LVT, Waterproof)</span><!--/sanity:home.019--></h3>
               <p><!--sanity:home.020-->100% waterproof and built for real life — the pet- and kid-friendly favorite that looks like real wood, spill after spill.<!--/sanity:home.020--></p>
@@ -280,7 +287,7 @@
           </article>
 
           <article class="offer reveal d2">
-            <div class="offer-media"><!--sanity-attr:home.alt081|alt--><img src="assets/material-laminate.jpg" width="1100" height="856" loading="lazy" alt="Close-up of medium-brown oak wood-look laminate flooring planks with crisp grain detail and a bevelled seam." /></div>
+            <div class="offer-media"><!--sanity-attr:home.alt081|alt--><img src="assets/material-laminate.webp" width="1100" height="856" loading="lazy" alt="Close-up of medium-brown oak wood-look laminate flooring planks with crisp grain detail and a bevelled seam." /></div>
             <div class="offer-body">
               <h3><!--sanity:home.021-->Laminate<!--/sanity:home.021--></h3>
               <p><!--sanity:home.022-->A crisp, realistic wood look for less — durable, easy to live on and easy on the budget for busy households.<!--/sanity:home.022--></p>
@@ -289,7 +296,7 @@
           </article>
 
           <article class="offer reveal d3">
-            <div class="offer-media"><!--sanity-attr:home.alt082|alt--><img src="assets/material-hardwood.jpg" width="1100" height="856" loading="lazy" alt="Close-up of genuine warm honey-oak solid hardwood flooring showing natural cathedral grain and a satin finish." /></div>
+            <div class="offer-media"><!--sanity-attr:home.alt082|alt--><img src="assets/material-hardwood.webp" width="1100" height="856" loading="lazy" alt="Close-up of genuine warm honey-oak solid hardwood flooring showing natural cathedral grain and a satin finish." /></div>
             <div class="offer-body">
               <h3><!--sanity:home.023-->Hardwood / Wood<!--/sanity:home.023--></h3>
               <p><!--sanity:home.024-->Genuine hardwood brings timeless warmth, character and lasting value to any Northern Nevada home.<!--/sanity:home.024--></p>
@@ -298,7 +305,7 @@
           </article>
 
           <article class="offer reveal d4">
-            <div class="offer-media"><!--sanity-attr:home.alt083|alt--><img src="assets/material-custom-rug.jpg" width="1100" height="856" loading="lazy" alt="Close-up of a custom area rug&#39;s bound edge in warm cream and terracotta-amber wool." /></div>
+            <div class="offer-media"><!--sanity-attr:home.alt083|alt--><img src="assets/material-custom-rug.webp" width="1100" height="856" loading="lazy" alt="Close-up of a custom area rug&#39;s bound edge in warm cream and terracotta-amber wool." /></div>
             <div class="offer-body">
               <h3><!--sanity:home.025-->Custom Rugs<!--/sanity:home.025--></h3>
               <p><!--sanity:home.026-->Made to your size, color and binding — a finished custom rug that anchors any room beautifully.<!--/sanity:home.026--></p>
@@ -346,7 +353,7 @@
         <!-- Split A: image left / text right -->
         <div class="split">
           <div class="split-media reveal">
-            <!--sanity-attr:home.alt084|alt--><img src="assets/split-guarantee-carpet-dog.jpg" width="1216" height="832" loading="lazy"
+            <!--sanity-attr:home.alt084|alt--><img src="assets/split-guarantee-carpet-dog.webp" width="1216" height="832" loading="lazy"
                  alt="Bernese mountain dog resting on soft flecked beige and grey cut-pile carpet." />
           </div>
           <div class="split-text reveal d1">
@@ -368,7 +375,7 @@
         <!-- Split B: image right / text left -->
         <div class="split rev">
           <div class="split-media reveal">
-            <!--sanity-attr:home.alt085|alt--><img src="assets/split-hardwood-living-room.jpg" width="1216" height="832" loading="lazy"
+            <!--sanity-attr:home.alt085|alt--><img src="assets/split-hardwood-living-room.webp" width="1216" height="832" loading="lazy"
                  alt="Bright open-plan living room with wide-plank light oak hardwood floors, a cream sofa and a grey area rug." />
           </div>
           <div class="split-text reveal d1">
@@ -532,7 +539,7 @@
 
     <!-- ============ 10 · FINAL CTA BAND (over photo) ============ -->
     <section class="cta" id="estimate" aria-labelledby="cta-h">
-      <!--sanity-attr:home.alt086|alt--><img class="cta-bg" src="assets/cta-tahoe-home.jpg" width="1216" height="832" loading="lazy"
+      <!--sanity-attr:home.alt086|alt--><img class="cta-bg" src="assets/cta-tahoe-home.webp" width="1216" height="832" loading="lazy"
            alt="Golden-hour Lake Tahoe mountain home interior with warm honey-oak hardwood floors and windows framing pines and snow-capped Sierra Nevada peaks." />
       <div class="cta-scrim" aria-hidden="true"></div>
       <div class="container">
