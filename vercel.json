@@ -33,14 +33,14 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path(.*)",
       "has": [
         {
           "type": "host",
           "value": "www.landmarkflooringusa.com"
         }
       ],
-      "destination": "https://landmarkflooringusa.com/:path*",
+      "destination": "https://landmarkflooringusa.com/:path",
       "permanent": true
     },
     {
