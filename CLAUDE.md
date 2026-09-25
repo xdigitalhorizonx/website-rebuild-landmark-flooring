@@ -188,6 +188,28 @@ forms go through Resend — never Bricks, Netlify Forms, Formspree or a mailto f
 - `/contact/` has **no** form — only the free-estimate page does. Any new form should
   post to this same endpoint.
 
+## Website dashboard (`/dashboard`, password-protected)
+A private analytics page for the owner: GA4 property **546190207** + Search Console
+**sc-domain:landmarkflooringusa.com**, read with one read-only Google service account.
+- **Routes:** `vercel.json` rewrites `/dashboard` and `/dashboard/` → `api/dashboard.js` (sign-in page,
+  or the app when signed in). `POST /api/dashboard-login`, `POST /api/dashboard-logout`,
+  `GET /api/dashboard-data` (JSON, 401 without a session). Shared code lives in `api/_dashboard/`
+  (underscore folder = never an endpoint); page HTML/CSS/JS are JS modules there, not static files.
+- **Env vars:** `DASHBOARD_USERS` (comma-separated `email:hash`, hash from
+  `node scripts/hash-dashboard-password.mjs` — prompts, never takes the password as an argument),
+  `DASHBOARD_SESSION_SECRET` (≥32 chars), `GSC_CLIENT_EMAIL`, `GSC_PRIVATE_KEY`, optional
+  `GA4_PROPERTY_ID` / `GSC_SITE_URL`. Missing sign-in settings → the page fails closed ("not set up").
+- **Never index it:** every response sends `X-Robots-Tag: noindex, nofollow`; keep it **out of
+  sitemap.xml** and don't list it in robots.txt.
+- **Honesty rules (don't regress):** GA4 recording began 2026-09-12 — days before the detected start
+  are "not recorded", never zeros, and no % change is shown against a partly recorded period. The start
+  is detected from a window around the requested dates through today, never "earliest ever" (stray
+  old hits). Search Console runs ~3 days behind; both periods drop the same days.
+- **"Estimate requests"** = GA4 `generate_lead` events, excluding the `/text-updates/` SMS opt-in form
+  (site.js fires the same event there). ⚠ The **home-page estimate form doesn't fire `generate_lead`**
+  (home has no site.js; it posts straight to `/thank-you/`), so those requests aren't counted yet.
+- **Tests:** `node scripts/check-dashboard.mjs` (offline unit checks).
+
 ## ⚑ The `<title>` marker trap (fixed 2026-09-11 — don't reintroduce)
 `<title>` is **RCDATA**: comments inside it are NOT markup, they are literal text. A
 `<!--sanity:KEY-->…<!--/sanity:KEY-->` pair placed *inside* `<title>` therefore renders the

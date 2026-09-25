@@ -851,6 +851,14 @@
     {
       "source": "/terms-conditions/",
       "destination": "/privacy-policy/"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/api/dashboard"
+    },
+    {
+      "source": "/dashboard/",
+      "destination": "/api/dashboard"
     }
   ]
 }
