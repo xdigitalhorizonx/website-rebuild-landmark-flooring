@@ -128,10 +128,11 @@ https://landmarkflooringusa.com/financing/. **Do not paraphrase, round, or inven
 - ⛔ Still DO NOT INVENT: monthly payment examples, approval odds/amounts, or any claim that a
   specific cost (e.g. labor) is guaranteed financeable — the offers only specify "one receipt."
 
-## Primary navigation (7 items — order is deliberate)
-`Flooring · Installation · Financing · Service Area · Guides · About · Contact` — a funnel:
+## Primary navigation (8 items — order is deliberate)
+`Flooring · Installation · Financing · Service Area · Guides · Blog · About · Contact` — a funnel:
 what you buy → who installs it → how you pay → where we serve. In the header nav of every
-page and the footer "Company" column (404.html has no footer columns).
+page and the footer "Company" column (404.html has no footer columns). **Blog** was added
+2026-10-12 (client request) right after Guides.
 
 **The header row cannot shrink.** `.brand`, `.nav-links` and `.nav-cta` are all `flex:none`
 (`.brand` deliberately so — letting it shrink is what squashed the mobile wordmark), so the
@@ -145,9 +146,25 @@ honest — **change one and re-measure all of them**:
 - **≥1280px** → everything on: 40px logo, phone visible.
 
 `.nav-links` also uses a responsive `clamp()` gap and font with `white-space:nowrap`.
-**Verified 320px → 1600px: zero horizontal overflow on all 32 pages, and the nav is always
-reachable (never both nav and hamburger, never neither).** Re-run that sweep before adding
-an 8th nav item or changing the logo size — there is no slack left at 1024px.
+The gap is `clamp(12px,1.2vw,18px)` since Blog made 8 items (the old `12px,1.5vw,24px`
+overflowed the row by up to 28px at ≥1366px, and by 8px at 1024px with a real scrollbar).
+**Verified 2026-10-12, 320px → 1600px with real 15px Windows scrollbars: zero horizontal
+overflow on all 36 pages, no header overlap, nav always reachable.** Tightest spot is 1024px
+with ~13px free. Re-run that sweep (headless Chrome with scrollbars ON — puppeteer hides
+them by default) before adding a 9th nav item or changing the logo size.
+
+## Blog (`/blog/`) — separate from Guides
+- **Guides** = evergreen reference (costs, comparisons). **Blog** = dated, seasonal, local
+  posts. Keep them distinct, and give a post a different angle from any guide on the same
+  topic (cross-link both ways) so the two don't compete in search.
+- `/blog/` = hub (`Blog` JSON-LD `@id …/blog/#blog`, list every post in `blogPost[]`, newest
+  post in the `.post-feature` card). Posts live at `/blog/<slug>/` with `BlogPosting` JSON-LD
+  (`isPartOf` → `#blog`, `publisher` → `#business`, real `datePublished`), the photo subhero,
+  a byline `.meta-row`, TOC aside, related cards and the CTA band. Header nav marks
+  **Blog** as `aria-current`. Add each post to `sitemap.xml`.
+- Blog pages are **not in Sanity yet** (no markers); edit the HTML directly.
+- First post (2026-10-12): `/blog/best-flooring-for-high-desert-climate/` — room-by-room
+  angle, deliberately distinct from `/guides/best-flooring-for-northern-nevada-climate/`.
 
 ## Forms → Resend (the site's only backend)
 The lead form posts to **`api/lead.js`**, a Vercel serverless function that emails the
@@ -281,7 +298,8 @@ Re-check this whenever you add a two-column layout or a wide table.
   2026-07-01 pending a real Tahoe project (organic-only play; a single Carson City showroom can't
   proximity-rank the Tahoe Map Pack). Avoid an 8-city footer cross-link block (doorway scaffolding).
 - **Guides** are top-of-funnel + AI-citation/assist, NOT a money-page ranking lever; each must link
-  to its money page + /free-estimate/. Sequence them after money pages.
+  to its money page + /free-estimate/. Sequence them after money pages. Blog posts follow
+  the same rule (link a money page + /free-estimate/).
 - The real Map-Pack lever is **off-site** (Google Business Profile + reviews + citations) — flag to client.
 
 ## Key docs

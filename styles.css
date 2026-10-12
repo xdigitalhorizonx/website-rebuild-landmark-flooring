@@ -118,7 +118,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   color:#fff; font-weight:800; font-size:.92rem; letter-spacing:.01em;
   box-shadow:0 4px 12px rgba(0,116,212,.35); cursor:pointer; user-select:none;
 }
-.nav-links{display:flex; gap:clamp(12px,1.5vw,24px); align-items:center; flex:none}
+/* Gap is clamp(12px,1.2vw,18px) (was 12px,1.5vw,24px) since Blog became the 8th item:
+   the old gap overflowed the row by up to 28px at >=1366px, and by 8px at 1024px once a
+   real 15px Windows scrollbar is counted. Re-run the nav-fit sweep (with scrollbars) if this changes. */
+.nav-links{display:flex; gap:clamp(12px,1.2vw,18px); align-items:center; flex:none}
 /* Real wordmark logo (replaces the LF text mark) */
 .brand{line-height:0}
 .brand-logo{height:40px; width:auto; display:block; max-width:none; flex:none}
