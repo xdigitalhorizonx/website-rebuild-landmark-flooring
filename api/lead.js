@@ -10,15 +10,27 @@
  *   LEAD_TO         (optional)  — defaults to brandon@ + jeff@landmarkflooringusa.com
  *   LEAD_FROM       (optional)  — defaults to website@landmarkflooringusa.com;
  *                                 the domain MUST be verified in Resend first.
+ *   APP_URL         (optional)  — defaults to https://www.landmarkflooring.app
+ *   SUPABASE_URL + SUPABASE_ANON_KEY — the app's database: the SMS consent log
+ *                                 and the "Convert to Lead" button both need it.
+ *
+ * "Convert to Lead": each request is also saved to the app's web_leads table
+ * (insert-only for the website), and the email carries a button that opens
+ * the app at /?web_lead=<id>. The signed-in app adds it as a lead — after its
+ * usual duplicate check — and opens it. The link holds only that random id,
+ * never the customer's details.
  *
  * GET returns a config check (no secret values) so the wiring can be verified
  * without submitting a real lead.
  */
 
+const { randomUUID } = require('node:crypto');
+
 const KEY_NAMES = ['RESEND_API_KEY', 'RESEND_TOKEN', 'RESEND_API_TOKEN', 'RESEND'];
 
 const DEFAULT_TO = 'brandon@landmarkflooringusa.com,jeff@landmarkflooringusa.com';
 const DEFAULT_FROM = 'Landmark Flooring Website <website@landmarkflooringusa.com>';
+const DEFAULT_APP_URL = 'https://www.landmarkflooring.app';
 
 function resolveKey() {
   for (const n of KEY_NAMES) {
@@ -104,6 +116,37 @@ async function logConsent(record) {
   }
 }
 
+/* The request, saved where the app's "Convert to Lead" button can find it.
+   Fail-safe like the consent log: if it doesn't land, the email still goes
+   out, just without the button. The id is made here because the website can
+   write this table but never read it back. */
+async function saveWebLead(record) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY;
+  if (!url || !key) return { stored: false, reason: 'not-configured' };
+  try {
+    const r = await fetch(`${url.replace(/\/$/, '')}/rest/v1/web_leads`, {
+      method: 'POST',
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify(record),
+      signal: AbortSignal.timeout(8_000),
+    });
+    if (!r.ok) {
+      console.error('[lead] web lead rejected:', r.status, await r.text().catch(() => ''));
+      return { stored: false, reason: `http-${r.status}` };
+    }
+    return { stored: true };
+  } catch (err) {
+    console.error('[lead] web lead save failed:', err && err.message);
+    return { stored: false, reason: 'error' };
+  }
+}
+
 /* Strip CR/LF and clamp. `name` is interpolated into the Subject header, so a
    raw newline there could inject additional headers. */
 const clean = (v, max) => String(v == null ? '' : v).replace(/[\r\n]+/g, ' ').trim().slice(0, max);
@@ -146,6 +189,8 @@ module.exports = async (req, res) => {
       checkedNames: KEY_NAMES,
       to: process.env.LEAD_TO || DEFAULT_TO,
       consentLog: Boolean(process.env.SUPABASE_URL && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY)) ? 'supabase' : 'email-only',
+      convertToLead: Boolean(process.env.SUPABASE_URL && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_KEY)) ? 'on' : 'off (no Supabase)',
+      appUrl: (process.env.APP_URL || DEFAULT_APP_URL).replace(/\/+$/, ''),
       smsDisclosureVersion: SMS_DISCLOSURE_VERSION,
       from: process.env.LEAD_FROM || DEFAULT_FROM,
       note: key
@@ -223,7 +268,6 @@ module.exports = async (req, res) => {
   // consent to texts at no number). Stored before the email so the email can
   // say whether the durable copy landed.
   let consent = null;
-  let consentStore = null;
   if ((consentCare || consentPromo) && phone) {
     consent = {
       site: 'landmarkflooringusa.com',
@@ -240,8 +284,30 @@ module.exports = async (req, res) => {
       user_agent: clean(req.headers['user-agent'], 400) || null,
       created_at: new Date().toISOString(),
     };
-    consentStore = await logConsent(consent);
   }
+
+  // ---- the request, for the app's "Convert to Lead" button ---------------
+  // Saved alongside the consent record (in parallel), before the email, so
+  // the email only offers the button when the app can actually find it.
+  const webLeadId = randomUUID();
+  const [consentStore, webLeadStore] = await Promise.all([
+    consent ? logConsent(consent) : null,
+    saveWebLead({
+      id: webLeadId,
+      site: 'landmarkflooringusa.com',
+      form_name: formName,
+      page_url: pageUrl,
+      name,
+      phone: phone || null,
+      email: email || null,
+      address: address || null,
+      project_type: projectType || null,
+      message: message || null,
+    }),
+  ]);
+  const appUrl = (process.env.APP_URL || DEFAULT_APP_URL).replace(/\/+$/, '');
+  const convertUrl = webLeadStore.stored ? `${appUrl}/?web_lead=${webLeadId}` : '';
+  const convertPhoneUrl = webLeadStore.stored ? `${appUrl}/mobile?web_lead=${webLeadId}` : '';
 
   const smsSummary = !phone
     ? 'No mobile number given'
@@ -266,16 +332,30 @@ module.exports = async (req, res) => {
       `\nDurable copy: ${consentStore && consentStore.stored ? 'stored in the consent database.' : 'NOT stored (' + (consentStore ? consentStore.reason : 'unknown') + ') — this email is the record.'}`
     : '';
 
+  const convertHtml = convertUrl
+    ? '<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 8px"><tr>' +
+      '<td style="background:#0074D3;border-radius:8px">' +
+      `<a href="${esc(convertUrl)}" style="display:inline-block;padding:12px 22px;font:700 15px system-ui,sans-serif;color:#FFFFFF;text-decoration:none">Convert to Lead</a>` +
+      '</td></tr></table>' +
+      `<p style="font:13px/1.5 system-ui,sans-serif;color:#667085;margin:0 0 16px">Adds ${esc(name)} to landmarkflooring.app (it checks for a match first). ` +
+      `On your phone? <a href="${esc(convertPhoneUrl)}" style="color:#0074D3">Use the phone app</a></p>`
+    : '<p style="font:13px/1.5 system-ui,sans-serif;color:#667085;margin:0 0 16px">No Convert to Lead button this time: ' +
+      `the request couldn't be saved for the app (${esc(webLeadStore.reason)}). Add the lead by hand.</p>`;
+  const convertText = convertUrl
+    ? `Convert to Lead: ${convertUrl}\nOn your phone: ${convertPhoneUrl}\n\n`
+    : `No Convert to Lead link this time (${webLeadStore.reason}). Add the lead by hand.\n\n`;
+
   const html =
     '<h2 style="font:600 18px/1.3 system-ui,sans-serif;color:#0F2742;margin:0 0 12px">' +
-    'New free-estimate request</h2><table cellpadding="6" style="font:14px/1.5 system-ui,sans-serif;border-collapse:collapse">' +
+    'New free-estimate request</h2>' + convertHtml +
+    '<table cellpadding="6" style="font:14px/1.5 system-ui,sans-serif;border-collapse:collapse">' +
     rows.map(([k, v]) =>
       `<tr><td style="color:#667085;vertical-align:top"><strong>${esc(k)}</strong></td>` +
       `<td style="white-space:pre-wrap">${esc(v)}</td></tr>`).join('') +
     '</table>' + consentHtml + '<p style="font:12px system-ui,sans-serif;color:#667085;margin-top:16px">' +
     `Sent from the ${esc(formName)} form on landmarkflooringusa.com. Reply directly to reach the customer.</p>`;
 
-  const text = rows.map(([k, v]) => `${k}: ${v}`).join('\n') + consentText +
+  const text = convertText + rows.map(([k, v]) => `${k}: ${v}`).join('\n') + consentText +
     `\n\nSent from the ${formName} form on landmarkflooringusa.com.`;
 
   try {
@@ -306,7 +386,7 @@ module.exports = async (req, res) => {
       return done(502, { ok: false, error: 'We could not send that just now. Please call (775) 297-3236.' }, 'error');
     }
 
-    console.log('[lead] sent', data && data.id, consent ? `(sms consent: care=${consentCare} promo=${consentPromo} stored=${consentStore && consentStore.stored})` : '(no sms consent)');
+    console.log('[lead] sent', data && data.id, `(convert-to-lead: ${webLeadStore.stored ? webLeadId : 'off, ' + webLeadStore.reason})`, consent ? `(sms consent: care=${consentCare} promo=${consentPromo} stored=${consentStore && consentStore.stored})` : '(no sms consent)');
     return done(200, { ok: true, id: data && data.id }, 'ok');
   } catch (err) {
     console.error('[lead] send failed:', err && err.message);
